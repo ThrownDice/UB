@@ -1,0 +1,47 @@
+@charset "utf-8";
+/*
+06.25.2015 begin
+Seunghyun, Jihyeon
+UB
+
+CSS
+###
+*/
+
+/* Layout */
+#wrap{}
+#header{}
+#container{}
+#resultPane{}
+
+/* Global */
+h1{}
+h2{}
+h3{}
+h4{}
+
+div{border:1px solid black;}
+
+ul{}
+ol{}
+li{border:1px solid orange;}
+
+a{}
+a:hover{}
+
+p{}
+img{}
+
+/* STyle by Classes*/
+.gnb{}
+.header_menu{}
+.search_bar{}
+
+.result{}
+.result_header{}
+.result_content{}
+.result_content_menu{}
+
+.aside{}
+.ad{}
+
