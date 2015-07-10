@@ -7,16 +7,25 @@
  */
 
 
-class Index extends X_Controller {
+class Term extends X_Controller {
+	
+	function __construct() {
+		$this->load->model('Term_md.php')
+	}
 	
 	/**
-	 * default call. when URL localhost is called
+	 * Default call.
 	 * @return [type] [description]
 	 */
 	function index() {
+		
 		$this->load->view('top');
 		$this->load->view('main');
 		$this->load->view('bottom');
+	}
+
+	function index($term) {
+		$this->load->model
 	}
 
 	/**
