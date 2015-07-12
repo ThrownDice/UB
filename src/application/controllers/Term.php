@@ -13,25 +13,24 @@ class Term extends X_Controller {
 		$this->load->model('Term_md.php')
 	}
 	
+	
 	/**
 	 * Default call.
 	 * @return [type] [description]
 	 */
-	function index() {
-		
-		$this->load->view('top');
-		$this->load->view('main');
-		$this->load->view('bottom');
+	function default_method(X) {
+		$this->Term_md->method1(X);
+		$this->load->view(X);
 	}
 
-	function index($term) {
-		$this->load->model
+	/**
+	 * @overload 
+	 */
+	function default_method(X,Y) {
+		$this->Term_md->method1(X,Y);
+		$this->load->view(X,Y)
 	}
 
-	function index($term, $tid) {
-
-	}
-}
 
 
 ?>

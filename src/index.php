@@ -22,15 +22,15 @@
 	define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
 
 /**
- * Sanity check.
+ * Web server sanity check.
  */
 
 
 /**
  * Load the engine
- * 이름이 정해지기 전까지 가칭 X_Engine
+ * 이름이 정해지기 전까지 가칭 X_Core
  */
-require_once SYSTEMPATH.'core/X_Engine.php';
+require_once SYSTEMPATH.'core/X_Core.php';
 
 
 ?>

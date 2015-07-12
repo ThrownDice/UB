@@ -8,9 +8,8 @@
 	$password = "x";
 
 
-
-
-
-
-
+/**
+ * 
+ */
+	$default_method = 'process';
 ?>

@@ -9,15 +9,17 @@ defined('SYSTEMPATH') OR exit('SYSTEMPATH not defined');
 defined('APPPATH') OR exit('APPPATH not defined');
 
 
+
 /**
- * Set configuration
+ * Set the configuration.
  */
 require_once APPPATH.'config/config.php';
 
+
 /**
- * Laod the controller.
+ * Set the route.
  */
-require_once APPPATH.'controllers/Index.php';
+require_once APPPATH.'config/route.php';
 
 
 ?>
