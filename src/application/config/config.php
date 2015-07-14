@@ -1,6 +1,6 @@
 <?php  
 
-
+echo fuck;
 /**
  * DB Info
  */
@@ -11,5 +11,5 @@
 /**
  * 
  */
-	$default_method = 'process';
+	$default_method = 'default_method';
 ?>

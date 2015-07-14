@@ -1,7 +1,7 @@
 <?php  
 
 
-class Register extends X_Controller {
+class Register extends Controller {
 
 	function __construct() {
 

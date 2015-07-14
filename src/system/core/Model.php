@@ -1,6 +1,6 @@
 <?php  
 
-class X_model {
+class Model {
 	
 	function __construct() {
 		load = new Load();

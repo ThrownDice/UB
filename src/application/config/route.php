@@ -8,6 +8,12 @@
 
 
 	/**
+	 *
+	 *
+	 * SEGMENT1 = controller's name
+	 * SEGMENT2 = parameter1
+	 * SEGMENT(N) = parameter(n-1)
+	 * 
 	 * URL: localhost/SEGMENT1/SEGMENT2/...
 	 * ex) URL: localhost/controller/p1
 	 */

@@ -1,7 +1,7 @@
 <?php  
 
 
-class Rules extends X_Controller {
+class Rules extends Controller {
 
 	function __construct() {
 

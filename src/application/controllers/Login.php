@@ -1,7 +1,7 @@
 <?php  
 
 
-class Login extends X_Controller {
+class Login extends Controller {
 
 	function __construct() {
 

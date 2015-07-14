@@ -7,10 +7,10 @@
  *
  * shares a term model with Term.php controller.
  */
-class Index extends X_Controller{
+class Index extends Controller{
 
 	function __construct() {
-		$this->load->model('Term_md.php');
+		$this->load->model('Term.php');
 		$data = $this->Term_md->getRecent(10);
 	}
 

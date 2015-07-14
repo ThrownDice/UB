@@ -7,10 +7,10 @@
  */
 
 
-class Term extends X_Controller {
+class Term extends Controller {
 	
 	function __construct() {
-		$this->load->model('Term_md.php')
+		$this->load->model('Term.php')
 	}
 	
 	

@@ -1,7 +1,7 @@
 <?php  
 
 
-class Guide extends X_Controller {
+class Guide extends Controller {
 
 	function __construct() {
 

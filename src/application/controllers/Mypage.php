@@ -1,7 +1,7 @@
 <?php  
 
 
-class Mypage extends X_Controller {
+class Mypage extends Controller {
 
 	function __construct() {
 

@@ -1,7 +1,7 @@
 <?php  
 
 
-class About extends X_Controller {
+class About extends Controller {
 
 	function __construct() {
 

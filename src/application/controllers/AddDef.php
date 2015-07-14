@@ -1,7 +1,7 @@
 <?php  
 
 
-class AddDef extends X_Controller {
+class AddDef extends Controller {
 
 	function __construct() {
 

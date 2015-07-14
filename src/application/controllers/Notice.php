@@ -1,7 +1,7 @@
 <?php  
 
 
-class Notice extends X_Controller {
+class Notice extends Controller {
 
 	function __construct() {
 

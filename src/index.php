@@ -1,4 +1,5 @@
-<?php  
+<?php
+
 
 /**
  * UB
@@ -11,26 +12,38 @@
 
 
 /**
- * Set path
+ * Set the path.
  */
-	//name of the directories
-	$system_folder = 'system';
-	$application_folder = 'application';
+	// Directory separator. For use of different OS.
+	define('DS',DIRECTORY_SEPARATOR);
+	
+	// Set the system folder path.
+	define('SYSPATH', 'system'.DS);
+	
+	// Set the application folder path.
+	define('APPPATH', 'application'.DS);
+	
+	// Read the information of Core
+	// Debugging printer_logical_fontheight(printer_handle, height)
+	echo 'require'.' '.SYSPATH.'core'.DS.'Core.php <br>';
+	
+	// Load the information of Core object.
+	require_once SYSPATH.'core'.DS.'Core.php';
 
-	//codeigniter에서 system path 랑 system directory 는 왜 나누는지? codeigniter/index.php 참조.
-	define('SYSTEMPATH', str_replace('\\', '/', $system_folder));
-	define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
+	$core = Core::getInstance();
+	
+	$routes = array();
+	$url = $_GET['url'];
+	$url = rtrim($url,'/');
+	$url = explode('/', $url);
+	//var_dump($url);
 
-/**
- * Web server sanity check.
- */
+	foreach($url as $key => $value)
+		$routes[$key] = $value;
 
+	var_dump($routes);
 
-/**
- * Load the engine
- * 이름이 정해지기 전까지 가칭 X_Core
- */
-require_once SYSTEMPATH.'core/X_Core.php';
 
 
 ?>
+

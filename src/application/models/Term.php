@@ -3,7 +3,7 @@
 
 
 
-class Term_md extends X_model {
+class Term extends Model {
 	function __contstruct() {
 		$this->load->database();
 	}

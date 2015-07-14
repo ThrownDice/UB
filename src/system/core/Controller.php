@@ -1,7 +1,7 @@
 <?php  
 
 
-class X_Controller {
+class Controller {
 	function __construct() {
 		$load = new Load();	
 	}
@@ -14,7 +14,7 @@ class X_Controller {
 
 class Load {
 	function model() {
-
+		
 	}
 
 	function view() {
