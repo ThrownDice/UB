@@ -10,12 +10,6 @@ if($__debug) echo 'Router initiated <br>';
  * Singleton Object
  */
 class Router {
-	
-	// Instance variables.
-	private static $instance;
-
-	// Disable constructor
-	private function __construct() {}
 
 	function route() {
 		echo 'route()';
