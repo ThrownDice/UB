@@ -1,7 +1,7 @@
 <?php  
 
 // Debugging logic
-echo 'Config loaded <br>';
+if($__debug) echo 'Config loaded <br>';
 
 
 
@@ -26,7 +26,6 @@ class Config {
 		if(!self::$instance)
 			self::$instance = new static();
 		
-		echo 'Config created <br>';
 		return self::$instance;
 	}
 

@@ -1,10 +1,8 @@
 <?php  
 
 // Debugging
-echo 'Router loaded <br>';
+if($__debug) echo 'Router loaded <br>';
 
-
-$ex = "ex";
 
 
 /**
@@ -19,35 +17,10 @@ class Router {
 	// Disable constructor
 	private function __construct() {}
 
-	/**
-	 * Create an instance and assign it to the static variable.
-	 * @return [type] [description]
-	 */
-	public function getInstance() {
-		// If not made before,
-		if(!self::$instance)
-			self::$instance = new static();
-		
-		echo 'Router created <br>';
-		return self::$instance;
+	function route() {
+		echo 'route()';
 	}
-
-	public function ex1() {
-		echo $ex;
-	}
-
-
-
-
-
-
-
-
 
 }
-
-
-
-
 
 ?>
