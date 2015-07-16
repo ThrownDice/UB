@@ -1,7 +1,7 @@
 <?php  
 
-// Debugging logic
-if($__debug) echo 'Config loaded <br>';
+// Check the mode. Only acts when debugging.
+if($__debug) echo 'Config initiated <br>';
 
 
 

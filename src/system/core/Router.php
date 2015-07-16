@@ -1,7 +1,7 @@
 <?php  
 
-// Debugging
-if($__debug) echo 'Router loaded <br>';
+// Check the mode. Only acts when debugging.
+if($__debug) echo 'Router initiated <br>';
 
 
 

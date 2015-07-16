@@ -36,7 +36,7 @@
 
 
 	// Create an object and initiate the program.
-	$core = Core::getInstance();
+	$core = Core::getInstance('Core');
 	$core->main();
 
 ?>

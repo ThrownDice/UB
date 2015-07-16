@@ -4,7 +4,7 @@
  */
 
 // Check the mode. Only acts when debugging.
-if($__debug) echo 'Core loaded <br>';
+if($__debug) echo 'Core initiated <br>';
 
 
 /**
