@@ -76,8 +76,13 @@ class Core {
 		if(!$found) echo "Could not find $class object";
 	}
 
+
+	/**
+	 * [callObject description]
+	 * @param  [type] $object [description]
+	 * @return [type]         [description]
+	 */
 	function callObject($object) {
-		echo $object;
 		$object = Core::getInstance($object);
 		$object->main();
 	}

@@ -22,7 +22,7 @@ class Router {
 	 * @var array
 	 */
 	public static $url = array();
-	public static $urlToUse = array();
+	public static $urlToTrim = array();
 
 	/**
 	 * [route description]
@@ -32,29 +32,25 @@ class Router {
 		// check if the url parameter is set
 		if(isset($_GET['url'])){
 			// Load the url into urlToUse variable.
-			$urlToUse = $_GET['url'];
+			$urlToTrim = $_GET['url'];
 			
 			// Trim the urlToUse to remove slashes on right
-			$urlToUse = rtrim($urlToUse,'/');
+			$urlToTrim = rtrim($urlToTrim,'/');
 			
 			// Break the urlToUse into fragments
-			$urlToUse = explode('/',$urlToUse);
+			$urlToTrim = explode('/',$urlToTrim);
 			
 			// Increment every indices by 1 and assign to a new $url.
-			foreach($urlToUse as $key => $value){
+			foreach($urlToTrim as $key => $value){
 				$this->url[$key+1] = $value;
 			}
 			
-			
-			// Call the controller. Controller then will do from there on.
+			// Call the controller. Controller then will do from thereafter.
 			if(isset($this->url[1])){
-				echo $this->url[1];
 				Core::callObject($this->url[1]);	
-			}
-			
-			
-			
-		}			
+			}	
+		}
+		//
 	}
 
 

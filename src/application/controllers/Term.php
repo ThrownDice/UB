@@ -3,6 +3,10 @@
  * Term file.
  */
 
+// Debugging
+__debug_load('Controller');
+
+
 
 
 /**

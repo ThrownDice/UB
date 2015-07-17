@@ -1,12 +1,20 @@
 <?php  
+/**
+ * Model file.
+ */
 
-// Check the mode. Only acts when debugging.
-if($__debug) echo 'Model initiated <br>';
+
+// Debugging.
+__debug_load("Core");
 
 
+
+/**
+ * Model class
+ */
 class Model {
 	
-	function default_method() {
+	function main() {
 
 	}
 
