@@ -1,5 +1,9 @@
 <?php  
 
+	// Debugging.
+	__debug_load(__FILE__);
+
+
 	$route = array();
 
 	function read($nameOfController) {

@@ -6,7 +6,7 @@
  */
 
 // Debugging.
-__debug_load('Config');
+__debug_load(__FILE__);
 
 
 

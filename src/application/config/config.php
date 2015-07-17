@@ -5,7 +5,7 @@
  */
 
 // Debugging.
-__debug_load("config(app)");
+__debug_load(__FILE__);
 
 
 

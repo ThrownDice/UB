@@ -3,10 +3,8 @@
  * Term_md file.
  */
 
-
-// Debugging.
-__debug_load("Term_md");
-
+	// Debugging.
+	__debug_load(__FILE__);
 
 
 

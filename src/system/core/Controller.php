@@ -3,8 +3,8 @@
  * Controller file.
  */
 
-// Debugging
-__debug_load('Controller');
+	// Debugging.
+	__debug_load(__FILE__);
 
 
 

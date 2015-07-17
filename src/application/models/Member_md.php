@@ -4,8 +4,8 @@
  */
 
 
-// Debugging.
-__debug_load("Member_md");
+	// Debugging.
+	__debug_load(__FILE__);
 
 
 

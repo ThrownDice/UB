@@ -5,7 +5,7 @@
  */
 
 // Debugging.
-__debug_load("Core");
+__debug_load(__FILE__);
 
 
 /**

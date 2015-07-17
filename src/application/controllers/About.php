@@ -3,6 +3,8 @@
  * About file.
  */
 
+	// Debugging.
+	__debug_load(__FILE__);
 
 
 

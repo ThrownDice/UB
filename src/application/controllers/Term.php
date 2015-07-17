@@ -3,8 +3,8 @@
  * Term file.
  */
 
-// Debugging
-__debug_load('Term');
+	// Debugging.
+	__debug_load(__FILE__);
 
 
 

@@ -5,9 +5,8 @@
 
 
 // Debugging.
-__debug_load("Router");
+__debug_load(__FILE__);
 
-echo __FILE__;
 
 /**
  * Router class
@@ -51,7 +50,7 @@ class Router {
 				Core::callObject($this->url[1]);	
 			}	
 		}
-		//
+		
 	}
 
 

@@ -4,8 +4,8 @@
  */
 
 
-// Debugging.
-__debug_load("SNSBrowser_md");
+	// Debugging.
+	__debug_load(__FILE__);
 
 
 

@@ -10,7 +10,7 @@
 
 // Display current setting.
 	echo '$__debug = '.var_export($__debug,true).'<br>';
-
+	echo '========================================<br>';
 
 
 
@@ -20,9 +20,13 @@
 	 * @param  [type] $class [description]
 	 * @return [type]        [description]
 	 */
-	function __debug_load($class) {
+	function __debug_load($path) {
 		global $__debug;
-		if($__debug) echo $class.' loaded<br>';
+		if($__debug) {
+			// Trim the path so that only the last segment would be left.
+			$path = substr(strrchr($path, '\\'), 1);
+			echo $path.' loaded <br>';
+		}
 	}
 
 
