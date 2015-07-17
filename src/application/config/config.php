@@ -20,5 +20,5 @@ __debug_load("config(app)");
 /**
  * 
  */
-	$default_method = 'default_method';
+	$selector0 = 'example';
 ?>

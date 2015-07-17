@@ -76,16 +76,27 @@ class Core {
 		if(!$found) echo "Could not find $class object";
 	}
 
+	function callObject($object) {
+		echo $object;
+		$object = Core::getInstance($object);
+		$object->main();
+	}
 
 	/**
 	 * Main method.
 	 */
 	function main() {
-
 		// Create an instances 
-		$config = Core::getInstance('Config');
 		
+		// Create a Config instance and fetch configuration.
+		$configuration = Core::getInstance('Config');
+		$this->config = $configuration->getConfig();
+
+		// Create a Router instance and execute route().
+		$router = Core::getInstance('Router');
+		$router->route();
 	}
+		
 
 }
 	

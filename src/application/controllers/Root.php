@@ -1,7 +1,8 @@
 <?php  
 /**
- * Guide file.
+ * Root file.
  */
+
 
 
 
@@ -10,19 +11,21 @@
 /**
  * 
  */
-class Guide extends Controller {
+class Root extends Controller{
 
 	function __construct() {
-
+		
 	}
 
 	function index() {
-
+		
 	}
 
 
-
 }
+
+
+
 
 
 

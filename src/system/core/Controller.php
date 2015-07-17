@@ -15,21 +15,12 @@ debug_load('Controller');
  */
 class Controller {
 
-	function default_method() {
-		
+	function main() {
+		echo 'controller main()';
 	}
 	
 }
 
-class Load {
-	function model() {
-		
-	}
-
-	function view() {
-
-	}
-}
 
 
 
