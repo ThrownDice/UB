@@ -25,7 +25,7 @@ class Core {
 	// This retains the objects constructed in this program and makes it accessible when needed.
 	private static $instance = array();
 	
-	// If you need, use this.
+	// When configuration data is needed in Core object, use this.
 	public static $config = array();
 
 	// Disable constructor.
@@ -58,7 +58,7 @@ class Core {
 	 */
 	static function __autoload($class) {
 		// Set path. The location of where the file-to-read is.
-		// Iterate over app/controllers, models, views, NOT config and sys/core.  
+		// Iterate over app/controllers, models, views, sys/core but NOT app/config.  
 		$paths = array(APPPATH.'controllers', APPPATH.'models', APPPATH.'views', SYSPATH.'core');
 		$found = false;
 
@@ -73,7 +73,7 @@ class Core {
 			}		
 		}
 		// Error reporting.
-		if(!$found) echo "Could not find $class object";
+		if(!$found) echo "Could not find the $class object";
 	}
 
 
@@ -81,18 +81,17 @@ class Core {
 	 * Main method.
 	 */
 	function main() {
-		// Create an instances 
 		
+		// Engine preheat.
 		// Create a Config instance and fetch configuration.
 		$configuration = Core::getInstance('Config');
 		$this->config = $configuration->getConfig();
 
-		// Engine preheat.
-		// Two objects that are essential in MVC.
+		// Load two objects that are essential in MVC.
 		Core::getInstance('Controller');
 		Core::getInstance('Model');
 
-		// Create a Router instance and execute route().
+		// Create a Router instance and execute route(). Ignition.
 		$router = Core::getInstance('Router');
 		$router->route();
 	}

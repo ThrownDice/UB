@@ -20,7 +20,7 @@ class Config {
 	 * [$config description]
 	 * @var array
 	 */
-	public $config = array();
+	public static $config = array();
 
 
 	/**
@@ -38,7 +38,7 @@ class Config {
 
 		// Presets.
 		$this->config['test'] = $option0;
-		$this->config['table_name'] = $table_name;
+		$this->config['db_connection'] = $db_connection;
 
 	}
 

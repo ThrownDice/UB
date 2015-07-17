@@ -15,9 +15,10 @@
 class Term_md extends Model {
 	
 
-	
-	function 
-
+	function __construct() {
+		//cho Core::getInstance('Core')->config['db_connection'];
+		//$this->db = mysqli_connect(Core::getInstance('Core')->config['db_connection']);
+	}
 
 	function main() {
 

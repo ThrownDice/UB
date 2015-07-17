@@ -19,6 +19,7 @@ class Term extends Controller {
 	 */
 	function __construct() {
 		$this->getModel(array('Term_md', 'Comment_md'));
+		
 	}
 
 

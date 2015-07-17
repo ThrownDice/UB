@@ -10,13 +10,6 @@ __debug_load(__FILE__);
 
 
 
-/**
- * DB Info
- */
-	$database = 'db';
-	$password = "x";
-	$table_name = 'table1';
-
 
 /**
  * 

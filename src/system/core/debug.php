@@ -16,7 +16,8 @@
 
 
 	/**
-	 * [debug_load description]
+	 * Display when a specific object is loaded.
+	 * Object name is obtained by each php script file path.
 	 * @param  [type] $class [description]
 	 * @return [type]        [description]
 	 */
