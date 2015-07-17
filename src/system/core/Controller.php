@@ -1,8 +1,18 @@
 <?php
+/**
+ * 
+ */
 
-// Check the mode. Only acts when debugging.
-if($__debug) echo 'Controller initiated <br>';
+// Debugging
+debug_load('Controller');
 
+
+
+
+
+/**
+ * Controller Class.
+ */
 class Controller {
 
 	function default_method() {

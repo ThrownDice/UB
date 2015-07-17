@@ -1,10 +1,11 @@
 <?php  
 /**
- * Core object file.
+ * Entire program managing file.
+ * Contains a core engine of the program.
  */
 
-// Check the mode. Only acts when debugging.
-if($__debug) echo 'Core initiated <br>';
+// Debugging.
+__debug_load("Core");
 
 
 /**
@@ -24,6 +25,9 @@ class Core {
 	// This retains the objects constructed in this program and makes it accessible when needed.
 	private static $instance = array();
 	
+	// If you need, use this.
+	public static $config;
+
 	// Disable constructor.
 	private function __construct() {}
 
@@ -54,7 +58,8 @@ class Core {
 	 */
 	static function __autoload($class) {
 		// Set path. The location of where the file-to-read is.
-		$paths = array(APPPATH.'config', APPPATH.'controllers', APPPATH.'models', APPPATH.'views', SYSPATH.'core');
+		// Iterate over app/controllers, models, views, NOT config and sys/core.  
+		$paths = array(APPPATH.'controllers', APPPATH.'models', APPPATH.'views', SYSPATH.'core');
 		$found = false;
 
 		// Iterate over the possible paths, and include if detected.
@@ -77,9 +82,8 @@ class Core {
 	 */
 	function main() {
 
-		// Create an instance of Config.
-		// Core::getInstance();
-		
+		// Create an instances 
+		$config = Core::getInstance('Config');
 		
 	}
 
