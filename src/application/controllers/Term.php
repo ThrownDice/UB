@@ -4,7 +4,7 @@
  */
 
 // Debugging
-__debug_load('Controller');
+__debug_load('Term');
 
 
 

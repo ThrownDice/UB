@@ -7,7 +7,7 @@
 // Debugging.
 __debug_load("Router");
 
-
+echo __FILE__;
 
 /**
  * Router class
@@ -23,6 +23,7 @@ class Router {
 	 */
 	public static $url = array();
 	public static $urlToTrim = array();
+
 
 	/**
 	 * [route description]

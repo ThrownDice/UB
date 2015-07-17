@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Controller file.
  */
 
 // Debugging

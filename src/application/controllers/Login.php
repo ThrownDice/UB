@@ -1,17 +1,18 @@
 <?php  
+/**
+ * Login file.
+ */
 
 
+
+/**
+ * 
+ */
 class Login extends Controller {
 
-	function __construct() {
+	function main() {
 
 	}
-
-	function index() {
-
-	}
-
-
 
 }
 
