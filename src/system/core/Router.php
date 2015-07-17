@@ -30,6 +30,8 @@ class Router {
 		 * rather than through autoload method defined in Core
 		 */
 		require_once APPPATH.'config'.DS.'router.php';
+
+		$route['test2'] = $route['preset'];
 	}
 
 	/**

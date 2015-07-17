@@ -18,14 +18,14 @@ class Database {
 
 	}
 
-
+	
 
 	/**
 	 * [setTable description]
 	 * @param [type] $table_name [description]
 	 */
 	public function setTable($table_name) {
-		
+
 	}
 
 }

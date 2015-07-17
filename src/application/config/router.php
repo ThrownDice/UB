@@ -11,7 +11,7 @@
 
 	$route = array();
 
-	$route['test'] = 'example';
+	$route['preset'] = 'example';
 
 
 
