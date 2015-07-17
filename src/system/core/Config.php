@@ -37,8 +37,8 @@ class Config {
 
 
 		// Presets.
-		$this->config['test'] = $selector0;
-
+		$this->config['test'] = $option0;
+		$this->config['table_name'] = $table_name;
 
 	}
 

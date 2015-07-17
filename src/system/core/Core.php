@@ -26,7 +26,7 @@ class Core {
 	private static $instance = array();
 	
 	// If you need, use this.
-	public static $config;
+	public static $config = array();
 
 	// Disable constructor.
 	private function __construct() {}
@@ -78,16 +78,6 @@ class Core {
 
 
 	/**
-	 * [callObject description]
-	 * @param  [type] $object [description]
-	 * @return [type]         [description]
-	 */
-	function callObject($object) {
-		$object = Core::getInstance($object);
-		$object->main();
-	}
-
-	/**
 	 * Main method.
 	 */
 	function main() {
@@ -96,6 +86,11 @@ class Core {
 		// Create a Config instance and fetch configuration.
 		$configuration = Core::getInstance('Config');
 		$this->config = $configuration->getConfig();
+
+		// Engine preheat.
+		// Two objects that are essential in MVC.
+		Core::getInstance('Controller');
+		Core::getInstance('Model');
 
 		// Create a Router instance and execute route().
 		$router = Core::getInstance('Router');

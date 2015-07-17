@@ -23,6 +23,14 @@ class Router {
 	public static $url = array();
 	public static $urlToTrim = array();
 
+	function __construct() {
+
+		/*
+		 * For Configuration files, customized preset will be loaded directly, 
+		 * rather than through autoload method defined in Core
+		 */
+		require_once APPPATH.'config'.DS.'router.php';
+	}
 
 	/**
 	 * [route description]
@@ -47,7 +55,8 @@ class Router {
 			
 			// Call the controller. Controller then will do from thereafter.
 			if(isset($this->url[1])){
-				Core::callObject($this->url[1]);	
+				$controller = Core::getInstance($this->url[1]);
+				$controller->main($this->url);	
 			}	
 		}
 		

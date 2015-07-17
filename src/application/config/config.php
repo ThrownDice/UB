@@ -15,10 +15,11 @@ __debug_load(__FILE__);
  */
 	$database = 'db';
 	$password = "x";
+	$table_name = 'table1';
 
 
 /**
  * 
  */
-	$selector0 = 'example';
+	$option0 = 'example';
 ?>

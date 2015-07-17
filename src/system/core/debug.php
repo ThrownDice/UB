@@ -10,8 +10,8 @@
 
 // Display current setting.
 	echo '$__debug = '.var_export($__debug,true).'<br>';
+	// echo 'other settings,,.<br>';
 	echo '========================================<br>';
-
 
 
 

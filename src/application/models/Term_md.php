@@ -14,10 +14,24 @@
  */
 class Term_md extends Model {
 	
-	function main(){
+
+	
+	function 
+
+
+	function main() {
 
 	}
 
+	function getTerm() {
+		
+		$sql = "SELECT FROM BLABLA";
+
+	}
+
+	function getTermExact() {
+
+	}
 }
 
 

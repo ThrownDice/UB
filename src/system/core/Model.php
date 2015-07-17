@@ -14,8 +14,14 @@ __debug_load(__FILE__);
  */
 class Model {
 	
-	function main() {
+	// Instance variables.
+	// data array which holds types of data.
+	public static $db;
+	public static $data = array();
 
+
+	function main() {
+		
 	}
 
 }
