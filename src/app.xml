@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<application>
+
+    <info>
+        <name> UB </name>
+        <version> 0.0.1 </version>
+        <root> </root>
+    </info>
+
+    <database>
+        <host> </host>
+        <port> </port>
+        <user> </user>
+        <password> </password>
+    </database>
+
+    <route>
+        <mapping>
+            <url> Term[\s\S]* </url>
+            <method> GET </method>
+            <controller name="Term">
+                <param> </param>
+            </controller>
+        </mapping>
+
+        <mapping>
+            <url> User[\s\S]* </url>
+            <method> GET </method>
+            <controller name="User">
+                <param> </param>
+            </controller>
+        </mapping>
+    </route>
+
+</application>
