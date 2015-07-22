@@ -45,3 +45,6 @@ img{}
 .aside{}
 .ad{}
 
+div{
+    border : 1px solid gray;
+}

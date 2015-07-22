@@ -53,11 +53,11 @@ class Core {
 		if($config){
 			$xml = simplexml_load_file($config);
 			//Core Class load
-			$instance["Router"] = new Router($xml->route);
+			if($xml->route) self::$instance["Router"] = new Router($xml->route);
+			if($xml->database) self::$instance["Database"] = new Database($xml->database);
+
 		}
-
-
-
+		self::$instance["Core"] = $this;
 	}
 
 	/**
@@ -66,12 +66,16 @@ class Core {
 	 */
 	public static function getInstance($class) {
 		// If the instance has been made before, return the existing one..
-		if(isset(self::$instance[$class]))
-			return self::$instance[$class];
-		else{
-			// Create an instance and return it.
-			self::$instance[$class] = new $class();
-			return self::$instance[$class];
+		try{
+			if(isset(self::$instance[$class]))
+				return self::$instance[$class];
+			else{
+				// Create an instance and return it.
+				self::$instance[$class] = new $class();
+				return self::$instance[$class];
+			}
+		}catch(Exception $e){
+			//todo : throw or route 500 error
 		}
 	}
 
@@ -89,7 +93,7 @@ class Core {
 		//Core::getInstance('Model');
 
 		// Create a Router instance and execute route(). Ignition.
-		$router = Core::getInstance('Router');
+		$router = Core::getInstance("Router");
 		$router->route();
 
 

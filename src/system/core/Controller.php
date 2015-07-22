@@ -13,35 +13,37 @@
 /**
  * Controller Class.
  */
-class Controller {
+abstract class Controller {
 	
-	// Instance variables.
-	// URL information parsed at Router
-	public static $url = array();
-	
-	// Models that a particular controller needs.
-	public static $model = array();
-	
-	public function main($url) {
-		// Assign the URL transferred to $url.
-		$this->url = $url;
+	private $view;
 
+	public function __construct($view = null){
+		if($view) $this->view = $view;
 	}
 
+	public abstract function main($url = null);
+	public abstract function render();
 
 	/**
 	 * [getModel description]
 	 * @param  [type] $modelsToload [description]
 	 * @return [type]               [description]
 	 */
-	public function getModel($modelsToload) {
+	/*public function getModel($modelsToload) {
 		foreach($modelsToload as $model){
 			$this->model[$model] = Core::getInstance($model);
-
 		}
+	}*/
+
+	public function getView(){
+		return $this->view;
 	}
 
-	
+	public function setView($view){
+		$this->view = $view;
+	}
+
+
 }
 
 

@@ -15,34 +15,25 @@
 class Database {
 	
 	// Instance variables.
-	public static $db = null;
+	private $name;
+	private $host;
+	private $port;
+	private $user;
+	private $password;
 
-
-
-	/**
-	 * [__construct description]
-	 */
-	function __construct() {
-		/*
-		 * For Configuration files, customized preset will be loaded directly, 
-		 * rather than through autoload method defined in Core
-		 */
-		require_once APPPATH.'config'.DS.'database.php';
-		
-		$this->db = null;
-		self::connect();
-
+	function __construct($config) {
+		try{
+			$this->name = trim((string)$config->name);
+			$this->host = trim((string)$config->host);
+			$this->port = trim((string)$config->port);
+			$this->user = trim((string)$config->user);
+			$this->password = trim((string)$config->password);
+		}catch(Exception $e){
+			throw new Exception("Failed to generating Database Class.");
+		}
 	}
 
-
-
 	public function connect() {
-		echo 'power<br>';
-		if(!isset($this->db)){
-			global $server_name;
-			echo $server_name;
-			// $db = 
-		}
 	}
 
 

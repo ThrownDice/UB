@@ -45,9 +45,10 @@
 	// Create an object and initiate the program.
 	//$core = Core::getInstance('Core');
 	//$core->main();
-
 	//$core = new Core(DIRECTORY_SEPARATOR.'app.xml');
+
 	$core = new Core("app.xml");
 	$core->main();
+
 ?>
 

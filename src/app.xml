@@ -8,15 +8,16 @@
     </info>
 
     <database>
-        <host> </host>
-        <port> </port>
-        <user> </user>
-        <password> </password>
+        <name> ub_db </name>
+        <host> localhost </host>
+        <port> 3306 </port>
+        <user> ub </user>
+        <password> 1q2w3e4r </password>
     </database>
 
     <route>
         <mapping>
-            <url> Term[\s\S]* </url>
+            <url> ^(Term$)?(Term[?/]+[\s\S]*)?$ </url>
             <method> GET </method>
             <controller name="Term">
                 <param> </param>
@@ -24,7 +25,7 @@
         </mapping>
 
         <mapping>
-            <url> User[\s\S]* </url>
+            <url> ^(User$)?(User[?/]+[\s\S]*)?$ </url>
             <method> GET </method>
             <controller name="User">
                 <param> </param>
