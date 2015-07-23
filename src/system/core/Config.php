@@ -37,8 +37,8 @@ class Config {
 
 
 		// Presets.
-		$this->config['test'] = $option0;
-		$this->config['db_connection'] = $db_connection;
+		//$this->config['test'] = $option0;
+		//$this->config['db_connection'] = $db_connection;
 
 	}
 

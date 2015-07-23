@@ -6,12 +6,12 @@
 
 // Set parameters.
 // Debug on/off.
-	$__debug = true;
+	$__debug = false;
 
 // Display current setting.
-	echo '$__debug = '.var_export($__debug,true).'<br>';
+	//echo '$__debug = '.var_export($__debug,true).'<br>';
 	// echo 'other settings,,.<br>';
-	echo '========================================<br>';
+	//echo '========================================<br>';
 
 
 

@@ -4,6 +4,8 @@
  * Developers may use this file to customize the presets.
  */
 
+//@deprecated file
+
 // Debugging.
 __debug_load(__FILE__);
 

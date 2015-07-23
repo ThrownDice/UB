@@ -42,11 +42,13 @@
 	// Load the information of Core object.
 	require_once SYSPATH.'core'.DS.'Core.php';
 
-
 	// Create an object and initiate the program.
-	$core = Core::getInstance('Core');
-	$core->main();
+	//$core = Core::getInstance('Core');
+	//$core->main();
+	//$core = new Core(DIRECTORY_SEPARATOR.'app.xml');
 
+	$core = new Core("app.xml");
+	$core->main();
 
 ?>
 

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<application>
+
+    <info>
+        <name> UB </name>
+        <version> 0.0.1 </version>
+        <root> </root>
+    </info>
+
+    <database>
+        <name> ub_db </name>
+        <host> localhost </host>
+        <port> 3306 </port>
+        <user> ub </user>
+        <password> 1q2w3e4r </password>
+    </database>
+
+    <route>
+        <mapping>
+            <url> ^(Term$)?(Term[?/]+[\s\S]*)?$ </url>
+            <method> GET </method>
+            <controller name="Term">
+                <param> </param>
+            </controller>
+        </mapping>
+
+        <mapping>
+            <url> ^(User$)?(User[?/]+[\s\S]*)?$ </url>
+            <method> GET </method>
+            <controller name="User">
+                <param> </param>
+            </controller>
+        </mapping>
+    </route>
+
+</application>
