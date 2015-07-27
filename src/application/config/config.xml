@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 
+Configuration file.
+
+Element names are case-sensitive.
+Element names starting with the capital letter is read by each of given Class objects.
+
+@author Engine, Jihyeon
+@since June 2015
+-->
+<application>
+    
+    <Info>
+        <name> UB </name>
+        <version> 0.0.1 </version>
+        <root> </root>
+    </Info>
+
+    <Database>
+        <name> ub_db </name>
+        <host> localhost </host>
+        <port> 3306 </port>
+        <user> ub </user>
+        <password> 1q2w3e4r </password>
+    </Database>
+
+    <Router>
+        <route>
+            <url> ^(Term$)?(Term[?/]+[\s\S]*)?$ </url>
+            <controller name="term">
+                <param> </param>
+            </controller>
+            <method> GET </method>
+        </route>
+
+        <route>
+            <url> ^(User$)?(User[?/]+[\s\S]*)?$ </url>
+            <controller name="user">
+                <param> </param>
+            <method> GET </method>
+            </controller>
+        </route>
+    </Router>
+
+</application>
