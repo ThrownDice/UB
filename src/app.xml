@@ -17,10 +17,11 @@
 
     <route>
         <mapping>
-            <url> ^(Term$)?(Term[?/]+[\s\S]*)?$ </url>
+            <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
             <method> GET </method>
             <controller name="Term">
-                <param> </param>
+                <param name="view"> /application/views/test/term.php </param>
+                <param name="model"> Term_md </param>
             </controller>
         </mapping>
 

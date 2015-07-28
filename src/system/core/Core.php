@@ -26,7 +26,7 @@ class Core {
 	private static $instance = array();
 
 	// When configuration data is needed in Core object, use this.
-	public static $config = array();
+	public static $config = null;
 
 	public function __construct($config = null) {
 		//Auto Class loader closure setting
@@ -52,6 +52,7 @@ class Core {
 
 		if($config){
 			$xml = simplexml_load_file($config);
+			self::$config = $xml;
 			//Core Class load
 			if($xml->route) self::$instance["Router"] = new Router($xml->route);
 			if($xml->database) self::$instance["Database"] = new Database($xml->database);
@@ -71,11 +72,46 @@ class Core {
 				return self::$instance[$class];
 			else{
 				// Create an instance and return it.
-				self::$instance[$class] = new $class();
+				$new_class = new $class();
+				if($params = self::getControllerParameter($class)){
+					//todo : set configuration using app.xml parameter
+					//echo "controller : ", $class, "<br>";
+					foreach($params as $param){
+						$param_name = trim((string)$param["name"]);
+						$param_value = trim((string)$param);
+						//echo "'$param_name' and '$param_value'\n","<br>";
+						//todo : implement set(key, value), get(key, value) so that we set and get parameters more flexible
+						switch($param_name){
+							case "view" :
+								//$new_class->setView(new $param_value());
+								$new_class->view = $param_value;
+								break;
+							case "model" :
+								$new_class->setModel(new $param_value());
+								//$new_class->model = new $param_value();
+								break;
+						}
+					}
+				}
+				self::$instance[$class] = $new_class;
 				return self::$instance[$class];
 			}
 		}catch(Exception $e){
 			//todo : throw or route 500 error
+			echo $e, "<br>";
+		}
+	}
+
+	public static function getControllerParameter($class){
+		if(self::$config){
+			$maps = self::$config->route->mapping;
+			foreach($maps as $map){
+				if(!strcmp($class, (string)$map->controller["name"])){
+					return $map->controller->param;
+				}
+			}
+		}else{
+			return null;
 		}
 	}
 

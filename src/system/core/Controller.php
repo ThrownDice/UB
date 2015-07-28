@@ -16,6 +16,7 @@
 abstract class Controller {
 	
 	private $view;
+	private $model;
 
 	public function __construct($view = null){
 		if($view) $this->view = $view;
@@ -23,17 +24,6 @@ abstract class Controller {
 
 	public abstract function main($url = null);
 	public abstract function render();
-
-	/**
-	 * [getModel description]
-	 * @param  [type] $modelsToload [description]
-	 * @return [type]               [description]
-	 */
-	/*public function getModel($modelsToload) {
-		foreach($modelsToload as $model){
-			$this->model[$model] = Core::getInstance($model);
-		}
-	}*/
 
 	public function getView(){
 		return $this->view;
@@ -43,11 +33,30 @@ abstract class Controller {
 		$this->view = $view;
 	}
 
+	public function getModel(){
+		return $this->model;
+	}
+	public function setModel($model){
+		$this->model = $model;
+	}
 
+	public function __set($name, $value){
+		try{
+			//echo "Setting '$name' to '$value'\n";
+			$this->$name = $value;
+		}catch(Exception $e){
+			throw new Exception("Can't set '$name' to member variable. <br>");
+		}
+	}
+
+	public function __get($name){
+		try{
+			//echo "Getting '$name'\n";
+			return $this->$name;
+		}catch(Exception $e){
+			throw new Exception("Can't return '$name' member variable. <br>");
+		}
+
+	}
 }
-
-
-
-
-
 ?>

@@ -21,6 +21,9 @@ class Database {
 	private $user;
 	private $password;
 
+	//PDO object
+	private $db;
+
 	function __construct($config) {
 		try{
 			$this->name = trim((string)$config->name);
@@ -28,27 +31,29 @@ class Database {
 			$this->port = trim((string)$config->port);
 			$this->user = trim((string)$config->user);
 			$this->password = trim((string)$config->password);
+
+			$db = new PDO("mysql:host=".$this->host.";dbname=".$this->name.";charset=utf8", $this->user, $this->password);
+
+			$db->exec("set session character_set_connection=utf8;");
+			$db->exec("set session character_set_results=utf8;");
+			$db->exec("set session character_set_client=utf8;");
+			$db->exec("set names utf8;");
+
+			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+			$this->db = $db;
 		}catch(Exception $e){
-			throw new Exception("Failed to generating Database Class.");
+			throw new Exception("Failed to generating Database Class.".$e);
 		}
 	}
 
-	public function connect() {
+	public function getConnection() {
+		return $this->db;
 	}
 
-
-
-	/**
-	 * [setTable description]
-	 * @param [type] $table_name [description]
-	 */
-	public function setTable($table_name) {
-
-	}
+	public function __clone(){}
 
 }
-
-
 
 
 ?>
