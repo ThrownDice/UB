@@ -17,8 +17,8 @@
 /**
  * Error reporting on/off.
  */
-	//error_reporting($param);
-	
+	//error_reporting(E_ALL);
+
 
 /**
  * Set the path.
@@ -39,15 +39,15 @@
 	// Debugging preset.
 	require_once SYSPATH.'core'.DS.'debug.php';
 
+	// Define preset.
+	require_once APPPATH.'config'.DS.'define.php';
+
 	// Load the information of Core object.
 	require_once SYSPATH.'core'.DS.'Core.php';
 
-	// Create an object and initiate the program.
-	//$core = Core::getInstance('Core');
-	//$core->main();
-	//$core = new Core(DIRECTORY_SEPARATOR.'app.xml');
-
-	$core = new Core("app.xml");
+	// Create a core object with configuration file as parameter,
+	// and execute main method.
+	$core = new Core(APPPATH.'config'.DS.'config.xml');
 	$core->main();
 
 ?>

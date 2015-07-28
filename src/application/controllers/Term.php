@@ -6,9 +6,6 @@
 	// Debugging.
 	__debug_load(__FILE__);
 
-
-
-
 /**
  * 
  */
@@ -55,6 +52,7 @@ class Term extends Controller {
 			//self::$data = $this->getModel()->deleteTerm(22);
 			//var_dump($this->getModel()->deleteTerm(24));
 			//include $this->view;
+			echo "Inside of Term main", "<br>";
 		}
 	}
 
