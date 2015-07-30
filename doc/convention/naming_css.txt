@@ -1,0 +1,12 @@
+Last Edit 07.30.2015
+
+
+
+css element naming rule.
+
+1. selector => 모두 소문자string_모두 소문자string_모두 소문자string_,,.
+
+2. div는 element 종류 언급없이 이름만. ex) div class="test1", ul class="ul_test1"
+
+3. layout element는 class가 아닌 id로.
+

@@ -24,10 +24,17 @@ class Database {
 	//PDO object
 	private $db;
 
+
+	/**
+	 * 
+	 * @param $config "Database" element from config.xml
+	 */
 	function __construct($config) {
+		
 		try{
 			$this->name = trim((string)$config->name);
 			$this->host = trim((string)$config->host);
+
 			$this->port = trim((string)$config->port);
 			$this->user = trim((string)$config->user);
 			$this->password = trim((string)$config->password);
@@ -43,7 +50,7 @@ class Database {
 
 			$this->db = $db;
 		}catch(Exception $e){
-			throw new Exception("Failed to generating Database Class.".$e);
+			throw new Exception("Failed to generate Database Class.".$e);
 		}
 	}
 

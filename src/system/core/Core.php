@@ -35,8 +35,8 @@ class Core {
 		// Set autoloader as closure inside the constructor.
 		spl_autoload_register(function ($class) {
 			// Set paths. The location of where the files-to-read are.
-			// Paths include app/controllers, models, views, sys/core but NOT app/config.
-			$paths = array(APPPATH . 'controllers', APPPATH . 'models', APPPATH . 'views', SYSPATH . 'core');
+			// Paths include app/controllers, models, sys/core but NOT app/config.
+			$paths = array(APPPATH . 'controllers', APPPATH . 'models', SYSPATH . 'core');
 
 			// Iterate over the paths set, and include if any file is detected.
 			foreach ($paths as $path) {
