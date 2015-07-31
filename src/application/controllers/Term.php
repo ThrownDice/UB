@@ -12,9 +12,16 @@
 class Term extends Controller {
 
 	public static $data;
+	
+	// ## for testing. (this is to be deleted)
+	public $test = array();
 
 	function __construct($view = null) {
 		parent::__construct();
+		
+		// ## for testing. (this is to be deleted)
+		$this->test['title'] = "term";
+		$this->test['a'] = 1;
 	}
 
 	function main($url = null) {
@@ -46,18 +53,20 @@ class Term extends Controller {
 					//todo : select term data
 					echo "action : select", ",<br>";
 			}
-		}else{
+		} else {
 			//todo : no action, 404 error or default action;
 			//self::$data = $this->getModel()->getTermExact(14);
 			//self::$data = $this->getModel()->deleteTerm(22);
 			//var_dump($this->getModel()->deleteTerm(24));
 			//include $this->view;
 			echo "Inside of Term main", "<br>";
+			$this->render();
 		}
 	}
 
 	function render(){
-
+		// ## for testing. (this is to be deleted)
+		require_once APPPATH.'views'.DS.'templates'.DS.'template_kiwi.php';
 	}
 
 }

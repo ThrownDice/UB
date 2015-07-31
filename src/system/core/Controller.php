@@ -14,7 +14,7 @@
  * Controller Class.
  */
 abstract class Controller {
-	
+		
 	private $view;
 	private $model;
 
