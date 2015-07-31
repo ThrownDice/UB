@@ -47,6 +47,7 @@ class Term_md extends Model {
 	 */
 	function getRecentTerm($num = 10){
 		$db = self::getDatabase();
+		$num = (int)$num;
 		$stmt = $db->prepare("select * from term order by `date` desc limit :num");
 		$stmt->bindParam(":num", $num, PDO::PARAM_INT);
 		$stmt->execute();

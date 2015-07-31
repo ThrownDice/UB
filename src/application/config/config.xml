@@ -30,17 +30,14 @@ Element names starting with the capital letter is read by each of given Class ob
             <controller name="term">
                 <param name="view"> /application/views/test/term.php </param>
                 <param name="model"> Term_md </param>
+                <param name="DEFAULT_TERM_COUNT"> 15 </param>
             </controller>
             <method> GET </method>
-        </route>
-
-        <route>
-            <url> ^(user$)?(user[?/]+[\s\S]*)?$ </url>
-            <controller name="user">
-                <param> </param>
-            <method> GET </method>
-            </controller>
         </route>
     </Router>
+
+    <Thema>
+        /application/views/test/thema/thema-default.css
+    </Thema>
 
 </application>

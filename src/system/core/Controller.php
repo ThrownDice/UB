@@ -14,9 +14,15 @@
  * Controller Class.
  */
 abstract class Controller {
-	
+
+	//todo : delete $view, $model variable
 	private $view;
 	private $model;
+
+	public static $data;
+	public static $_info = array();
+
+	private $_CONSTANT = array();
 
 	public function __construct($view = null){
 		if($view) $this->view = $view;
@@ -43,7 +49,7 @@ abstract class Controller {
 	public function __set($name, $value){
 		try{
 			//echo "Setting '$name' to '$value'\n";
-			$this->$name = $value;
+			$this->_CONSTANT[$name] = $value;
 		}catch(Exception $e){
 			throw new Exception("Can't set '$name' to member variable. <br>");
 		}
@@ -52,7 +58,7 @@ abstract class Controller {
 	public function __get($name){
 		try{
 			//echo "Getting '$name'\n";
-			return $this->$name;
+			return $this->_CONSTANT[$name];
 		}catch(Exception $e){
 			throw new Exception("Can't return '$name' member variable. <br>");
 		}
