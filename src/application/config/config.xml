@@ -28,7 +28,7 @@ Element names starting with the capital letter is read by each of given Class ob
         <route>
             <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
             <controller name="term">
-                <param name="view"> /application/views/test/term.php </param>
+                <param name="view"> /application/views/templates/template_term_list.php </param>
                 <param name="model"> Term_md </param>
                 <param name="DEFAULT_TERM_COUNT"> 15 </param>
             </controller>

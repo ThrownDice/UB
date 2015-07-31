@@ -19,7 +19,7 @@ abstract class Controller {
 	private $view;
 	private $model;
 
-	public static $data;
+	public static $data = array();
 	public static $_info = array();
 
 	private $_CONSTANT = array();
