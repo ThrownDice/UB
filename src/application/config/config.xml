@@ -25,6 +25,7 @@ Element names starting with the capital letter is read by each of given Class ob
     </Database>
 
     <Router>
+
         <route>
             <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
             <controller name="term">
@@ -34,6 +35,15 @@ Element names starting with the capital letter is read by each of given Class ob
             </controller>
             <method> GET </method>
         </route>
+
+        <route>
+            <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
+            <controller name="term">
+                <param name="view"> /application/views/templates/template_term_list.php </param>
+            </controller>
+            <method> POST </method>
+        </route>
+
     </Router>
 
     <Thema>

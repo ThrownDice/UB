@@ -7,6 +7,10 @@
     <ul class="search_bar">
         <li> <input type="text" class="search_input"> </li>
         <li> <div class="btn">검색</div> </li>
-        <li> <div class="btn"> 단어 추가 </div></li>
+        <li> <div class="btn add-term"> 단어 추가 </div></li>
+    </ul>
+    <ul>
+        <li>  <div class="btn"> 로그인 </div> </li>
+        <li>  <div class="btn"> 회원가입 </div> </li>
     </ul>
 </div>
