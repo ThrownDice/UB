@@ -15,10 +15,6 @@
  */
 abstract class Controller {
 
-	//todo : delete $view, $model variable
-	private $view;
-	private $model;
-
 	public static $data = array();
 	public static $_info = array();
 
@@ -30,21 +26,6 @@ abstract class Controller {
 
 	public abstract function main($url = null);
 	public abstract function render();
-
-	public function getView(){
-		return $this->view;
-	}
-
-	public function setView($view){
-		$this->view = $view;
-	}
-
-	public function getModel(){
-		return $this->model;
-	}
-	public function setModel($model){
-		$this->model = $model;
-	}
 
 	public function __set($name, $value){
 		try{

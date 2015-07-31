@@ -82,18 +82,7 @@ class Core {
 					foreach($params as $param){
 						$param_name = trim((string)$param["name"]);
 						$param_value = trim((string)$param);
-						//echo "'$param_name' and '$param_value'\n","<br>";
-						//todo : implement set(key, value), get(key, value) so that we set and get parameters more flexible
-						switch($param_name){
-							case "view" :
-								$new_class->view = $param_value;
-								break;
-							case "model" :
-								$new_class->setModel(new $param_value());
-								break;
-							default :
-								$new_class->$param_name = $param_value;
-						}
+						$new_class->$param_name = $param_value;
 					}
 				}
 				self::$instance[$class] = $new_class;

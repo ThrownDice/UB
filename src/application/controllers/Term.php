@@ -25,7 +25,9 @@ class Term extends Controller {
 
 		switch($action){
 			case "create" :
+				//todo : determine which method is requested. (GET or POST)
 				//todo : create new term data
+				require_once APPPATH.'views'.DS.'templates'.DS.'template_term_edit.php';
 				break;
 			case "update" :
 				//todo : update term data
@@ -36,14 +38,14 @@ class Term extends Controller {
 			case "read" :
 			default :
 				//todo : select term data
-				self::$data = $this->getModel()->getRecentTerm($this->DEFAULT_TERM_COUNT);
-				$this->render();
+				self::$data = Core::getInstance("Term_md")->getRecentTerm($this->DEFAULT_TERM_COUNT);
+				require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
 		}
 
 	}
 
 	function render(){
-		require_once $this->view;
+		//require_once $this->view;
 	}
 
 }
