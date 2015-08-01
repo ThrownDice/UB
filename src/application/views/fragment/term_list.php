@@ -16,8 +16,8 @@ foreach($data as $term){
     echo '</div>';
 
     echo '<div class="result_content_menu">';
-    echo '<span> Dislike', $term["dislike"], '</span>';
-    echo '<span> Like', $term["like"], '</span>';
+    echo '<span class="dislike">', $term["dislike"], '</span>';
+    echo '<span class="like">', $term["like"], '</span>';
     echo '</div>';
 
     echo '</div>';
