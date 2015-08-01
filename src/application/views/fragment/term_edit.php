@@ -1,4 +1,12 @@
 <style>
+
+    .dv_edit_term{
+        border : 3px solid #2D79B2;
+        border-radius : 5px;
+        background : white;
+        width : 90%;
+    }
+
     .info{
         width : 90%;
         margin : 10px 0px 20px 0px;
@@ -7,7 +15,31 @@
         width : 80%;
         border-bottom : 2px solid #2D79B2;
         margin-bottom : 5px;
+        margin-left : 5px;
         font-size : 15pt;
+    }
+
+    .info_subtitle{
+        margin-left : 10px;
+        font-size : 10pt;
+    }
+
+    .fm-add-term div{
+        margin : 10px 0px 10px 10px;
+        color : #FFAD0B;
+        font-weight: bold;
+    }
+
+    .fm-add-term input, textarea{
+        width : 90%;
+        border : 2px solid #2D79B2;
+        border-radius : 5px;
+        color : black;
+        box-shadow: 5px 5px 5px #DBDBDB;
+    }
+
+    .fm-add-term textarea{
+        height : 100px;
     }
 
     .fm-add-term .btn{
@@ -30,25 +62,24 @@
     }
 </style>
 
-<div class="info">
-    <div class="info_header"> 단어 추가 </div>
-    <div class="info_subtitle"> UB의 모든 단어들은 사용자들과 함게 만들어갑니다. 당신의 손으로 단어를 추가해보세요. </div>
-</div>
+<div class="dv_edit_term">
+    <div class="info">
+        <div class="info_header"> 단어 추가 </div>
+        <div class="info_subtitle"> UB의 모든 단어들은 사용자들과 함게 만들어갑니다. 당신의 손으로 단어를 추가해보세요. </div>
+    </div>
 
-<form action="/term?action=create" method="post" class="fm-add-term">
-    <div class="dv_word">
-        단어 <br>
-        <input type="text" class="word" name="word">
-    </div>
-    <div class="dv_definition">
-        뜻 <br>
-        <textarea class="definition" name="def"></textarea>
-    </div>
-    <input type="submit">
-    <div class="btn submit">
-        추가하기
-    </div>
-</form>
+    <form action="/term?action=create" method="post" class="fm-add-term">
+        <div class="dv_word">
+            *단어 <br>
+            <input type="text" class="word" name="word">
+        </div>
+        <div class="dv_definition">
+            *뜻 <br>
+            <textarea class="definition" name="def"></textarea>
+        </div>
+        <div class="btn submit"> 추가하기 </div>
+    </form>
+</div>
 
 <script>
     $('.submit').on('click', function(){
