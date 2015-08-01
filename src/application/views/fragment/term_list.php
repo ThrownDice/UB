@@ -6,7 +6,7 @@ foreach($data as $term){
     echo '<div class="result_header">';
     echo '<ul>';
     echo '<li><span class="date">', $term["date"], '</span></li>';
-    echo '<li>', '</li>';
+    echo '<li>', '<span class="ui-icon ui-icon-arrowthick-1-n"></span>', '</li>';
     echo '</ul>';
     echo '</div>';
 
