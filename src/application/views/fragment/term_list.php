@@ -76,11 +76,11 @@
     }
 
     #container .result_content_menu .like{
-        background : url(../img/thumbs-up-icon-blue-hi_s_b.png) no-repeat;
+        background : url(/application/views/img/thumbs-up-icon-blue-hi_s_b.png) no-repeat;
     }
 
     #container .result_content_menu .dislike{
-        background : url(../img/thumbs-down-icon-blue-hi_s_b.png) no-repeat;
+        background : url(/application/views/img/thumbs-down-icon-blue-hi_s_b.png) no-repeat;
     }
 
 </style>
