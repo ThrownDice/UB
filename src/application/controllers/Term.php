@@ -27,10 +27,19 @@ class Term extends Controller {
 			case "create" :
 				//todo : determine which method is requested. (GET or POST)
 				//todo : create new term data
-				require_once APPPATH.'views'.DS.'templates'.DS.'template_term_edit.php';
+				if(strtolower($_SERVER["REQUEST_METHOD"]) == "get"){
+					require_once APPPATH.'views'.DS.'templates'.DS.'template_term_edit.php';
+				}else{
+					$term = array();
+					if(isset($_POST["word"])) $term["word"] = $_POST["word"];
+					if(isset($_POST["def"])) $term["def"] = $_POST["def"];
+					$id = Core::getInstance("Term_md")->addTerm($term);
+					echo $id, " is inserted";
+				}
 				break;
 			case "update" :
 				//todo : update term data
+				var_dump($_SERVER);
 				break;
 			case "delete" :
 				//todo : delete term data

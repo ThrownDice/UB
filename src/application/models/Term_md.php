@@ -68,21 +68,27 @@ class Term_md extends Model {
 			$db = self::getDatabase();
 			$stmt = $db->prepare("insert into term (lemma, word, def, `date`, `like`, dislike, hit) values(:lemma, :word, :def, now(), :like, :dislike, :hit)");
 
-			$lemma = $term["lemma"];
-			$word = $term["word"];
-			$def = $term["def"];
-			$like = isset($term["like"]) ? $term["like"] : 0;
-			$dislike = isset($term["dislike"]) ? $term["dislike"] : 0;
-			//todo : calculate hit rate
-			$hit = 0;
-			$stmt->bindParam(":lemma", $lemma);
-			$stmt->bindParam(":word", $word);
-			$stmt->bindParam(":def", $def);
-			$stmt->bindParam(":like", $like);
-			$stmt->bindParam(":dislike", $dislike);
-			$stmt->bindParam(":hit", $hit);
+			if(isset($term["word"]) && isset($term["def"])){
+				$word = $term["word"];
+				$def = $term["def"];
+				$lemma = isset($term["lemma"]) ? $term["lemma"] : $word;
+				$like = isset($term["like"]) ? $term["like"] : 0;
+				$dislike = isset($term["dislike"]) ? $term["dislike"] : 0;
 
-			$stmt->execute();
+				//todo : calculate hit rate
+				$hit = 0;
+				$stmt->bindParam(":lemma", $lemma);
+				$stmt->bindParam(":word", $word);
+				$stmt->bindParam(":def", $def);
+				$stmt->bindParam(":like", $like);
+				$stmt->bindParam(":dislike", $dislike);
+				$stmt->bindParam(":hit", $hit);
+				$stmt->execute();
+				return $db->lastInsertId();
+			}else{
+				return null;
+			}
+
 
 		}catch(Exception $e){
 			throw new Exception("Can't insert term,".json_encode($term)." ".$e);

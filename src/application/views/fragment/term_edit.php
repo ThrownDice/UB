@@ -38,14 +38,22 @@
 <form action="/term?action=create" method="post" class="fm-add-term">
     <div class="dv_word">
         단어 <br>
-        <input type="text" class="word">
+        <input type="text" class="word" name="word">
     </div>
     <div class="dv_definition">
         뜻 <br>
-        <textarea class="definition"></textarea>
+        <textarea class="definition" name="def"></textarea>
     </div>
-    <div class="btn summit">
+    <input type="submit">
+    <div class="btn submit">
         추가하기
     </div>
 </form>
 
+<script>
+    $('.submit').on('click', function(){
+        console.log('submit');
+        //todo : validate form data
+        $('.fm-add-term').submit();
+    });
+</script>
