@@ -4,7 +4,8 @@ Color set
 depp blue : 2D79B2
 light blue : 74C3FF
 
-
+deep orange : FFAD0B
+light orange : FFCA5E
 */
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
@@ -112,6 +113,10 @@ body{
     width : 600px;
     padding : 10px 0px 10px 0px;
     background : white;
+}
+
+#container #resultPane .result:hover{
+    border : 3px solid #FFAD0B;
 }
 
 #container .result_header{

@@ -57,7 +57,7 @@
           <file leaf-file-name="term_list.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/application/views/fragment/term_list.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.42370892">
+                <state vertical-scroll-proportion="0.41589862">
                   <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
                   <folding />
                 </state>
@@ -171,8 +171,8 @@
           <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/application/views/css/main.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7193182">
-                  <caret line="163" column="20" selection-start-line="163" selection-start-column="20" selection-end-line="163" selection-end-column="20" />
+                <state vertical-scroll-proportion="0.72098213">
+                  <caret line="118" column="31" selection-start-line="118" selection-start-column="31" selection-end-line="118" selection-end-column="31" />
                   <folding />
                 </state>
               </provider>
@@ -256,10 +256,10 @@
   <component name="PhpWebServerValidation" path_to_validation_script="C:\Users\TD\Desktop\Project\UB" selected_validation_type="LOCAL" web_path_to_validation_script="http://127.0.0.1/" />
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="161" />
-    <option name="y" value="13" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1040" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -702,7 +702,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="161" y="13" width="1936" height="1040" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1138,7 +1138,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/views/fragment/term_list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42370892">
+        <state vertical-scroll-proportion="0.41589862">
           <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
           <folding />
         </state>
@@ -1146,8 +1146,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/views/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7193182">
-          <caret line="163" column="20" selection-start-line="163" selection-start-column="20" selection-end-line="163" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.72098213">
+          <caret line="118" column="31" selection-start-line="118" selection-start-column="31" selection-end-line="118" selection-end-column="31" />
           <folding />
         </state>
       </provider>
