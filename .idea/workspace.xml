@@ -24,6 +24,16 @@
     <splitter split-orientation="horizontal" split-proportion="0.5319574">
       <split-first>
         <leaf>
+          <file leaf-file-name="Controller.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/system/core/Controller.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-10.982142">
+                  <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="Core.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/system/core/Core.php">
               <provider selected="true" editor-type-id="text-editor">
@@ -47,8 +57,8 @@
           <file leaf-file-name="Term.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/application/controllers/Term.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.4201878">
-                  <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+                <state vertical-scroll-proportion="0.5316901">
+                  <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
                   <folding />
                 </state>
               </provider>
@@ -224,11 +234,11 @@
         <option value="$PROJECT_DIR$/src/application/views/fragment/include.php" />
         <option value="$PROJECT_DIR$/src/application/views/fragment/header.php" />
         <option value="$PROJECT_DIR$/src/application/views/js/main.js" />
-        <option value="$PROJECT_DIR$/src/system/core/Controller.php" />
         <option value="$PROJECT_DIR$/src/system/core/Core.php" />
         <option value="$PROJECT_DIR$/src/application/config/config.xml" />
         <option value="$PROJECT_DIR$/src/application/views/fragment/term_edit.php" />
         <option value="$PROJECT_DIR$/src/application/models/Term_md.php" />
+        <option value="$PROJECT_DIR$/src/system/core/Controller.php" />
         <option value="$PROJECT_DIR$/src/application/controllers/Term.php" />
       </list>
     </option>
@@ -1104,14 +1114,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/system/core/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.392857">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/application/config/config.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37386364">
@@ -1158,10 +1160,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/system/core/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.982142">
+          <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/application/controllers/Term.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4201878">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.5316901">
+          <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
           <folding />
         </state>
       </provider>

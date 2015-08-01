@@ -34,7 +34,7 @@ class Term extends Controller {
 					if(isset($_POST["word"])) $term["word"] = $_POST["word"];
 					if(isset($_POST["def"])) $term["def"] = $_POST["def"];
 					$id = Core::getInstance("Term_md")->addTerm($term);
-					echo $id, " is inserted";
+					$this->redirect("/term");
 				}
 				break;
 			case "update" :
