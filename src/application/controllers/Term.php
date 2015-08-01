@@ -25,8 +25,8 @@ class Term extends Controller {
 
 		switch($action){
 			case "create" :
-				//todo : determine which method is requested. (GET or POST)
-				//todo : create new term data
+				//if GET method is requested, then response adding term page
+				//or POST method is requested, then add new term and redirect page
 				if(strtolower($_SERVER["REQUEST_METHOD"]) == "get"){
 					require_once APPPATH.'views'.DS.'templates'.DS.'template_term_edit.php';
 				}else{
@@ -34,7 +34,7 @@ class Term extends Controller {
 					if(isset($_POST["word"])) $term["word"] = $_POST["word"];
 					if(isset($_POST["def"])) $term["def"] = $_POST["def"];
 					$id = Core::getInstance("Term_md")->addTerm($term);
-					$this->redirect("/term");
+					$this->redirect("/term/".$id);
 				}
 				break;
 			case "update" :
@@ -47,8 +47,14 @@ class Term extends Controller {
 			case "read" :
 			default :
 				//todo : select term data
-				self::$data = Core::getInstance("Term_md")->getRecentTerm($this->DEFAULT_TERM_COUNT);
-				require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
+				$seg = explode("/", $_GET["url"]);
+				if( (sizeof($seg)>1) && is_numeric($seg[1])){
+					self::$data = Core::getInstance("Term_md")->getTermExact($seg[1]);
+					require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
+				}else{
+					self::$data = Core::getInstance("Term_md")->getRecentTerm($this->DEFAULT_TERM_COUNT);
+					require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
+				}
 		}
 
 	}
