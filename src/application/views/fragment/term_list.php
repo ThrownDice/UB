@@ -20,6 +20,17 @@
         text-align : left;
     }
 
+    #container .result_header .ui-icon{
+        float : right;
+        margin : 0px 5px 0px 5px;
+        opacity : 0.5;
+        cursor : pointer;
+    }
+
+    #container .result_header .ui-icon:hover{
+        opacity : 0.8;
+    }
+
     #container .result_header .date{
         margin-left : 20px;
     }
@@ -81,9 +92,11 @@ foreach($data as $term){
 
     echo '<div class="result_header">';
     echo '<ul>';
-    echo '<li><span class="date">', $term["date"], '</span></li>';
-    echo '<li>', '<span class="ui-icon ui-icon-arrowthick-1-n"></span>', '</li>';
-    echo '</ul>';
+    echo '<li>';
+    echo '<span class="date">', $term["date"], '</span>';
+    echo '<span class="ui-icon ui-icon-close"></span>';
+    echo '<span class="ui-icon ui-icon-pencil"></span>';
+    echo '</li>';
     echo '</div>';
 
     echo '<div class="result_content">';
