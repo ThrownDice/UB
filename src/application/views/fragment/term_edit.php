@@ -62,28 +62,43 @@
     }
 </style>
 
+<?php
+    $data = Term::$data;
+    $term = isset($data[0]) ? $data[0] : null;
+?>
+
 <div class="dv_edit_term">
     <div class="info">
         <div class="info_header"> 단어 추가 </div>
         <div class="info_subtitle"> UB의 모든 단어들은 사용자들과 함게 만들어갑니다. 당신의 손으로 단어를 추가해보세요. </div>
     </div>
 
-    <form action="/term?action=create" method="post" class="fm-add-term">
+    <?php
+    if($term) echo '<form action="/term?action=update" method="post" class="fm-add-term">';
+    else echo '<form action="/term?action=create" method="post" class="fm-add-term">';
+    ?>
         <div class="dv_word">
             *단어 <br>
-            <input type="text" class="word" name="word">
+            <input type="text" class="word" name="word" value="<?php echo isset($term['word']) ? $term['word'] : null ?>">
         </div>
         <div class="dv_definition">
             *뜻 <br>
-            <textarea class="definition" name="def"></textarea>
+            <textarea class="definition" name="def"><?php echo isset($term['def']) ? $term['def'] : null ?></textarea>
         </div>
-        <div class="btn submit"> 추가하기 </div>
+        <?php
+            if($term){
+                echo '<div class="btn submit"> 수정하기 </div>';
+                echo '<input type="hidden" name="id" value="', $term['id'], '">';
+            }else{
+                echo '<div class="btn submit"> 추가하기 </div>';
+            }
+        ?>
+
     </form>
 </div>
 
 <script>
     $('.submit').on('click', function(){
-        console.log('submit');
         //todo : validate form data
         $('.fm-add-term').submit();
     });

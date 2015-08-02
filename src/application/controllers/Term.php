@@ -44,8 +44,29 @@ class Term extends Controller {
 				}
 				break;
 			case "update" :
-				//todo : update term data
-				var_dump($_SERVER);
+				//todo : update term data, confirm user session, auth etc
+				if(strtolower($_SERVER["REQUEST_METHOD"]) == "get"){
+					if(isset($_GET["id"])){
+						$id = $_GET["id"];
+						self::$data = Core::getInstance("Term_md")->getTermExact($id);
+						//var_dump($_GET);
+						$this->render("template_term_edit");
+					}
+				}else{
+					$term = array();
+					if(isset($_POST["word"])) $term["word"] = $_POST["word"];
+					if(isset($_POST["def"])) $term["def"] = $_POST["def"];
+					if(isset($_POST["id"])) $term["id"] = $_POST["id"];
+					$result = Core::getInstance("Term_md")->updateTerm($term);
+					var_dump($term);
+					var_dump($result);
+					if($result){
+						//todo : redirect term exact page
+						$this->redirect("/term/".$term["id"]);
+					}else{
+						//todo : redirect error page
+					}
+				}
 				break;
 			case "delete" :
 				//todo : delete term data, confirm user session, auth etc

@@ -95,7 +95,7 @@ foreach($data as $term){
     echo '<li>';
     echo '<span class="date">', $term["date"], '</span>';
     echo '<span class="btn-delete ui-icon ui-icon-close" term-id="', $term["id"], '"></span>';
-    echo '<span class="btn-modify ui-icon ui-icon-pencil term-id="', $term["id"], '"></span>';
+    echo '<span class="btn-modify ui-icon ui-icon-pencil" term-id="', $term["id"], '"></span>';
     echo '</li>';
     echo '</div>';
 
@@ -133,7 +133,8 @@ foreach($data as $term){
     });
 
     $('.btn-modify').on('click', function(){
-        //console.log($(this).attr('term-id'));
+        var id = $(this).attr('term-id');
+        location.href = '/term?action=update&id='+id;
     });
 
 </script>
