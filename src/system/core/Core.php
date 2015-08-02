@@ -22,7 +22,7 @@ __debug_load(__FILE__);
 class Core {
 
 	// Instance variables.
-	// $instance retains objects constructed in this program and makes it accessible.
+	// $instance retains objects constructed in this program and makes it accessible from various locations.
 	private static $instance = array();
 	private static $config;
 
@@ -41,8 +41,6 @@ class Core {
 			// Iterate over the paths set, and include if any file is detected.
 			foreach ($paths as $path) {
 				$file = $path . DS . $class . '.php';
-
-				// If found, load.
 				if (file_exists($file)) require_once $file;
 			}
 		});
@@ -54,6 +52,7 @@ class Core {
 		if($file_config){
 			$config = simplexml_load_file($file_config);
 			self::$config = $config;
+			
 			// Create instances with information from config.xml.
 			if($config->Router) self::$instance["Router"] = new Router($config->Router);
 			if($config->Database) self::$instance["Database"] = new Database($config->Database);
@@ -66,7 +65,7 @@ class Core {
 
 	/**
 	 * Create an instance and assign it to the static variable.
-	 * @return [type] [description]
+	 * @return self::$instance[$class] Instance referenced in an array of Core object.
 	 */
 	public static function getInstance($class) {
 		// If the instance has been made before, return the existing one.
@@ -77,7 +76,7 @@ class Core {
 				// Create an instance and return it.
 				$new_class = new $class();
 				if($params = self::getControllerParameter($class)){
-					//todo : set configuration using app.xml parameter
+					//todo : set configuration using config.xml parameter
 					//echo "controller : ", $class, "<br>";
 					foreach($params as $param){
 						$param_name = trim((string)$param["name"]);
@@ -94,8 +93,15 @@ class Core {
 		}
 	}
 
+
+	/**
+	 * Get the information regarding a given controller.
+	 * @param  $class 
+	 * @return "routes" element of a given Controller object.
+	 */
 	public static function getControllerParameter($class){
 		if(self::$config){
+			//todo: param changed recommended. Later on, will be commented.
 			$maps = self::$config->Router->route;
 			foreach($maps as $map){
 				if(!strcmp($class, (string)$map->controller["name"])){

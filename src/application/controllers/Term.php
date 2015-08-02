@@ -11,6 +11,11 @@
  */
 class Term extends Controller {
 
+
+	/**
+	 * [__construct description]
+	 * @param [type] $view [description]
+	 */
 	function __construct($view = null) {
 		parent::__construct();
 		self::$_info["Controller"] = "Term";
@@ -19,6 +24,7 @@ class Term extends Controller {
 	function main($url = null) {
 		if(isset($_GET["action"])){
 			$action = $_GET["action"];
+
 		}else{
 			$action = "read";
 		}
@@ -67,16 +73,32 @@ class Term extends Controller {
 				if( (sizeof($seg)>1) && is_numeric($seg[1])){
 					self::$data = Core::getInstance("Term_md")->getTermExact($seg[1]);
 					require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
+					#$this->render("template_term_list");
 				}else{
 					self::$data = Core::getInstance("Term_md")->getRecentTerm($this->DEFAULT_TERM_COUNT);
-					require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
+					#require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
+					
+					############# TESTING #############
+					$this->render("template_term_list");
 				}
+
 		}
 
 	}
 
-	function render(){
-		//require_once $this->view;
+
+	/**
+	 * Method dealing with printing into display.
+	 * MVC's View part starts from here.
+	 * @param  $file_template template file.
+	 */
+	function render($file_template){
+		
+
+		##
+		$this->view->setTemplate($file_template);
+		$this->view->toDisplay();
+
 	}
 
 }

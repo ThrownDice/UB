@@ -1,5 +1,6 @@
 <?php
 ob_end_clean();
+
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +15,7 @@ ob_end_clean();
 <body>
 
 <div id="wrap">
+    <?php if(isset($this->div['header']) include_once APPPATH.'views'.DS.'fragment'.DS.'header.php';?>
     <div id="header">
         <?php include_once APPPATH.'views'.DS.'fragment'.DS.'header.php'; ?>
     </div>
