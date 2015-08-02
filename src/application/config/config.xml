@@ -25,22 +25,27 @@ Element names starting with the capital letter is read by each of given Class ob
     </Database>
 
     <Router>
+
         <route>
             <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
             <controller name="term">
-                <param name="view"> /application/views/test/term.php </param>
-                <param name="model"> Term_md </param>
+                <param name="DEFAULT_TERM_COUNT"> 15 </param>
             </controller>
             <method> GET </method>
         </route>
 
         <route>
-            <url> ^(user$)?(user[?/]+[\s\S]*)?$ </url>
-            <controller name="user">
-                <param> </param>
-            <method> GET </method>
+            <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
+            <controller name="term">
+
             </controller>
+            <method> POST </method>
         </route>
+
     </Router>
+
+    <Thema>
+        /application/views/test/thema/thema-default.css
+    </Thema>
 
 </application>
