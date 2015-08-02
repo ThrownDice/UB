@@ -1,6 +1,6 @@
 <div class="gnb">
     <ul class="header_menu">
-        <li> <div class="logo"> 타이틀 미정 </div></li>
+        <li> <div class="logo" onclick="location.href='/term'"> 타이틀 미정 </div></li>
         <li><!--About--></li>
         <li><!--Rules--></li>
     </ul>

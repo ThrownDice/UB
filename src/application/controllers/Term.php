@@ -42,7 +42,23 @@ class Term extends Controller {
 				var_dump($_SERVER);
 				break;
 			case "delete" :
-				//todo : delete term data
+				//todo : delete term data, confirm user session, auth etc
+				$response = array();
+				if(isset($_GET["id"])){
+					$id = $_GET["id"];
+					try{
+						if(Core::getInstance("Term_md")->deleteTerm($id)){
+							$response["status"] = "success";
+							$response["text"] = "SUCCESS : ".$id." term is deleted.";
+						}
+					}catch(Exception $e){
+						$response["text"] = "ERROR : fail to delete ".$id." term. ".$e;
+					}
+				}else{
+					$response["status"] = "error";
+					$response["text"] = "ERROR : Can't get id parameter";
+				}
+				print json_encode($response);
 				break;
 			case "read" :
 			default :

@@ -24,10 +24,10 @@ ob_end_clean();
             <!--todo : add advertise or recommended term node-->
             <div class="ad">
                 <div class="ad_node">
-                    <img src="http://placehold.it/200x300">
+                    <img src="http://placehold.it/200x300" alt="no-name">
                 </div>
                 <div class="ad_node">
-                    <img src="http://placehold.it/200x150">
+                    <img src="http://placehold.it/200x150" alt="no-name">
                 </div>
             </div>
         </div>

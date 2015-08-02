@@ -42,6 +42,14 @@ Element names starting with the capital letter is read by each of given Class ob
             <method> POST </method>
         </route>
 
+        <route>
+            <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
+            <controller name="term">
+
+            </controller>
+            <method> DELETE </method>
+        </route>
+
     </Router>
 
     <Thema>

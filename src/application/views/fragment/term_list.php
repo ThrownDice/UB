@@ -88,13 +88,13 @@
 <?php
 $data = Term::$data;
 foreach($data as $term){
-    echo '<div class="result">';
+    echo '<div class="result term-', $term["id"], '">';
 
     echo '<div class="result_header">';
     echo '<ul>';
     echo '<li>';
     echo '<span class="date">', $term["date"], '</span>';
-    echo '<span class="btn-close ui-icon ui-icon-close" term-id="', $term["id"], '"></span>';
+    echo '<span class="btn-delete ui-icon ui-icon-close" term-id="', $term["id"], '"></span>';
     echo '<span class="btn-modify ui-icon ui-icon-pencil term-id="', $term["id"], '"></span>';
     echo '</li>';
     echo '</div>';
@@ -114,8 +114,21 @@ foreach($data as $term){
 ?>
 
 <script>
-    $('.btn-close').on('click', function(){
-        //console.log($(this).attr('term-id'));
+    $('.btn-delete').on('click', function(){
+        //todo : show message box of confirm deletion
+        var id = $(this).attr('term-id');
+        $.ajax({
+            url : '/term?action=delete&id='+id,
+            type : 'DELETE',
+            success : function(result){}
+        }).done(function(data){
+            var result = JSON.parse(data);
+            if(result && result.status === 'success'){
+                $('.term-'+id).hide('drop', {}, 500);
+            }
+        }).fail(function(jqXHR, textStatus){
+            console.log('ERROR : fail to delete,' + textStatus);
+        });
     });
 
     $('.btn-modify').on('click', function(){

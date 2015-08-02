@@ -102,12 +102,13 @@ class Term_md extends Model {
 				$stmt = $db->prepare("delete from term where id = :id");
 				$stmt->bindParam(":id", $id, PDO::PARAM_INT);
 				$stmt->execute();
-				return $stmt->fetchAll();
+				return true;
 			}else{
-				return null;
+				return false;
 			}
 		}catch(Exception $e){
 			throw new Exception("Can't delete term id='$id'. ".$e);
+			return false;
 		}
 	}
 
