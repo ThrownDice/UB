@@ -24,6 +24,9 @@ class Controller_example {
 
 	function render() {
 		
+
+		$this->View('tempate');
+		$this->toDisplay()
 		// First, set the divs to show.
 		// List of divs
 		$this->View->setDiv('header');

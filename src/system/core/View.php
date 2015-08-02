@@ -1,38 +1,46 @@
 <?php 
+
 /**
- * View class php file.
+ * View class file.
+ * 
+ * 
  */
 
+	// Debugging.
+	__debug_load(__FILE__);
 
 
+/**
+ * View class.
+ * 
+ */
 class View {
 
-	// Instance ariables.
-	
-	$template;
+	// Instance variables.
+	private $template;
+	private $css;
+	private $div = array();
 
-	$div = array();
-	$css;	
+
+
 	/**
 	 * View constructor.
+	 * @param $file_template Template parameter as a 
 	 */
-	function __construct($file_template) {
+	function __construct($file_template = null) {
 		$this->setTemplate($file_template);
 	}
 
 
 	/**
-	 * Set the template file.
-	 * Use this if needed.
+	 * Set the template file for this view object.
+	 * @param $file_template Template file.
 	 */
 	function setTemplate($file_template) {
 		$this->template = $file_template;
 	}
 
 
-	function setCss($file_css) {
-		$this->css = $file_css;
-	}
 	/**
 	 * Controller uses this method to set the divs to show.
 	 * Include the divs to be shown.
@@ -45,25 +53,19 @@ class View {
 	}
 
 
+
 	/**
-	 * Controller calls this method to acutally show the page.
-	 * @return [type] [description]
+	 * Print out everything we loaded into display.
+	 * 
 	 */
 	function toDisplay() {
-
-		// Need to variable test here.
 		
-
-		// Now, show!
-		require_once $template_;
-
+		// Now, get all to display.
+		require_once APPPATH.'views'.DS.'templates'.DS.$this->template.'.php';
 	}
-
-
 
 }
 
 
 
-
- ?>
+?>

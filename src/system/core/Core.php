@@ -22,7 +22,7 @@ __debug_load(__FILE__);
 class Core {
 
 	// Instance variables.
-	// $instance retains objects constructed in this program and makes it accessible.
+	// $instance retains objects constructed in this program and makes it accessible from various locations.
 	private static $instance = array();
 	private static $config;
 
@@ -65,7 +65,7 @@ class Core {
 
 	/**
 	 * Create an instance and assign it to the static variable.
-	 * @return [type] [description]
+	 * @return self::$instance[$class] Instance referenced in an array of Core object.
 	 */
 	public static function getInstance($class) {
 		// If the instance has been made before, return the existing one.
@@ -96,11 +96,12 @@ class Core {
 
 	/**
 	 * Get the information regarding a given controller.
-	 * @param  [type] $class [description]
-	 * @return [type]        [description]
+	 * @param  $class 
+	 * @return "routes" element of a given Controller object.
 	 */
 	public static function getControllerParameter($class){
 		if(self::$config){
+			//todo: param changed recommended. Later on, will be commented.
 			$maps = self::$config->Router->route;
 			foreach($maps as $map){
 				if(!strcmp($class, (string)$map->controller["name"])){

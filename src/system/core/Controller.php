@@ -8,31 +8,50 @@
 
 
 
-
-
 /**
  * Controller Class.
+ * 
  */
 abstract class Controller {
-<<<<<<< HEAD
-		
-	private $view;
-	private $model;
-=======
 
+	// Instance variables.
 	public static $data = array();
 	public static $_info = array();
-
 	private $_CONSTANT = array();
->>>>>>> bf3ef61118ecf410e7e95de876fa0bcdfd0d4560
+	public $view;
 
+	/**
+	 * Controller constructor
+	 * @param [type] $view [description]
+	 */
 	public function __construct($view = null){
 		if($view) $this->view = $view;
+		$this->view = Core::getInstance("View");
+		
 	}
 
-	public abstract function main($url = null);
-	public abstract function render();
 
+	/**
+	 * [main description]
+	 * @param  [type] $url [description]
+	 * @return [type]      [description]
+	 */
+	public abstract function main($url = null);
+	
+
+	/**
+	 * [render description]
+	 * @return [type] [description]
+	 */
+	public abstract function render($file_template);
+
+
+
+	/**
+	 * [__set description]
+	 * @param [type] $name  [description]
+	 * @param [type] $value [description]
+	 */
 	public function __set($name, $value){
 		try{
 			//echo "Setting '$name' to '$value'\n";
@@ -42,6 +61,11 @@ abstract class Controller {
 		}
 	}
 
+	/**
+	 * [__get description]
+	 * @param  [type] $name [description]
+	 * @return [type]       [description]
+	 */
 	public function __get($name){
 		try{
 			//echo "Getting '$name'\n";
@@ -51,6 +75,13 @@ abstract class Controller {
 		}
 	}
 
+
+	/**
+	 * [redirect description]
+	 * @param  [type]  $url       [description]
+	 * @param  boolean $permanent [description]
+	 * @return [type]             [description]
+	 */
 	public function redirect($url, $permanent = false){
 		if (headers_sent() === false)
 		{
