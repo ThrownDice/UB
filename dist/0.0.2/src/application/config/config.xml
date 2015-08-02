@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 
+Configuration file.
+
+Element names are case-sensitive.
+Element names starting with the capital letter is read by each of given Class objects.
+
+@author Engine, Jihyeon
+@since June 2015
+-->
+<application>
+    
+    <Info>
+        <name> UB </name>
+        <version> 0.0.1 </version>
+        <root> </root>
+    </Info>
+
+    <Database>
+        <name> ub_db </name>
+        <host> localhost </host>
+        <port> 3306 </port>
+        <user> ub </user>
+        <password> 1q2w3e4r </password>
+    </Database>
+
+    <Router>
+
+        <route>
+            <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
+            <controller name="term">
+                <param name="DEFAULT_TERM_COUNT"> 15 </param>
+            </controller>
+            <method> GET </method>
+        </route>
+
+        <route>
+            <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
+            <controller name="term">
+
+            </controller>
+            <method> POST </method>
+        </route>
+
+        <route>
+            <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
+            <controller name="term">
+
+            </controller>
+            <method> DELETE </method>
+        </route>
+
+    </Router>
+
+    <Thema>
+        /application/views/test/thema/thema-default.css
+    </Thema>
+
+</application>
