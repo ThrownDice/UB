@@ -124,7 +124,8 @@ foreach($data as $term){
         }).done(function(data){
             var result = JSON.parse(data);
             if(result && result.status === 'success'){
-                $('.term-'+id).hide('drop', {}, 500);
+                //$('.term-'+id).hide('drop', {}, 500);
+                $('.term-'+id).hide(500);
             }
         }).fail(function(jqXHR, textStatus){
             console.log('ERROR : fail to delete,' + textStatus);
