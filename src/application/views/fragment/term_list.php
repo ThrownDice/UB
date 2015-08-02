@@ -94,8 +94,8 @@ foreach($data as $term){
     echo '<ul>';
     echo '<li>';
     echo '<span class="date">', $term["date"], '</span>';
-    echo '<span class="ui-icon ui-icon-close"></span>';
-    echo '<span class="ui-icon ui-icon-pencil"></span>';
+    echo '<span class="btn-close ui-icon ui-icon-close" term-id="', $term["id"], '"></span>';
+    echo '<span class="btn-modify ui-icon ui-icon-pencil term-id="', $term["id"], '"></span>';
     echo '</li>';
     echo '</div>';
 
@@ -112,3 +112,14 @@ foreach($data as $term){
     echo '</div>';
 }
 ?>
+
+<script>
+    $('.btn-close').on('click', function(){
+        //console.log($(this).attr('term-id'));
+    });
+
+    $('.btn-modify').on('click', function(){
+        //console.log($(this).attr('term-id'));
+    });
+
+</script>
