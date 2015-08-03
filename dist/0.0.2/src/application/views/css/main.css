@@ -1,0 +1,106 @@
+/*
+Color set
+
+depp blue : 2D79B2
+light blue : 74C3FF
+
+deep orange : FFAD0B
+light orange : FFCA5E
+*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+body{
+    font-family: 'Nanum Gothic Coding', monospace;
+    background : url(../img/index.jpg) repeat;
+}
+
+/* header
+---------------------------------------------------*/
+
+#header{
+    width : 100%;
+    height : 60px;
+    -moz-box-shadow: 0px 9px 11px #DBDBDB;
+    -webkit-box-shadow: 0px 9px 11px #DBDBDB;
+    box-shadow: 0px 9px 11px #DBDBDB;
+    line-height : 60px;
+    background : white;
+}
+
+#header .header_menu{
+    float : left;
+}
+
+#header .header_menu .logo{
+    color : #2D79B2;
+    font-size : 30pt;
+    margin : 0px 30px 0px 30px;
+}
+
+#header li{
+    list-style: none;
+    float : left;
+}
+
+#header ul{
+    padding : 0px;
+    margin : 0px;
+}
+#header .search_bar li{
+    line-height : 60px;
+}
+#header .search_bar .search_input{
+    border : 5px solid #2D79B2;
+    width : 400px;
+    height : 30px;
+}
+
+#header .search_bar{
+    float : left;
+}
+
+#header .btn{
+    height : 40px;
+    background : #2D79B2;
+    color : white;
+    line-height : 40px;
+    text-align : center;
+    margin : 10px;
+    padding : 0px 10px 0px 10px;
+    -webkit-border-radius : 5px;
+    -moz-border-radius : 5px;
+    border-radius : 5px;
+    font-size : 11pt;
+    cursor : pointer;
+}
+
+#header .btn:hover{
+    background : #74C3FF;
+}
+
+/* container
+---------------------------------------------------*/
+#container{
+    width : 860px;
+    margin : 0px auto;
+    margin-top : 20px;
+}
+
+#container li{
+    list-style: none;
+}
+
+#container .aside{
+    width : 200px;
+    float : right;
+}
+
+#container .aside .ad_node{
+    margin-top : 10px;
+}
+
+#container #resultPane{
+    width : 640px;
+    float : right;
+}
+

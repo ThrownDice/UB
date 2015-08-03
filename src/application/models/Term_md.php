@@ -106,43 +106,42 @@ class Term_md extends Model {
 				$stmt = $db->prepare("delete from term where id = :id");
 				$stmt->bindParam(":id", $id, PDO::PARAM_INT);
 				$stmt->execute();
-				return $stmt->fetchAll();
+				return true;
 			}else{
-				return null;
+				return false;
 			}
 		}catch(Exception $e){
 			throw new Exception("Can't delete term id='$id'. ".$e);
+			return false;
 		}
 	}
 
 	function updateTerm($term){
 		//todo : we should support partial update, not fully update
 		try{
-			//todo : validation of $term
-			$db = self::getDatabase();
-			$stmt = $db->prepare("update term set lemma=:lemma, word=:word, def=:def, `like`=:like, dislike=:dislike, hit=:hit where id=:id ");
+			if(isset($term["id"]) && isset($term["word"])){
 
-			$id = $term["id"];
-			$lemma = $term["lemma"];
-			$word = $term["word"];
-			$def = $term["def"];
-			$like = isset($term["like"]) ? $term["like"] : 0;
-			$dislike = isset($term["dislike"]) ? $term["dislike"] : 0;
-			//todo : calculate hit rate
-			$hit = 0;
+				//todo : validation of $term
+				$db = self::getDatabase();
+				$stmt = $db->prepare("update term set lemma=:lemma, word=:word, def=:def where id=:id ");
 
-			$stmt->bindParam(":id", $id);
-			$stmt->bindParam(":lemma", $lemma);
-			$stmt->bindParam(":word", $word);
-			$stmt->bindParam(":def", $def);
-			$stmt->bindParam(":like", $like);
-			$stmt->bindParam(":dislike", $dislike);
-			$stmt->bindParam(":hit", $hit);
+				$id = $term["id"];
+				$word = $term["word"];
+				$lemma = isset($term["lemma"]) ? $term["lemma"] : $term["word"];;
+				$def = isset($term["def"]) ? $term["def"] : null;
 
-			$stmt->execute();
+				$stmt->bindParam(":id", $id);
+				$stmt->bindParam(":lemma", $lemma);
+				$stmt->bindParam(":word", $word);
+				$stmt->bindParam(":def", $def);
 
+				$stmt->execute();
+				return true;
+			}else{
+				throw new Exception("Can't get parameter.");
+			}
 		}catch(Exception $e){
-			throw new Exception("Can't insert term,".json_encode($term)." ".$e);
+			throw new Exception("Can't update term,".json_encode($term)." ".$e);
 		}
 	}
 
