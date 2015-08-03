@@ -24,9 +24,14 @@ class Database {
 	//PDO object
 	private $db;
 
+	/**
+	 * Database constructor.
+	 * @param $config
+	 * @throws Exception
+	 */
 	function __construct($config) {
-		try{
-			
+
+		try {
 			$this->name = trim((string)$config->name);
 			$this->host = trim((string)$config->host);
 			$this->port = trim((string)$config->port);

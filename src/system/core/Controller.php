@@ -7,7 +7,6 @@
 	__debug_load(__FILE__);
 
 
-
 /**
  * Controller Class.
  * 
@@ -15,10 +14,12 @@
 abstract class Controller {
 
 	// Instance variables.
-	public static $data = array();
-	public static $_info = array();
-	private $_CONSTANT = array();
 	public $view;
+	public static $model = array();
+	public static $data = array();
+	private $_CONSTANT = array();
+
+
 
 	/**
 	 * Controller constructor
@@ -33,11 +34,11 @@ abstract class Controller {
 
 	/**
 	 * [main description]
-	 * @param  [type] $url [description]
+     * @param  [type] $url [description]
 	 * @return [type]      [description]
 	 */
 	public abstract function main($url = null);
-	
+
 
 	/**
 	 * [render description]

@@ -15,9 +15,6 @@
 class Data {
 
 
-
-
-
 	function set($key, $value) {
 		$this->$key = $value;
 	}

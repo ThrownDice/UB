@@ -7,10 +7,9 @@
 	__debug_load(__FILE__);
 
 
-
-
 /**
- * 
+ * Term_md class.
+ * Inherits Model.
  */
 class Term_md extends Model {
 
@@ -26,9 +25,14 @@ class Term_md extends Model {
 	 */
 	function getTermExact($id) {
 		try{
-			if($id){
+			if($id) {
+
 				$db = self::getDatabase();
+
+				######### TESTING ##########
 				$stmt = $db->prepare("select * from term where id = :id");
+				//$STMT = $this->db->prepare("select * from term where id = :id");
+
 				$stmt->bindParam(":id", $id, PDO::PARAM_INT);
 				$stmt->execute();
 				return $stmt->fetchAll();
