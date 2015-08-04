@@ -88,11 +88,11 @@ class Router{
 	 */
 	function match($_route, $url, $method){
 		// Compares regular expression set from configuration with the actual url.
-		preg_match($_route["url"], $url, $match);
+		preg_match($_route["url"], $url, $matched);
 		
 		// If there is a match, return true, otherwise false
-		if(isset($match[0])){
-			return (!strcmp($match[0], $url) && (!strcmp($_route["method"], strtolower($method))));
+		if(isset($matched[0])){
+			return (!strcmp($matched[0], $url) && (!strcmp($_route["method"], strtolower($method))));
 		}else{
 			return false;
 		}
