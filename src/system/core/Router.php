@@ -48,7 +48,7 @@ class Router{
 			// Check if the url parameter is set
 			if(isset($_GET["url"])) {
 				foreach ($this->_routes as $_route) {
-					if ($this->equals($_route, $_GET["url"], $_SERVER["REQUEST_METHOD"]))
+					if ($this->match($_route, $_GET["url"], $_SERVER["REQUEST_METHOD"]))
 						return Core::getInstance($_route["controller"])->main();
 					
 				}
@@ -86,7 +86,7 @@ class Router{
 	 * @param  [type] $method [description]
 	 * @return bool
 	 */
-	function equals($_route, $url, $method){
+	function match($_route, $url, $method){
 		// Compares regular expression set from configuration with the actual url.
 		preg_match($_route["url"], $url, $match);
 		
