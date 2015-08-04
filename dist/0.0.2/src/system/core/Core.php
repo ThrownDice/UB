@@ -102,10 +102,10 @@ class Core {
 	public static function getControllerParameter($class){
 		if(self::$config){
 			//todo: param changed recommended. Later on, will be commented.
-			$maps = self::$config->Router->route;
-			foreach($maps as $map){
-				if(!strcmp($class, (string)$map->controller["name"])){
-					return $map->controller->param;
+			$routes = self::$config->Router->route;
+			foreach($routes as $route){
+				if(!strcmp($class, (string)$route->controller["name"])){
+					return $route->controller->param;
 				}
 			}
 		}else{
