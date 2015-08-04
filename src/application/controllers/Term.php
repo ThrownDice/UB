@@ -18,7 +18,6 @@ class Term extends Controller {
 	 */
 	function __construct($view = null) {
 		parent::__construct();
-		self::$_info["Controller"] = "Term";
 	}
 
 	function main($url = null) {
