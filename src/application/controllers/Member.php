@@ -33,4 +33,8 @@ class Member extends Controller
 
     }
 
+    function render($file_template){
+
+    }
+
 }
