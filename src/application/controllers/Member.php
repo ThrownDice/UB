@@ -30,6 +30,29 @@ class Member extends Controller
     }
 
     public function main($url = null){
+        if(isset($_GET["action"])){
+            $action = $_GET["action"];
+        }else{
+            $action = "read";
+        }
+
+        switch($action){
+            case "create":
+                if(strtolower($_SERVER["REQUEST_METHOD"]) == "get"){
+                    require_once APPPATH.'views'.DS.'templates'.DS.'template_member_add.php';
+                }else{
+                    //todo : create new member
+                    $member = array();
+                }
+                break;
+            case "update":
+                break;
+            case "delete":
+                break;
+            case "read":
+            default:
+
+        }
 
     }
 
