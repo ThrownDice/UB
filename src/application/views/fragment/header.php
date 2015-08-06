@@ -10,7 +10,16 @@
         <li> <div class="btn add-term"> 단어 추가 </div></li>
     </ul>
     <ul>
-        <li>  <div class="btn"> 로그인 </div> </li>
-        <li>  <div class="btn"> 회원가입 </div> </li>
+        <li>  <div class="btn login"> 로그인 </div> </li>
+        <li>  <div class="btn sign-up"> 회원가입 </div> </li>
     </ul>
 </div>
+
+<script>
+    (function(window, document){
+        //Event Handling
+        $('.sign-up').on('click', function(){
+            location.href = "member?action=create";
+        });
+    })(window, document);
+</script>

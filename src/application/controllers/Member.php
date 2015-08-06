@@ -4,9 +4,9 @@
  * Created by PhpStorm.
  * User: TD
  * Date: 2015-07-21
- * Time: ¿ÀÈÄ 4:40
+ * Time: ï¿½ï¿½ï¿½ï¿½ 4:40
  */
-class User extends Controller
+class Member extends Controller
 {
     function __construct(){
 
@@ -26,6 +26,10 @@ class User extends Controller
     }
 
     public static function delete(){
+
+    }
+
+    public function main($url = null){
 
     }
 
