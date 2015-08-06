@@ -23,7 +23,6 @@ class Term extends Controller {
 	function main($url = null) {
 		if(isset($_GET["action"])){
 			$action = $_GET["action"];
-
 		}else{
 			$action = "read";
 		}

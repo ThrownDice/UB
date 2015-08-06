@@ -81,9 +81,21 @@
             *단어 <br>
             <input type="text" class="word" name="word" value="<?php echo isset($term['word']) ? $term['word'] : null ?>">
         </div>
+        <div class="dv_lemma">
+            기본형 <br>
+            <input type="text" class="lemma" name="lemma" value="<?php echo isset($term['lemma']) ? $term['lemma'] : null ?>">
+        </div>
+        <div class="dv_pos">
+            품사 <br>
+            <input type="text" class="pos" name="pos" value="<?php echo isset($term['pos']) ? $term['pos'] : null ?>">
+        </div>
         <div class="dv_definition">
             *뜻 <br>
             <textarea class="definition" name="def"><?php echo isset($term['def']) ? $term['def'] : null ?></textarea>
+        </div>
+        <div class="dv_usage">
+            용례 <br>
+            <textarea class="usage" name="usage"> <?php echo isset($term['usage']) ? $term['usage'] : null ?> </textarea>
         </div>
         <?php
             if($term){
