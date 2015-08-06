@@ -43,6 +43,8 @@ class Member extends Controller
                 }else{
                     //todo : create new member
                     $member = array();
+                    var_dump($_POST);
+                    var_dump($_FILES);
                 }
                 break;
             case "update":
