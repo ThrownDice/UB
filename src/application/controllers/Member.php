@@ -56,13 +56,15 @@ class Member extends Controller
                             $member["nickname"] = $_POST["nickname"];
                             //todo : image resize (make thumbnail profile image)
                             $member["img"] = fopen($_FILES["photo"]["tmp_name"],"rb");
-
-                            var_dump($member);
-
-                            if(Core::getInstance("Member_md")->addMember($member)){
-                                //todo : return success page
-                            }else{
-                                //todo : redirect 500 page
+                            try{
+                                if(Core::getInstance("Member_md")->addMember($member)){
+                                    //todo : return success page
+                                }else{
+                                    //todo : redirect 500 page
+                                }
+                            }catch(Exception $e){
+                                //todo : redirect 500 page;
+                                echo $e;
                             }
                         }else{
                             //todo : invalid password
