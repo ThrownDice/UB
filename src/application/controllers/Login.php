@@ -12,7 +12,11 @@
  */
 class Login extends Controller {
 
-	function main() {
+	function main($url = null) {
+
+	}
+
+	function render($file_template){
 
 	}
 
