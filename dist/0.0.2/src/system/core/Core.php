@@ -75,7 +75,7 @@ class Core {
 			else{
 				// Create an instance and return it.
 				$new_class = new $class();
-				if($params = self::getControllerParameter($class)){
+				if($params = self::getControllerParam($class)){
 					//todo : set configuration using config.xml parameter
 					//echo "controller : ", $class, "<br>";
 					foreach($params as $param){
@@ -99,7 +99,7 @@ class Core {
 	 * @param  $class 
 	 * @return "routes" element of a given Controller object.
 	 */
-	public static function getControllerParameter($class){
+	public static function getControllerParam($class){
 		if(self::$config){
 			//todo: param changed recommended. Later on, will be commented.
 			$routes = self::$config->Router->route;

@@ -26,9 +26,10 @@ Element names starting with the capital letter is read by each of given Class ob
 
     <Router>
 
+        <!-- Term Controller mapping-->
         <route>
             <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
-            <controller name="term">
+            <controller name="Term">
                 <param name="DEFAULT_TERM_COUNT"> 15 </param>
             </controller>
             <method> GET </method>
@@ -36,7 +37,7 @@ Element names starting with the capital letter is read by each of given Class ob
 
         <route>
             <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
-            <controller name="term">
+            <controller name="Term">
 
             </controller>
             <method> POST </method>
@@ -44,10 +45,43 @@ Element names starting with the capital letter is read by each of given Class ob
 
         <route>
             <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
-            <controller name="term">
+            <controller name="Term">
 
             </controller>
             <method> DELETE </method>
+        </route>
+
+        <!--Member Controller mapping-->
+        <route>
+            <url> ^(member$)?(member[?/]+[\s\S]*)?$ </url>
+            <controller name="Member">
+
+            </controller>
+            <method> GET </method>
+        </route>
+
+        <route>
+            <url> ^(member$)?(member[?/]+[\s\S]*)?$ </url>
+            <controller name="Member">
+
+            </controller>
+            <method> POST </method>
+        </route>
+
+        <route>
+            <url> ^(login$)?(login[?/]+[\s\S]*)?$ </url>
+            <controller name="Login">
+
+            </controller>
+            <method> GET </method>
+        </route>
+
+        <route>
+            <url> ^(login$)?(login[?/]+[\s\S]*)?$ </url>
+            <controller name="Login">
+
+            </controller>
+            <method> POST </method>
         </route>
 
     </Router>

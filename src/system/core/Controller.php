@@ -19,8 +19,6 @@ abstract class Controller {
 	public static $data = array();
 	private $_CONSTANT = array();
 
-
-
 	/**
 	 * Controller constructor
 	 * @param [type] $view [description]
