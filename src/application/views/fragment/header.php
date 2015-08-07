@@ -21,5 +21,8 @@
         $('.sign-up').on('click', function(){
             location.href = "member?action=create";
         });
+        $('.login').on('click', function(){
+            location.href = "login"
+        })
     })(window, document);
 </script>
