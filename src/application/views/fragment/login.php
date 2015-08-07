@@ -8,8 +8,9 @@
             background : white;
             padding-bottom : 10pt;
             border : 2px solid #2D79B2;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            /*border-top-left-radius: 10px;
+            border-top-right-radius: 10px;*/
+            border-radius : 10px;
         }
 
         .dv_header{
