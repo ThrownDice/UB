@@ -1,4 +1,7 @@
 <div class="gnb">
+    <style scoped>
+
+    </style>
     <ul class="header_menu">
         <li> <div class="logo" onclick="location.href='/term'"> 타이틀 미정 </div></li>
         <li><!--About--></li>
@@ -13,16 +16,16 @@
         <li>  <div class="btn login"> 로그인 </div> </li>
         <li>  <div class="btn sign-up"> 회원가입 </div> </li>
     </ul>
+    <script>
+        (function(window, document){
+            //Event Handling
+            $('.sign-up').on('click', function(){
+                location.href = "member?action=create";
+            });
+            $('.login').on('click', function(){
+                location.href = "login"
+            })
+        })(window, document);
+    </script>
 </div>
 
-<script>
-    (function(window, document){
-        //Event Handling
-        $('.sign-up').on('click', function(){
-            location.href = "member?action=create";
-        });
-        $('.login').on('click', function(){
-            location.href = "login"
-        })
-    })(window, document);
-</script>
