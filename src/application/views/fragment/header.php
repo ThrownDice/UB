@@ -16,6 +16,9 @@
         <li>  <div class="btn login"> 로그인 </div> </li>
         <li>  <div class="btn sign-up"> 회원가입 </div> </li>
     </ul>
+    <ul class="member_info">
+        <li> <?php session_start(); var_dump($_SESSION["member"]); ?></li>
+    </ul>
     <script>
         (function(window, document){
             //Event Handling
