@@ -24,6 +24,17 @@ class Login extends Controller {
 			if(isset($_POST["email"]) && isset($_POST["password"])){
 				$email = $_POST["email"];
 				$password = $_POST["password"];
+
+				$member = Core::getInstance("Member_md")->getMember($email, $password);
+				if($member){
+					//todo : redirect main page
+					session_start();
+					$_SESSION["member"] = $member;
+					require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
+				}else{
+					//todo : invalid user information,
+				}
+
 			}
 		}
 	}
