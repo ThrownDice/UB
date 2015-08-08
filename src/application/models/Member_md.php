@@ -36,6 +36,25 @@ class Member_md extends Model {
 			throw new Exception("Can't insert member,".json_encode($member)." ".$e);
 		}
 	}
+
+	function getMember($email, $password){
+		try{
+
+		}catch(Exception $e){
+			throw new Exception("Exception thrown in getMember function. ".$e);
+		}
+	}
+
+	function isMember($email, $password){
+		try{
+
+		}catch(Exception $e){
+			throw new Exception("Exception thrown in isMember function. ".$e);
+		}
+	}
+
+
+
 }
 
 

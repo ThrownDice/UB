@@ -20,6 +20,11 @@ class Login extends Controller {
 			require_once APPPATH.'views'.DS.'templates'.DS.'template_login.php';
 		}else{
 			//todo : if request method is post
+			//todo : should we set session time out?
+			if(isset($_POST["email"]) && isset($_POST["password"])){
+				$email = $_POST["email"];
+				$password = $_POST["password"];
+			}
 		}
 	}
 
