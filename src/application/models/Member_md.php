@@ -41,6 +41,7 @@ class Member_md extends Model {
 		try{
 			$db = self::getDatabase();
 			//todo : validation, filter parameter
+			//todo : get only necessary field
 			$stmt = $db->prepare("select * from member where email=:email and pw=sha1(:password)");
 
 			$stmt->bindParam(":email", $email);

@@ -74,11 +74,29 @@ class Vote_md extends Model
     }
 
     function getTermLogByMemberId($member_id){
+        try{
+            $db = self::getDatabase();
+            $stmt = $db->prepare("select * from vote where member_id=:member_id");
 
+            $stmt->bindParam(":member_id",$member_id);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }catch(Exception $e){
+            throw new Exception("Can't get term log. ".$e);
+        }
     }
 
     function getTermLogByTermId($term_id){
+        try{
+            $db = self::getDatabase();
+            $stmt = $db->prepare("select * from vote where term_id=:term_id");
 
+            $stmt->bindParam(":term_id",$term_id);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }catch(Exception $e){
+            throw new Exception("Can't get term log. ".$e);
+        }
     }
 
 }
