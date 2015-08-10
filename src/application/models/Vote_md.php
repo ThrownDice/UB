@@ -70,7 +70,17 @@ class Vote_md extends Model
     }
 
     function deleteTermLog($term_id, $member_id){
+        try{
+            $db = self::getDatabase();
+            $stmt = $db->prepare("delete from vote where term_id=:term_id and member_id=:member_id");
 
+            $stmt->bindParam(":term_id", $term_id, PDO::PARAM_INT);
+            $stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        }catch(Exception $e){
+            throw new Exception("Can't delete term log. ".$e);
+        }
     }
 
     function getTermLogByMemberId($member_id){
