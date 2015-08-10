@@ -63,8 +63,8 @@
 </style>
 
 <?php
-    $data = Term::$data;
-    $term = isset($data[0]) ? $data[0] : null;
+    $toEdit = $data['toEdit'];
+    $term = isset($toEdit[0]) ? $toEdit[0] : null;
 ?>
 
 <div class="dv_edit_term">

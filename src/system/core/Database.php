@@ -26,17 +26,17 @@ class Database {
 
 	/**
 	 * Database constructor.
-	 * @param $config
+	 * @param $config "Database" element from config.xml
 	 * @throws Exception
 	 */
-	function __construct($config) {
+	function __construct($config_Database) {
 
 		try {
-			$this->name = trim((string)$config->name);
-			$this->host = trim((string)$config->host);
-			$this->port = trim((string)$config->port);
-			$this->user = trim((string)$config->user);
-			$this->password = trim((string)$config->password);
+			$this->name = trim((string)$config_Database->name);
+			$this->host = trim((string)$config_Database->host);
+			$this->port = trim((string)$config_Database->port);
+			$this->user = trim((string)$config_Database->user);
+			$this->password = trim((string)$config_Database->password);
 
 			$db = new PDO("mysql:host=".$this->host.";dbname=".$this->name.";charset=utf8", $this->user, $this->password);
 

@@ -86,8 +86,8 @@
 </style>
 
 <?php
-$data = Term::$data;
-foreach($data as $term){
+$terms = $data['terms'];
+foreach($terms as $term){
     echo '<div class="result term-', $term["id"], '">';
 
     echo '<div class="result_header">';

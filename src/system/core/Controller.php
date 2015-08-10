@@ -16,17 +16,15 @@ abstract class Controller {
 	// Instance variables.
 	public $view;
 	public static $model = array();
-	public static $data = array();
+	//public static $data = array();
 	private $_CONSTANT = array();
 
 	/**
 	 * Controller constructor
 	 * @param [type] $view [description]
 	 */
-	public function __construct($view = null){
-		if($view) $this->view = $view;
+	public function __construct(){
 		$this->view = Core::getInstance("View");
-		
 	}
 
 
@@ -36,14 +34,6 @@ abstract class Controller {
 	 * @return [type]      [description]
 	 */
 	public abstract function main($url = null);
-
-
-	/**
-	 * [render description]
-	 * @return [type] [description]
-	 */
-	public abstract function render($file_template);
-
 
 
 	/**
@@ -72,6 +62,21 @@ abstract class Controller {
 		}catch(Exception $e){
 			throw new Exception("Can't return '$name' member variable. <br>");
 		}
+	}
+
+
+	/**
+	 * Process with data transferred by GET method.
+	 */
+	public function doGet($url) {
+
+	}
+
+
+	/**
+	 * Process with data transferred by POST method.
+	 */
+	public function doPost($url) {
 	}
 
 

@@ -18,14 +18,13 @@ class View {
 
 	// Instance variables.
 	private $template;
-	private $css;
-	private $div = array();
-
+	public $divs = array();
+	private $_CONSTANT = array();
 
 
 	/**
 	 * View constructor.
-	 * @param $file_template Template parameter as a 
+	 * @param $file_template Template file.
 	 */
 	function __construct($file_template = null) {
 		$this->setTemplate($file_template);
@@ -42,26 +41,68 @@ class View {
 
 
 	/**
-	 * Controller uses this method to set the divs to show.
-	 * Include the divs to be shown.
-	 * @param  [type] $div [description]
-	 * @return [type]      [description]
+	 * Set value to $_CONSTANT array with key being "$key".
+ 	 * @param $key
+	 * @param $value
+	 * @throws Exception
 	 */
-	function setDiv($div) {
-		// Set the value of key '$div' 1 so this can be shown in a template file.
-		$this->div[$div] = 1;
+	public function __set($key, $value){
+		try{
+			//echo "Setting '$name' to '$value'\n";
+			$this->_CONSTANT[$key] = $value;
+		}catch(Exception $e){
+			throw new Exception("Can't set '$key' to member variable. <br>");
+		}
 	}
 
+	/**
+	 * Get value from $_CONSTANT array by key being $key.
+	 * @param  $key
+	 * @return
+	 * @throws Exception
+	 */
+	public function __get($key){
+		try{
+			//echo "Getting '$name'\n";
+			return $this->_CONSTANT[$key];
+		}catch(Exception $e){
+			throw new Exception("Can't return '$key' member variable. <br>");
+		}
+	}
+
+	/**
+	 * Check if this View has been set a div to show.
+	 * @param $div
+	 */
+	public function hasDiv($div) {
+		$result = false;
+		foreach($this->divs as $divSet) {
+			if($divSet == $div) $result = true;
+		}
+		return $result;
+
+	}
+
+
+	/**
+	 * Include the divs to be shown.
+	 * Divs that are class not id.
+	 * @param  $div Array of divs.
+	 */
+	function setDiv($divs) {
+		// to be commented
+		$this->divs = $divs;
+	}
 
 
 	/**
 	 * Print out everything we loaded into display.
 	 * 
 	 */
-	function toDisplay() {
+	function render($file_template, $data) {
 		
 		// Now, get all to display.
-		require_once APPPATH.'views'.DS.'templates'.DS.$this->template.'.php';
+		require_once APPPATH.'views'.DS.'templates'.DS.$file_template.'.php';
 	}
 
 }
