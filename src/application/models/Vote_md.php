@@ -78,7 +78,7 @@ class Vote_md extends Model
     }
 
     function getTermLogByTermId($term_id){
-        
+
     }
 
 }
