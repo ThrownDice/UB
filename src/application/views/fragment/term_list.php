@@ -141,7 +141,7 @@ foreach($data as $term){
     $('.like').on('click', function(){
        var term_id = $(this).parent().parent().attr('term-id');
         $.ajax({
-            url : '/term?action=vote&term_id='+term_id,
+            url : '/term?action=vote&term_id='+term_id+'&vote=1',
             type : 'GET',
         }).done(function(data){
             console.log(data);
