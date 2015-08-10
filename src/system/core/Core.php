@@ -122,7 +122,10 @@ class Core {
 	 * Main method.
 	 */
 	function main() {
-		
+
+		//todo : how to control and manage session?
+		session_start();
+
 		// Create a Router instance and execute route(). Ignition.
 		$router = Core::getInstance("Router");
 		$router->route();

@@ -96,6 +96,14 @@ Element names starting with the capital letter is read by each of given Class ob
             <method> POST </method>
         </route>
 
+        <route>
+            <url> ^(logout$)?(login[?/]+[\s\S]*)?$ </url>
+            <controller name="Logout">
+
+            </controller>
+            <method> GET </method>
+        </route>
+
     </Router>
 
     <Thema>

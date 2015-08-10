@@ -36,6 +36,33 @@ class Member_md extends Model {
 			throw new Exception("Can't insert member,".json_encode($member)." ".$e);
 		}
 	}
+
+	function getMember($email, $password){
+		try{
+			$db = self::getDatabase();
+			//todo : validation, filter parameter
+			//todo : get only necessary field
+			$stmt = $db->prepare("select * from member where email=:email and pw=sha1(:password)");
+
+			$stmt->bindParam(":email", $email);
+			$stmt->bindParam(":password", $password);
+			$stmt->execute();
+			return $stmt->fetchAll();
+		}catch(Exception $e){
+			throw new Exception("Exception thrown in getMember function. ".$e);
+		}
+	}
+
+	function isMember($email, $password){
+		try{
+
+		}catch(Exception $e){
+			throw new Exception("Exception thrown in isMember function. ".$e);
+		}
+	}
+
+
+
 }
 
 
