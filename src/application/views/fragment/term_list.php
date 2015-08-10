@@ -75,11 +75,19 @@
         color : dimgray;
     }
 
-    #container .result_content_menu .like{
-        background : url(/application/views/img/thumbs-up-icon-blue-hi_s_b.png) no-repeat;
+    #container .result_content_menu .thumbs-up{
+        background : url(/application/views/img/thumbs-up-icon-hi_s_b.png) no-repeat;
     }
 
-    #container .result_content_menu .dislike{
+    #container .result_content_menu .thumbs-down{
+        background : url(/application/views/img/thumbs-down-icon-hi_s_b.png) no-repeat;
+    }
+
+    #container .result_content_menu .thumbs-up-b{
+        background : url(/application/views/img/thumbs-up-icon-blue-hi_s.png) no-repeat;
+    }
+
+    #container .result_content_menu .thumbs-down-b{
         background : url(/application/views/img/thumbs-down-icon-blue-hi_s_b.png) no-repeat;
     }
 
@@ -106,8 +114,8 @@ foreach($data as $term){
     echo '</div>';
 
     echo '<div class="result_content_menu">';
-    echo '<span class="dislike">', $term["dislike"], '</span>';
-    echo '<span class="like">', $term["like"], '</span>';
+    echo '<span class="dislike thumbs-down">', $term["dislike"], '</span>';
+    echo '<span class="like thumbs-up">', $term["like"], '</span>';
     echo '</div>';
 
     echo '</div>';
@@ -139,13 +147,18 @@ foreach($data as $term){
     });
 
     $('.like').on('click', function(){
-       var term_id = $(this).parent().parent().attr('term-id');
+        var term_id = $(this).parent().parent().attr('term-id');
+        var $_this = $(this);
+        var count = $_this.text();
         $.ajax({
             url : '/term?action=vote&term_id='+term_id+'&vote=1',
             type : 'GET',
         }).done(function(data){
-            $('html').html(data);
-            console.log(data);
+            var result = JSON.parse(data);
+            if(result && result.status === 'success'){
+                $_this.removeClass('thumbs-up').addClass('thumbs-up-b');
+                $_this.text(Number(count)+1);
+            }
         }).fail(function(jqXHR, textStatus){
            console.log('ERROR : fail to vote,' + textStatus);
         });
