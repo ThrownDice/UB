@@ -20,9 +20,9 @@
         <li>
             <?php
             if($member){
-                echo '<div class="btn login"> 로그아웃 </div> ';
+                echo '<div class="btn logout"> 로그아웃 </div> ';
             }else{
-                echo '<div class="btn logout">  로그인 </div> ';
+                echo '<div class="btn login">  로그인 </div> ';
             }
             ?>
         </li>
