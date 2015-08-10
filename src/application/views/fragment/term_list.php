@@ -150,18 +150,68 @@ foreach($data as $term){
         var term_id = $(this).parent().parent().attr('term-id');
         var $_this = $(this);
         var count = $_this.text();
-        $.ajax({
-            url : '/term?action=vote&term_id='+term_id+'&vote=1',
-            type : 'GET',
-        }).done(function(data){
-            var result = JSON.parse(data);
-            if(result && result.status === 'success'){
-                $_this.removeClass('thumbs-up').addClass('thumbs-up-b');
-                $_this.text(Number(count)+1);
-            }
-        }).fail(function(jqXHR, textStatus){
-           console.log('ERROR : fail to vote,' + textStatus);
-        });
+        if($_this.hasClass('voted')){
+            $.ajax({
+                url : '/term?action=vote&term_id='+term_id+'&vote=0',
+                type : 'GET',
+            }).done(function(data){
+                var result = JSON.parse(data);
+                if(result && result.status === 'success'){
+                    $_this.removeClass('thumbs-up-b').addClass('thumbs-up').removeClass('voted');
+                    $_this.text(Number(count)-1);
+                }
+            }).fail(function(jqXHR, textStatus){
+                console.log('ERROR : fail to vote,' + textStatus);
+            });
+        }else{
+            $.ajax({
+                url : '/term?action=vote&term_id='+term_id+'&vote=1',
+                type : 'GET',
+            }).done(function(data){
+                var result = JSON.parse(data);
+                if(result && result.status === 'success'){
+                    $_this.removeClass('thumbs-up').addClass('thumbs-up-b').addClass('voted');
+                    $_this.text(Number(count)+1);
+                }
+            }).fail(function(jqXHR, textStatus){
+                console.log('ERROR : fail to vote,' + textStatus);
+            });
+        }
     });
+
+    $('.dislike').on('click', function(){
+        var term_id = $(this).parent().parent().attr('term-id');
+        var $_this = $(this);
+        var count = $_this.text();
+        if($_this.hasClass('voted')){
+            $.ajax({
+                url : '/term?action=vote&term_id='+term_id+'&vote=0',
+                type : 'GET',
+            }).done(function(data){
+                var result = JSON.parse(data);
+                if(result && result.status === 'success'){
+                    $_this.removeClass('thumbs-down-b').addClass('thumbs-down').removeClass('voted');
+                    $_this.text(Number(count)+1);
+                }
+            }).fail(function(jqXHR, textStatus){
+                console.log('ERROR : fail to vote,' + textStatus);
+            });
+        }else{
+            $.ajax({
+                url : '/term?action=vote&term_id='+term_id+'&vote=-1',
+                type : 'GET',
+            }).done(function(data){
+                var result = JSON.parse(data);
+                if(result && result.status === 'success'){
+                    $_this.removeClass('thumbs-down').addClass('thumbs-down-b').addClass('voted');
+                    $_this.text(Number(count)-1);
+                }
+            }).fail(function(jqXHR, textStatus){
+                console.log('ERROR : fail to vote,' + textStatus);
+            });
+        }
+    });
+
+
 
 </script>
