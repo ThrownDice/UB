@@ -26,6 +26,18 @@ Element names starting with the capital letter is read by each of given Class ob
 
     <Router>
 
+        <!-- Root Controller
+            URL: context_root/
+        -->
+        <route>
+            <!-- matches empty string -->
+            <url> ^\s*$ </url>
+            <controller name="Root">
+
+            </controller>
+            <method> GET </method>
+        </route>
+
         <!-- Term Controller mapping-->
         <route>
             <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>

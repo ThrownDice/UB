@@ -22,11 +22,11 @@ class Router{
 	 * Router constructor.
 	 * @param $config "Router" element from config.xml
 	 */
-	function __construct($config = null) {
+	function __construct($config_Router = null) {
 		try{
-			if($config){
+			if($config_Router){
 				// Create a local variable and assign "route" elements from config.xml.
-				$routes = $config->route;
+				$routes = $config_Router->route;
 		
 				// Iterate over each 'route' element.
 				foreach($routes as $route){
@@ -44,17 +44,22 @@ class Router{
 	 * @return [type] [description]
 	 */
 	function route() {
+		// Local variables.
+		// $url holds a string of URL after context_root.
+		$url = "";
+
 		try{
-			// Check if the url parameter is set
-			if(isset($_GET["url"])) {
-				foreach ($this->_routes as $_route) {
-					if ($this->match($_route, $_GET["url"], $_SERVER["REQUEST_METHOD"]))
-						return Core::getInstance($_route["controller"])->main();
-					
+			// URL string after context_root is assigned to $url, except when is empty.
+			if(isset($_GET['url'])) $url = $_GET['url'];
+
+			foreach ($this->_routes as $_route) {
+				if ($this->match($_route, $url, $_SERVER["REQUEST_METHOD"])) {
+					return Core::getInstance($_route["controller"])->main($url);
+
 				}
 			}
-			// If there is no mapped controller, route to 404 page.
-			include ERROR404;
+		// If there is no mapped controller, route to 404 page.
+		//include ERROR404;
 		}catch(Exception $e){
 			//todo : routing error, route to error page.
 		}
@@ -87,10 +92,9 @@ class Router{
 	 * @return bool
 	 */
 	function match($_route, $url, $method){
-		// Compares regular expression set from configuration with the actual url.
+		// Compare the url of regular expression to a requrest url,
+		// also compare method of config.xml to a $server requested method,
 		preg_match($_route["url"], $url, $matched);
-		
-		// If there is a match, return true, otherwise false
 		if(isset($matched[0])){
 			return (!strcmp($matched[0], $url) && (!strcmp($_route["method"], strtolower($method))));
 		}else{

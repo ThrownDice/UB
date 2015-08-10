@@ -7,7 +7,8 @@
 	__debug_load(__FILE__);
 
 /**
- * 
+ * Term controller
+ *
  */
 class Term extends Controller {
 
@@ -46,9 +47,10 @@ class Term extends Controller {
 				if(strtolower($_SERVER["REQUEST_METHOD"]) == "get"){
 					if(isset($_GET["id"])){
 						$id = $_GET["id"];
-						self::$data = Core::getInstance("Term_md")->getTermExact($id);
-						//var_dump($_GET);
-						$this->render("template_term_edit");
+						//self::$data = Core::getInstance("Term_md")->getTermExact($id);
+						$data["toEdit"] = Core::getInstance("Term_md")->getTermExact($id);
+
+						$this->view->render("template_term_edit", $data);
 					}
 				}else{
 					$term = array();
@@ -133,16 +135,20 @@ class Term extends Controller {
 			default :
 				//todo : select term data
 				$seg = explode("/", $_GET["url"]);
+
 				if( (sizeof($seg)>1) && is_numeric($seg[1])){
-					self::$data = Core::getInstance("Term_md")->getTermExact($seg[1]);
-					require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
-					#$this->render("template_term_list");
+					//self::$data = Core::getInstance("Term_md")->getTermExact($seg[1]);
+					$data['terms'] = Core::getInstance("Term_md")->getTermExact($seg[1]);
+					$this->view->render("template_term_list", $data);
+
+					//$this->render("template_term_list");
 				}else{
-					self::$data = Core::getInstance("Term_md")->getRecentTerm($this->DEFAULT_TERM_COUNT);
-					#require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
-					
-					############# TESTING #############
-					$this->render("template_term_list");
+					//self::$data = Core::getInstance("Term_md")->getRecentTerm($this->DEFAULT_TERM_COUNT);
+					//require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
+
+					$data['terms'] = Core::getInstance("Term_md")->getRecentTerm($this->DEFAULT_TERM_COUNT);
+
+					$this->view->render("template_term_list", $data);
 				}
 
 		}
@@ -156,11 +162,9 @@ class Term extends Controller {
 	 * @param  $file_template template file.
 	 */
 	function render($file_template){
-		
 
-		##
-		$this->view->setTemplate($file_template);
-		$this->view->toDisplay();
+
+
 
 	}
 

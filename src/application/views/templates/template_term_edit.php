@@ -15,11 +15,6 @@ ob_end_clean();
 <body>
 
 <div id="wrap">
-<<<<<<< HEAD
-    <?php if(isset($this->div['header'])) include_once APPPATH.'views'.DS.'fragment'.DS.'header.php';?>
-=======
-    <?php /*if(isset($this->div['header']) include_once APPPATH.'views'.DS.'fragment'.DS.'header.php';*/?>
->>>>>>> a897102fecb89e568f93a8f570df4d8c792d06fa
     <div id="header">
         <?php include_once APPPATH.'views'.DS.'fragment'.DS.'header.php'; ?>
     </div>

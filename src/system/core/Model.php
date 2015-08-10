@@ -11,11 +11,7 @@ __debug_load(__FILE__);
  */
 class Model {
 	// Instance variables.
-	// data array which holds different types of data.
-	public static $data = array();
 	public static $db;
-
-
 
 	/**
 	 * Get the instance of Database object and connect.

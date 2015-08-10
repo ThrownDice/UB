@@ -73,18 +73,20 @@ class Core {
 			if(isset(self::$instance[$class]))
 				return self::$instance[$class];
 			else{
-				// Create an instance and return it.
-				$new_class = new $class();
-				if($params = self::getControllerParameter($class)){
+				// Create an instance.
+				$instance = new $class();
+
+				// If the class is a Controller object, retrieve parameters. (information)
+				if($params = self::getControllerParam($class)){
 					//todo : set configuration using config.xml parameter
 					//echo "controller : ", $class, "<br>";
 					foreach($params as $param){
 						$param_name = trim((string)$param["name"]);
 						$param_value = trim((string)$param);
-						$new_class->$param_name = $param_value;
+						$instance->$param_name = $param_value;
 					}
 				}
-				self::$instance[$class] = $new_class;
+				self::$instance[$class] = $instance;
 				return self::$instance[$class];
 			}
 		} catch(Exception $e) {
@@ -95,17 +97,20 @@ class Core {
 
 
 	/**
-	 * Get the information regarding a given controller.
-	 * @param  $class 
+	 * Get the parameter information when the class is a controller.
+	 * @param  $class
 	 * @return "routes" element of a given Controller object.
 	 */
-	public static function getControllerParameter($class){
+	public static function getControllerParam($class){
 		if(self::$config){
 			//todo: param changed recommended. Later on, will be commented.
-			$maps = self::$config->Router->route;
-			foreach($maps as $map){
-				if(!strcmp($class, (string)$map->controller["name"])){
-					return $map->controller->param;
+			// Get an array of "Route" elements from config.xml
+			$routes = self::$config->Router->route;
+
+			// Get an array of "param" elements of a given controller.
+			foreach($routes as $route){
+				if(!strcmp($class, (string)$route->controller["name"])){
+					return $route->controller->param;
 				}
 			}
 		}else{
