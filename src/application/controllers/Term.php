@@ -85,6 +85,47 @@ class Term extends Controller {
 				}
 				print json_encode($response);
 				break;
+			case "vote" :
+				//todo : action of like, dislike term, (ajax action)
+				$response = array();
+				if(isset($_SESSION["member"])){
+					if(isset($_GET["term_id"]) && isset($_GET["vote"])){
+						$member_id = $_SESSION["member"]["id"];
+						$term_id = $_GET["term_id"];
+						$vote = $_GET["vote"];
+						try{
+							//todo : need to refactoring
+							$Vote_md = Core::getInstance("Vote_md");
+							if($Vote_md->deleteTermLog($term_id, $member_id)){
+								if($vote == 1){
+									$Vote_md->likeTerm($term_id, $member_id);
+									$response["status"] = "success";
+								}else if($vote == -1){
+									$Vote_md->dislikeTerm($term_id, $member_id);
+									$response["status"] = "success";
+								}else{
+									$response["status"] = "error";
+									$response["text"] = "ERROR : Invalid parameter";
+								}
+							}else{
+								$response["status"] = "fail";
+								$response["text"] = "FAIL : fail to update vote";
+							}
+						}catch(Exception $e){
+							$response["status"] = "error";
+							$response["text"] = "ERROR : server error";
+						}
+					}else{
+						$response["status"] = "error";
+						$response["text"] = "ERROR : Invalid parameter";
+					}
+				}else{
+					//todo : need to login
+					$response["status"] = "error";
+					$response["text"] = "ERROR : Need to login";
+				}
+				print json_encode($response);
+				break;
 			case "read" :
 			default :
 				//todo : select term data
