@@ -97,6 +97,7 @@ foreach($data as $term){
     echo '<span class="btn-delete ui-icon ui-icon-close" term-id="', $term["id"], '"></span>';
     echo '<span class="btn-modify ui-icon ui-icon-pencil" term-id="', $term["id"], '"></span>';
     echo '</li>';
+    echo '</ul>';
     echo '</div>';
 
     echo '<div class="result_content">';
