@@ -88,7 +88,7 @@
     }
 
     #container .result_content_menu .thumbs-down-b{
-        background : url(/application/views/img/thumbs-down-icon-blue-hi_s_b.png) no-repeat;
+        background : url(/application/views/img/thumbs-down-icon-blue-hi_s.png) no-repeat;
     }
 
 </style>
@@ -191,7 +191,7 @@ foreach($data as $term){
                 var result = JSON.parse(data);
                 if(result && result.status === 'success'){
                     $_this.removeClass('thumbs-down-b').addClass('thumbs-down').removeClass('voted');
-                    $_this.text(Number(count)+1);
+                    $_this.text(Number(count)-1);
                 }
             }).fail(function(jqXHR, textStatus){
                 console.log('ERROR : fail to vote,' + textStatus);
@@ -204,7 +204,7 @@ foreach($data as $term){
                 var result = JSON.parse(data);
                 if(result && result.status === 'success'){
                     $_this.removeClass('thumbs-down').addClass('thumbs-down-b').addClass('voted');
-                    $_this.text(Number(count)-1);
+                    $_this.text(Number(count)+1);
                 }
             }).fail(function(jqXHR, textStatus){
                 console.log('ERROR : fail to vote,' + textStatus);

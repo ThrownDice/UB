@@ -103,6 +103,9 @@ class Term extends Controller {
 								}else if($vote == -1){
 									$Vote_md->dislikeTerm($term_id, $member_id);
 									$response["status"] = "success";
+								}else if($vote == 0) {
+									$Vote_md->deleteTermLog($term_id, $member_id);
+									$response["status"] = "success";
 								}else{
 									$response["status"] = "error";
 									$response["text"] = "ERROR : Invalid parameter";
