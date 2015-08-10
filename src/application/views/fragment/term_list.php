@@ -88,7 +88,7 @@
 <?php
 $data = Term::$data;
 foreach($data as $term){
-    echo '<div class="result term-', $term["id"], '">';
+    echo '<div class="result" term-id="', $term["id"], '">';
 
     echo '<div class="result_header">';
     echo '<ul>';
@@ -136,6 +136,18 @@ foreach($data as $term){
     $('.btn-modify').on('click', function(){
         var id = $(this).attr('term-id');
         location.href = '/term?action=update&id='+id;
+    });
+
+    $('.like').on('click', function(){
+       var term_id = $(this).parent().parent().attr('term-id');
+        $.ajax({
+            url : '/term?action=vote&term_id='+term_id,
+            type : 'GET',
+        }).done(function(data){
+            console.log(data);
+        }).fail(function(jqXHR, textStatus){
+           console.log('ERROR : fail to vote,' + textStatus);
+        });
     });
 
 </script>
