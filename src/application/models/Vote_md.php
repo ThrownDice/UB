@@ -17,7 +17,9 @@ class Vote_md extends Model
                 $db = self::getDatabase();
                 $stmt = $db->prepare("insert into vote (flag, term_id, member_id) values(:flag, :term_id, :member_id)");
 
-                $stmt->bindParam(":flag", 1, PDO::PARAM_INT);
+                $flag  = 1;
+
+                $stmt->bindParam(":flag", $flag, PDO::PARAM_INT);
                 $stmt->bindParam(":term_id", $term_id, PDO::PARAM_INT);
                 $stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
 
@@ -38,7 +40,9 @@ class Vote_md extends Model
                 $db = self::getDatabase();
                 $stmt = $db->prepare("insert into vote (flag, term_id, member_id) values(:flag, :term_id, :member_id)");
 
-                $stmt->bindParam(":flag", -1, PDO::PARAM_INT);
+                $flag = -1;
+
+                $stmt->bindParam(":flag", $flag, PDO::PARAM_INT);
                 $stmt->bindParam(":term_id", $term_id, PDO::PARAM_INT);
                 $stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
 

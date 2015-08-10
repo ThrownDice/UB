@@ -144,6 +144,7 @@ foreach($data as $term){
             url : '/term?action=vote&term_id='+term_id+'&vote=1',
             type : 'GET',
         }).done(function(data){
+            $('html').html(data);
             console.log(data);
         }).fail(function(jqXHR, textStatus){
            console.log('ERROR : fail to vote,' + textStatus);
