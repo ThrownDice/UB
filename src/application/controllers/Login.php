@@ -28,9 +28,11 @@ class Login extends Controller {
 				$member = Core::getInstance("Member_md")->getMember($email, $password);
 				if($member){
 					//todo : redirect main page
-					session_start();
-					$_SESSION["member"] = $member;
-					require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
+					$_SESSION["member"] = $member[0];
+					$SID = session_id();
+					echo '1 : ', $SID;
+					$this->redirect("/term");
+					//require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
 				}else{
 					//todo : invalid user information,
 				}
