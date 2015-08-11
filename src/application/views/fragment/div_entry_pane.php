@@ -2,7 +2,11 @@
 <!-- entry_pane -->
 <div class="entry_pane">
 <?php
-$entries = $data['entry'];
+/**
+ * Load data processed in Controller.
+ */
+	$entries = $data['entry'];
+
 
 foreach($entries as $entry){
     echo '<div class="entry term-', $entry["id"], '">';

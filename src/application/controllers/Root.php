@@ -52,7 +52,7 @@ class Root extends Controller {
 		// Rendering preset.
 		$this->view->title = "UB Root";
 
-		$this->view->setDiv(array("entry_pane"));
+		$this->view->setElems(array("entry_pane"));
 
 		//$this->view->div("power");
 		$this->view->render("tmpl_kiwi", $data);

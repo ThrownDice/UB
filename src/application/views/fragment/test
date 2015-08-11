@@ -1,0 +1,67 @@
+<div class='def-panel' data-defid='8358994'>
+    <div class='row'>
+        <div class='small-6 columns'>
+            <div class='ribbon'>
+                Aug 10
+            </div>
+        </div>
+        <div class='share small-6 columns'>
+            <a class='addthis_button_twitter' href='http://www.addthis.com/bookmark.php?v=300&amp;winname=addthis&amp;pub=ra-50dc926d011f6845&amp;source=tbx-300&amp;lng=en-US&amp;s=twitter&amp;url=http%3A%2F%2Fdo-a-picasso.urbanup.com%2F8358994&amp;title=Urban%20Dictionary%3A%20do%20a%20picasso' target='_blank'>
+                <i class='icon-ud_twitter'></i>
+            </a>
+            <a class='addthis_button_facebook' href='http://www.addthis.com/bookmark.php?v=300&amp;winname=addthis&amp;pub=ra-50dc926d011f6845&amp;source=tbx-300&amp;lng=en-US&amp;s=facebook&amp;url=http%3A%2F%2Fdo-a-picasso.urbanup.com%2F8358994&amp;title=Urban%20Dictionary%3A%20do%20a%20picasso' target='_blank'>
+                <i class='icon-ud_facebook'></i>
+            </a>
+            <a class='addthis_button_more' href='http://www.addthis.com/bookmark.php?v=300&amp;winname=addthis&amp;pub=ra-50dc926d011f6845&amp;source=tbx-300&amp;lng=en-US&amp;url=http%3A%2F%2Fdo-a-picasso.urbanup.com%2F8358994&amp;title=Urban%20Dictionary%3A%20do%20a%20picasso' target='_blank'>
+                <i class='icon-ud_share'></i>
+            </a>
+            <a class='favorite-star' href='/favorites.form.php?defid=8358994' id='favorite-8358994'>
+                <i class='icon-ud_heartunfilled'></i>
+            </a>
+        </div>
+    </div>
+    <div class='def-header'>
+        <a class="word" href="/define.php?term=do+a+picasso&amp;defid=8358994">do a picasso</a>
+        <a class='play-sound' data-urls='["http://wav.urbandictionary.com/doapicasso-37284.wav"]' href='javascript:void(0)'>
+            <i class='icon-ud_speaker'></i>
+        </a>
+    </div>
+    <div class='meaning'>
+        When you have taken so many drugs your mouth is at the other side of your face to your eyes
+    </div>
+    <div class='example'>
+        I&#39;m going to do a picasso tonight, my face will be a picture.
+    </div>
+    <div class='contributor'>
+        by <a class="author" href="/author.php?author=bexscooper+">bexscooper </a>
+        August 04, 2015
+    </div>
+    <div class='def-footer'>
+        <div class='row'>
+            <div class='small-9 medium-6 columns'><a class='thumb up' data-direction='up' href='javascript:void(0)'>
+                <i class='icon-ud_upvote'></i>
+                <span class='count'>1153</span>
+            </a><a class='thumb down' data-direction='down' href='javascript:void(0)'>
+                <i class='icon-ud_downvote'></i>
+                <span class='count'>1179</span>
+            </a>
+            </div>
+            <div class='small-3 columns show-for-small-only text-right'>
+                <a class='dotdotdot right-link'>
+                    <i class='icon-ud_more'></i>
+                </a>
+            </div>
+            <div class='medium-6 columns show-for-medium-up dotdotdot-tooltip text-right'>
+                <a class='right-link' data-reveal-ajax='/images.new.php?defid=8358994' data-reveal-id='remote_modal' id='image-8358994'>
+                    <i class='icon-ud_photo'></i>
+                </a>
+                <a class='right-link' data-reveal-ajax='/sound.modal.php?defid=8358994' data-reveal-id='remote_modal' id='record-8358994'>
+                    <i class='icon-ud_record'></i>
+                </a>
+                <a class='right-link' data-reveal-ajax='/video.php?defid=8358994' data-reveal-id='remote_modal' id='video-8358994'>
+                    <i class='icon-ud_video'></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

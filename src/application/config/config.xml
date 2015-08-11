@@ -30,7 +30,7 @@ Element names starting with the capital letter is read by each of given Class ob
             URL: context_root/
         -->
         <route>
-            <!-- matches empty string -->
+            <!-- url = empty string -->
             <url> ^\s*$ </url>
             <controller name="Root">
 

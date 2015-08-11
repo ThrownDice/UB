@@ -18,7 +18,7 @@ class View {
 
 	// Instance variables.
 	private $template;
-	public $divs = array();
+	public $elems = array();
 	private $_CONSTANT = array();
 
 
@@ -74,10 +74,10 @@ class View {
 	 * Check if this View has been set a div to show.
 	 * @param $div
 	 */
-	public function hasDiv($div) {
+	public function hasElem($elem) {
 		$result = false;
-		foreach($this->divs as $divSet) {
-			if($divSet == $div) $result = true;
+		foreach($this->elems as $elemContained) {
+			if($elemContained == $elem) $result = true;
 		}
 		return $result;
 
@@ -89,9 +89,9 @@ class View {
 	 * Divs that are class not id.
 	 * @param  $div Array of divs.
 	 */
-	function setDiv($divs) {
+	function setElems($elems) {
 		// to be commented
-		$this->divs = $divs;
+		$this->elems = $elems;
 	}
 
 

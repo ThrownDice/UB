@@ -53,7 +53,7 @@ class Vote_md extends Model
         }
     }
 
-    function likeComment($comment_id){
+    function likeComment($comment_id) {
 
     }
 
