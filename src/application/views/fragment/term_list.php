@@ -115,8 +115,19 @@ foreach($terms as $term){
     echo '</div>';
 
     echo '<div class="result_content_menu">';
-    echo '<span class="dislike thumbs-down">', $term["dislike"], '</span>';
-    echo '<span class="like thumbs-up">', $term["like"], '</span>';
+
+    if(!empty($term["member_id"])){
+        if((int)$term["flag"] == 1){
+            echo '<span class="dislike thumbs-down">', $term["dislike"], '</span>';
+            echo '<span class="like thumbs-up-b voted">', $term["like"], '</span>';
+        }else{
+            echo '<span class="dislike thumbs-down-b voted">', $term["dislike"], '</span>';
+            echo '<span class="like thumbs-up">', $term["like"], '</span>';
+        }
+    }else{
+        echo '<span class="dislike thumbs-down">', $term["dislike"], '</span>';
+        echo '<span class="like thumbs-up">', $term["like"], '</span>';
+    }
     echo '</div>';
 
     echo '</div>';
