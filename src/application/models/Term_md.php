@@ -62,8 +62,8 @@ class Term_md extends Model {
 		try{
 			if(!empty($member_id)){
 				$db = self::getDatabase();
-				$stmt = $db->prepare("select term.*, vote.* from term left join vote on term.id = vote.term_id and vote.member_id = :member_id order by `date` desc limit :num;");
-
+				$stmt = $db->prepare("select term.*, vote.* from term left join vote on term.id = vote.term_id and vote.member_id = :member_id order by `date` desc limit :num");
+				$num = (int)$num;
 				$stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
 				$stmt->bindParam(":num", $num, PDO::PARAM_INT);
 				$stmt->execute();
