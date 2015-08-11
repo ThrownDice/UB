@@ -171,6 +171,7 @@ foreach($terms as $term){
                 type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);
+                console.log(result);
                 if(result && result.status === 'success'){
                     $_this.removeClass('thumbs-up-b').addClass('thumbs-up').removeClass('voted');
                     $_this.text(like_count-1);

@@ -209,7 +209,7 @@ class Term_md extends Model {
 				$db = self::getDatabase();
 				$stmt = $db->prepare("update term set `like`=`like`-1 where id=:term_id");
 
-				$stmt->bindParam(":id", $term_id);
+				$stmt->bindParam(":term_id", $term_id);
 				$stmt->execute();
 				return true;
 			}
@@ -224,7 +224,7 @@ class Term_md extends Model {
 				$db = self::getDatabase();
 				$stmt = $db->prepare("update term set dislike=dislike-1 where id=:term_id");
 
-				$stmt->bindParam(":id", $term_id);
+				$stmt->bindParam(":term_id", $term_id);
 				$stmt->execute();
 				return true;
 			}
