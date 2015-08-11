@@ -158,39 +158,50 @@ foreach($terms as $term){
         location.href = '/term?action=update&id='+id;
     });
 
-    //todo : must be refactored, too complicate
+    //todo : must be refactored, too complicate, too hard coded!!!!
     $('.like').on('click', function(){
         var term_id = $(this).parent().parent().attr('term-id');
         var $_this = $(this);
-        var count = $_this.text();
+        var $_sibling = $($_this.siblings()[0]);
+        var like_count = Number($_this.text());
+        var dislike_count = Number($_sibling.text());
         if($_this.hasClass('voted')){
             $.ajax({
-                url : '/term?action=vote&term_id='+term_id+'&vote=0',
-                type : 'GET',
+                url : '/term?action=vote&tvote=cancel&term_id='+term_id,
+                type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);
                 if(result && result.status === 'success'){
                     $_this.removeClass('thumbs-up-b').addClass('thumbs-up').removeClass('voted');
-                    $_this.text(Number(count)-1);
+                    $_this.text(like_count-1);
+                }
+            }).fail(function(jqXHR, textStatus){
+                console.log('ERROR : fail to vote,' + textStatus);
+            });
+        }else if($_sibling.hasClass('voted')){
+            $.ajax({
+                url : '/term?action=vote&tvote=change&term_id='+term_id,
+                type : 'GET'
+            }).done(function(data){
+                var result = JSON.parse(data);
+                if(result && result.status === 'success'){
+                    $_this.removeClass('thumbs-up').addClass('thumbs-up-b').addClass('voted');
+                    $_this.text(like_count+1);
+                    $_sibling.removeClass('thumbs-down-b').addClass('thumbs-down').removeClass('voted');
+                    $_sibling.text(dislike_count-1);
                 }
             }).fail(function(jqXHR, textStatus){
                 console.log('ERROR : fail to vote,' + textStatus);
             });
         }else{
             $.ajax({
-                url : '/term?action=vote&term_id='+term_id+'&vote=1',
-                type : 'GET',
+                url : '/term?action=vote&tvote=like&term_id='+term_id,
+                type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);
                 if(result && result.status === 'success'){
                     $_this.removeClass('thumbs-up').addClass('thumbs-up-b').addClass('voted');
-                    $_this.text(Number(count)+1);
-                    //if dislike checked, then abort it
-                    var $_sibling = $($_this.siblings()[0]);
-                    if($_sibling.hasClass('thumbs-down-b')){
-                        $_sibling.removeClass('thumbs-down-b').addClass('thumbs-down').removeClass('voted');
-                        $_sibling.text(Number($_sibling.text())-1);
-                    }
+                    $_this.text(like_count+1);
                 }
             }).fail(function(jqXHR, textStatus){
                 console.log('ERROR : fail to vote,' + textStatus);
@@ -201,37 +212,48 @@ foreach($terms as $term){
     $('.dislike').on('click', function(){
         var term_id = $(this).parent().parent().attr('term-id');
         var $_this = $(this);
-        var count = $_this.text();
+        var $_sibling = $($_this.siblings()[0]);
+        var dislike_count = Number($_this.text());
+        var like_count= Number($_sibling.text());
         if($_this.hasClass('voted')){
             $.ajax({
-                url : '/term?action=vote&term_id='+term_id+'&vote=0',
-                type : 'GET',
+                url : '/term?action=vote&tvote=cancel&term_id='+term_id,
+                type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);
                 if(result && result.status === 'success'){
                     $_this.removeClass('thumbs-down-b').addClass('thumbs-down').removeClass('voted');
-                    $_this.text(Number(count)-1);
+                    $_this.text(dislike_count-1);
                 }else{
                     //todo : handle error code
                 }
             }).fail(function(jqXHR, textStatus){
                 console.log('ERROR : fail to vote,' + textStatus);
             });
-        }else{
+        }else if($_sibling.hasClass('voted')){
             $.ajax({
-                url : '/term?action=vote&term_id='+term_id+'&vote=-1',
-                type : 'GET',
+                url : '/term?action=vote&tvote=change&term_id='+term_id,
+                type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);
                 if(result && result.status === 'success'){
                     $_this.removeClass('thumbs-down').addClass('thumbs-down-b').addClass('voted');
-                    $_this.text(Number(count)+1);
-                    //if like checked, then abort it
-                    var $_sibling = $($_this.siblings()[0]);
-                    if($_sibling.hasClass('thumbs-up-b')){
-                        $_sibling.removeClass('thumbs-up-b').addClass('thumbs-up').removeClass('voted');
-                        $_sibling.text(Number($_sibling.text())-1);
-                    }
+                    $_this.text(dislike_count+1);
+                    $_sibling.removeClass('thumbs-up-b').addClass('thumbs-up').removeClass('voted');
+                    $_sibling.text(like_count-1);
+                }
+            }).fail(function(jqXHR, textStatus){
+                console.log('ERROR : fail to vote,' + textStatus);
+            });
+        }else{
+            $.ajax({
+                url : '/term?action=vote&tvote=dislike&term_id='+term_id,
+                type : 'GET'
+            }).done(function(data){
+                var result = JSON.parse(data);
+                if(result && result.status === 'success'){
+                    $_this.removeClass('thumbs-down').addClass('thumbs-down-b').addClass('voted');
+                    $_this.text(dislike_count+1);
                 }
             }).fail(function(jqXHR, textStatus){
                 console.log('ERROR : fail to vote,' + textStatus);
