@@ -118,7 +118,7 @@ class Term extends Controller {
 										$response["status"] = "success";
 									}else{
 										$response["status"] = "ERROR";
-										$response["text"] = "ERROR : invalid parameter";
+										$response["text"] = "ERROR(009) : invalid parameter";
 									}
 									break;
 								case "cancel":
@@ -128,20 +128,20 @@ class Term extends Controller {
 								default:
 									//todo : invalid vote parameter
 									$response["status"] = "ERROR";
-									$response["text"] = "ERROR : invalid parameter";
+									$response["text"] = "ERROR(010) : invalid parameter";
 							}
 						}catch(Exception $e){
 							$response["status"] = "error";
-							$response["text"] = "ERROR : server error";
+							$response["text"] = "ERROR(011) : server error";
 						}
 					}else{
 						$response["status"] = "error";
-						$response["text"] = "ERROR : Invalid parameter";
+						$response["text"] = "ERROR(012) : Invalid parameter";
 					}
 				}else{
 					//todo : need to login
 					$response["status"] = "error";
-					$response["text"] = "ERROR : Need to login";
+					$response["text"] = "ERROR(013) : Need to login";
 				}
 				print json_encode($response);
 				break;

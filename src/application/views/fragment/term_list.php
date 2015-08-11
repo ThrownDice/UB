@@ -167,7 +167,7 @@ foreach($terms as $term){
         var dislike_count = Number($_sibling.text());
         if($_this.hasClass('voted')){
             $.ajax({
-                url : '/term?action=vote&tvote=cancel&term_id='+term_id,
+                url : '/term?action=vote&vote=cancel&term_id='+term_id,
                 type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);
@@ -180,7 +180,7 @@ foreach($terms as $term){
             });
         }else if($_sibling.hasClass('voted')){
             $.ajax({
-                url : '/term?action=vote&tvote=change&flag=1&term_id='+term_id,
+                url : '/term?action=vote&vote=change&flag=1&term_id='+term_id,
                 type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);
@@ -195,7 +195,7 @@ foreach($terms as $term){
             });
         }else{
             $.ajax({
-                url : '/term?action=vote&tvote=like&term_id='+term_id,
+                url : '/term?action=vote&vote=like&term_id='+term_id,
                 type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);
@@ -217,7 +217,7 @@ foreach($terms as $term){
         var like_count= Number($_sibling.text());
         if($_this.hasClass('voted')){
             $.ajax({
-                url : '/term?action=vote&tvote=cancel&term_id='+term_id,
+                url : '/term?action=vote&vote=cancel&term_id='+term_id,
                 type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);
@@ -232,7 +232,7 @@ foreach($terms as $term){
             });
         }else if($_sibling.hasClass('voted')){
             $.ajax({
-                url : '/term?action=vote&tvote=change&flag=0&term_id='+term_id,
+                url : '/term?action=vote&vote=change&flag=0&term_id='+term_id,
                 type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);
@@ -247,7 +247,7 @@ foreach($terms as $term){
             });
         }else{
             $.ajax({
-                url : '/term?action=vote&tvote=dislike&term_id='+term_id,
+                url : '/term?action=vote&vote=dislike&term_id='+term_id,
                 type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);

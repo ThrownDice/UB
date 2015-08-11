@@ -165,6 +165,8 @@ class Term_md extends Model {
 		}
 	}
 
+	//todo : important!! method naming is very messy, must be refactored!
+
 	function likeTerm($term_id){
 		try{
 			if(!empty($term_id)){
@@ -201,6 +203,36 @@ class Term_md extends Model {
 		}
 	}
 
+	function decreaseLike($term_id){
+		try{
+			if(!empty($term_id)){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("update term set `like`=`like`-1 where id=:term_id");
+
+				$stmt->bindParam(":id", $term_id);
+				$stmt->execute();
+				return true;
+			}
+		}catch(Exception $e){
+			throw new Exception("Can't update term. ".$e);
+		}
+	}
+
+	function decreaseDislike($term_id){
+		try{
+			if(!empty($term_id)){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("update term set dislike=dislike-1 where id=:term_id");
+
+				$stmt->bindParam(":id", $term_id);
+				$stmt->execute();
+				return true;
+			}
+		}catch(Exception $e){
+			throw new Exception("Can't update term. ".$e);
+		}
+	}
+
 	function changeVoteTerm($term_id, $flag){
 		try{
 			if(!empty($term_id)){
@@ -218,6 +250,8 @@ class Term_md extends Model {
 			throw new Exception("Can't update term. ".$e);
 		}
 	}
+
+
 
 }
 ?>
