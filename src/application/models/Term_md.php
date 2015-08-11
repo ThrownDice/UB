@@ -58,6 +58,26 @@ class Term_md extends Model {
 		return $stmt->fetchAll();
 	}
 
+	function getRecentTermWithMemberVote($num = 10, $member_id){
+		try{
+			if(!empty($member_id)){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("select term.*, vote.* from term left join vote on term.id = vote.term_id and vote.member_id = :member_id order by `date` desc limit :num;");
+
+				$stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
+				$stmt->bindParam(":num", $num, PDO::PARAM_INT);
+				$stmt->execute();
+				return $stmt->fetchAll();
+			}else{
+				//todo : invalid member_id
+				return false;
+			}
+		}catch(Exception $e){
+			throw new Excpetion("Can't get recent term. ".$e);
+		}
+	}
+
+
 	function getSuggestedTerm($num = null){
 		//todo : ?
 	}
