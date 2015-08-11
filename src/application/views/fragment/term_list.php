@@ -147,6 +147,7 @@ foreach($terms as $term){
         location.href = '/term?action=update&id='+id;
     });
 
+    //todo : must be refactored, too complicate
     $('.like').on('click', function(){
         var term_id = $(this).parent().parent().attr('term-id');
         var $_this = $(this);
@@ -173,6 +174,12 @@ foreach($terms as $term){
                 if(result && result.status === 'success'){
                     $_this.removeClass('thumbs-up').addClass('thumbs-up-b').addClass('voted');
                     $_this.text(Number(count)+1);
+                    //if dislike checked, then abort it
+                    var $_sibling = $($_this.siblings()[0]);
+                    if($_sibling.hasClass('thumbs-down-b')){
+                        $_sibling.removeClass('thumbs-down-b').addClass('thumbs-down').removeClass('voted');
+                        $_sibling.text(Number($_sibling.text())-1);
+                    }
                 }
             }).fail(function(jqXHR, textStatus){
                 console.log('ERROR : fail to vote,' + textStatus);
@@ -193,6 +200,8 @@ foreach($terms as $term){
                 if(result && result.status === 'success'){
                     $_this.removeClass('thumbs-down-b').addClass('thumbs-down').removeClass('voted');
                     $_this.text(Number(count)-1);
+                }else{
+                    //todo : handle error code
                 }
             }).fail(function(jqXHR, textStatus){
                 console.log('ERROR : fail to vote,' + textStatus);
@@ -206,6 +215,12 @@ foreach($terms as $term){
                 if(result && result.status === 'success'){
                     $_this.removeClass('thumbs-down').addClass('thumbs-down-b').addClass('voted');
                     $_this.text(Number(count)+1);
+                    //if like checked, then abort it
+                    var $_sibling = $($_this.siblings()[0]);
+                    if($_sibling.hasClass('thumbs-up-b')){
+                        $_sibling.removeClass('thumbs-up-b').addClass('thumbs-up').removeClass('voted');
+                        $_sibling.text(Number($_sibling.text())-1);
+                    }
                 }
             }).fail(function(jqXHR, textStatus){
                 console.log('ERROR : fail to vote,' + textStatus);
