@@ -97,6 +97,7 @@ class Term extends Controller {
 						$vote = $_GET["vote"];
 						try{
 							//todo : need to refactoring
+							//todo : need to catch exception (e.g cant like multiple time)
 							$Vote_md = Core::getInstance("Vote_md");
 							$Term_md = Core::getInstance("Term_md");
 							switch($vote){
@@ -122,8 +123,16 @@ class Term extends Controller {
 									}
 									break;
 								case "cancel":
-									$Vote_md->deleteTermLog($term_id, $member_id);
-									$response["status"] = "success";
+									if(isset($_GET["flag"])){
+										$flag = (int)$_GET["flag"];
+										if($flag==1) $Term_md->decreaseLike($term_id);
+										else $Term_md->decreaseDislike($term_id);
+										$Vote_md->deleteTermLog($term_id, $member_id);
+										$response["status"] = "success";
+									}else{
+										$response["status"] = "ERROR";
+										$response["text"] = "ERROR(004) : invalid parameter";
+									}
 									break;
 								default:
 									//todo : invalid vote parameter

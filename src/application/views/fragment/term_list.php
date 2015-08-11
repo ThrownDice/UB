@@ -167,7 +167,7 @@ foreach($terms as $term){
         var dislike_count = Number($_sibling.text());
         if($_this.hasClass('voted')){
             $.ajax({
-                url : '/term?action=vote&vote=cancel&term_id='+term_id,
+                url : '/term?action=vote&vote=cancel&flag=1&term_id='+term_id,
                 type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);
@@ -217,7 +217,7 @@ foreach($terms as $term){
         var like_count= Number($_sibling.text());
         if($_this.hasClass('voted')){
             $.ajax({
-                url : '/term?action=vote&vote=cancel&term_id='+term_id,
+                url : '/term?action=vote&vote=cancel&flag=0&term_id='+term_id,
                 type : 'GET'
             }).done(function(data){
                 var result = JSON.parse(data);
