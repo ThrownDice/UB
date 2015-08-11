@@ -98,12 +98,15 @@ class Term extends Controller {
 						try{
 							//todo : need to refactoring
 							$Vote_md = Core::getInstance("Vote_md");
+							$Term_md = Core::getInstance("Term_md");
 							if($Vote_md->deleteTermLog($term_id, $member_id)){
 								if($vote == 1){
 									$Vote_md->likeTerm($term_id, $member_id);
+									$Term_md->likeTerm($term_id);
 									$response["status"] = "success";
 								}else if($vote == -1){
 									$Vote_md->dislikeTerm($term_id, $member_id);
+									$Term_md->dislikeTerm($term_id);
 									$response["status"] = "success";
 								}else if($vote == 0) {
 									$response["status"] = "success";
