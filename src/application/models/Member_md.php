@@ -17,8 +17,8 @@ class Member_md extends Model {
 				//todo : check valid email (repeated?)
 				$email = $member["email"];
 				$password = $member["password"];
-				$nickname = $member["nickname"];
-				$img = $member["img"];
+				$nickname = isset($member["nickname"]) ? $member["nickname"] : null;
+				$img = isset($member["img"]) ? $member["img"] : null;
 				$intro = isset($member["intro"]) ? $member["intro"] : "";
 				$stmt = $db->prepare("insert into member (email ,pw, nickname, intro, photo, registered) VALUES (:email, sha1(:pw), :nickname, :intro, :photo, now())");
 
