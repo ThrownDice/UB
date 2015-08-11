@@ -165,5 +165,41 @@ class Term_md extends Model {
 		}
 	}
 
+	function likeTerm($term_id){
+		try{
+			if(!empty($term_id)){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("update term set `like`=`like`+1 where id=:term_id");
+
+				$stmt->bindParam(":term_id", $term_id);
+				$stmt->execute();
+				return true;
+			}else{
+				//todo : invalid parameter
+				return false;
+			}
+		}catch(Exception $e){
+			throw new Exception("Can't update term. ".$e);
+		}
+	}
+
+	function dislikeTerm($term_id){
+		try{
+			if(!empty($term_id)){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("update term set dislike=dislike+1 where id=:term_id");
+
+				$stmt->bindParam(":term_id", $term_id);
+				$stmt->execute();
+				return true;
+			}else{
+				//todo : invalid parameter
+				return false;
+			}
+		}catch(Exception $e){
+			throw new Exception("Can't update term. ".$e);
+		}
+	}
+
 }
 ?>
