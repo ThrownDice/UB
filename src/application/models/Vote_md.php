@@ -17,7 +17,9 @@ class Vote_md extends Model
                 $db = self::getDatabase();
                 $stmt = $db->prepare("insert into vote (flag, term_id, member_id) values(:flag, :term_id, :member_id)");
 
-                $stmt->bindParam(":flag", 1, PDO::PARAM_INT);
+                $flag  = 1;
+
+                $stmt->bindParam(":flag", $flag, PDO::PARAM_INT);
                 $stmt->bindParam(":term_id", $term_id, PDO::PARAM_INT);
                 $stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
 
@@ -38,7 +40,9 @@ class Vote_md extends Model
                 $db = self::getDatabase();
                 $stmt = $db->prepare("insert into vote (flag, term_id, member_id) values(:flag, :term_id, :member_id)");
 
-                $stmt->bindParam(":flag", -1, PDO::PARAM_INT);
+                $flag = -1;
+
+                $stmt->bindParam(":flag", $flag, PDO::PARAM_INT);
                 $stmt->bindParam(":term_id", $term_id, PDO::PARAM_INT);
                 $stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
 
@@ -106,6 +110,19 @@ class Vote_md extends Model
             return $stmt->fetchAll();
         }catch(Exception $e){
             throw new Exception("Can't get term log. ".$e);
+        }
+    }
+
+    function changeTermLog($term_id, $member_id){
+        try{
+            $db = self::getDatabase();
+            $stmt = $db->prepare("update vote set flag=flag*-1 where member_id=:member_id and term_id=:term_id");
+
+            $stmt->bindParam(":term_id",$term_id, PDO::PARAM_INT);
+            $stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
+            return true;
+        }catch(Exception $e){
+            throw new Exception("Can't change term log. ".$e);
         }
     }
 

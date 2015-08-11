@@ -75,20 +75,29 @@
         color : dimgray;
     }
 
-    #container .result_content_menu .like{
-        background : url(/application/views/img/thumbs-up-icon-blue-hi_s_b.png) no-repeat;
+    #container .result_content_menu .thumbs-up{
+        background : url(/application/views/img/thumbs-up-icon-hi_s_b.png) no-repeat;
     }
 
-    #container .result_content_menu .dislike{
-        background : url(/application/views/img/thumbs-down-icon-blue-hi_s_b.png) no-repeat;
+    #container .result_content_menu .thumbs-down{
+        background : url(/application/views/img/thumbs-down-icon-hi_s_b.png) no-repeat;
+    }
+
+    #container .result_content_menu .thumbs-up-b{
+        background : url(/application/views/img/thumbs-up-icon-blue-hi_s.png) no-repeat;
+    }
+
+    #container .result_content_menu .thumbs-down-b{
+        background : url(/application/views/img/thumbs-down-icon-blue-hi_s.png) no-repeat;
     }
 
 </style>
 
 <?php
+
 $terms = $data['terms'];
 foreach($terms as $term){
-    echo '<div class="result term-', $term["id"], '">';
+    echo '<div class="result" term-id="', $term["id"], '">';
 
     echo '<div class="result_header">';
     echo '<ul>';
@@ -97,6 +106,7 @@ foreach($terms as $term){
     echo '<span class="btn-delete ui-icon ui-icon-close" term-id="', $term["id"], '"></span>';
     echo '<span class="btn-modify ui-icon ui-icon-pencil" term-id="', $term["id"], '"></span>';
     echo '</li>';
+    echo '</ul>';
     echo '</div>';
 
     echo '<div class="result_content">';
@@ -105,8 +115,19 @@ foreach($terms as $term){
     echo '</div>';
 
     echo '<div class="result_content_menu">';
-    echo '<span class="dislike">', $term["dislike"], '</span>';
-    echo '<span class="like">', $term["like"], '</span>';
+
+    if(!empty($term["member_id"])){
+        if((int)$term["flag"] == 1){
+            echo '<span class="dislike thumbs-down">', $term["dislike"], '</span>';
+            echo '<span class="like thumbs-up-b voted">', $term["like"], '</span>';
+        }else{
+            echo '<span class="dislike thumbs-down-b voted">', $term["dislike"], '</span>';
+            echo '<span class="like thumbs-up">', $term["like"], '</span>';
+        }
+    }else{
+        echo '<span class="dislike thumbs-down">', $term["dislike"], '</span>';
+        echo '<span class="like thumbs-up">', $term["like"], '</span>';
+    }
     echo '</div>';
 
     echo '</div>';
@@ -136,5 +157,111 @@ foreach($terms as $term){
         var id = $(this).attr('term-id');
         location.href = '/term?action=update&id='+id;
     });
+
+    //todo : must be refactored, too complicate, too hard coded!!!!
+    $('.like').on('click', function(){
+        var term_id = $(this).parent().parent().attr('term-id');
+        var $_this = $(this);
+        var $_sibling = $($_this.siblings()[0]);
+        var like_count = Number($_this.text());
+        var dislike_count = Number($_sibling.text());
+        if($_this.hasClass('voted')){
+            $.ajax({
+                url : '/term?action=vote&vote=cancel&flag=1&term_id='+term_id,
+                type : 'GET'
+            }).done(function(data){
+                var result = JSON.parse(data);
+                console.log(result);
+                if(result && result.status === 'success'){
+                    $_this.removeClass('thumbs-up-b').addClass('thumbs-up').removeClass('voted');
+                    $_this.text(like_count-1);
+                }
+            }).fail(function(jqXHR, textStatus){
+                console.log('ERROR : fail to vote,' + textStatus);
+            });
+        }else if($_sibling.hasClass('voted')){
+            $.ajax({
+                url : '/term?action=vote&vote=change&flag=1&term_id='+term_id,
+                type : 'GET'
+            }).done(function(data){
+                var result = JSON.parse(data);
+                if(result && result.status === 'success'){
+                    $_this.removeClass('thumbs-up').addClass('thumbs-up-b').addClass('voted');
+                    $_this.text(like_count+1);
+                    $_sibling.removeClass('thumbs-down-b').addClass('thumbs-down').removeClass('voted');
+                    $_sibling.text(dislike_count-1);
+                }
+            }).fail(function(jqXHR, textStatus){
+                console.log('ERROR : fail to vote,' + textStatus);
+            });
+        }else{
+            $.ajax({
+                url : '/term?action=vote&vote=like&term_id='+term_id,
+                type : 'GET'
+            }).done(function(data){
+                var result = JSON.parse(data);
+                if(result && result.status === 'success'){
+                    $_this.removeClass('thumbs-up').addClass('thumbs-up-b').addClass('voted');
+                    $_this.text(like_count+1);
+                }
+            }).fail(function(jqXHR, textStatus){
+                console.log('ERROR : fail to vote,' + textStatus);
+            });
+        }
+    });
+
+    $('.dislike').on('click', function(){
+        var term_id = $(this).parent().parent().attr('term-id');
+        var $_this = $(this);
+        var $_sibling = $($_this.siblings()[0]);
+        var dislike_count = Number($_this.text());
+        var like_count= Number($_sibling.text());
+        if($_this.hasClass('voted')){
+            $.ajax({
+                url : '/term?action=vote&vote=cancel&flag=0&term_id='+term_id,
+                type : 'GET'
+            }).done(function(data){
+                var result = JSON.parse(data);
+                if(result && result.status === 'success'){
+                    $_this.removeClass('thumbs-down-b').addClass('thumbs-down').removeClass('voted');
+                    $_this.text(dislike_count-1);
+                }else{
+                    //todo : handle error code
+                }
+            }).fail(function(jqXHR, textStatus){
+                console.log('ERROR : fail to vote,' + textStatus);
+            });
+        }else if($_sibling.hasClass('voted')){
+            $.ajax({
+                url : '/term?action=vote&vote=change&flag=0&term_id='+term_id,
+                type : 'GET'
+            }).done(function(data){
+                var result = JSON.parse(data);
+                if(result && result.status === 'success'){
+                    $_this.removeClass('thumbs-down').addClass('thumbs-down-b').addClass('voted');
+                    $_this.text(dislike_count+1);
+                    $_sibling.removeClass('thumbs-up-b').addClass('thumbs-up').removeClass('voted');
+                    $_sibling.text(like_count-1);
+                }
+            }).fail(function(jqXHR, textStatus){
+                console.log('ERROR : fail to vote,' + textStatus);
+            });
+        }else{
+            $.ajax({
+                url : '/term?action=vote&vote=dislike&term_id='+term_id,
+                type : 'GET'
+            }).done(function(data){
+                var result = JSON.parse(data);
+                if(result && result.status === 'success'){
+                    $_this.removeClass('thumbs-down').addClass('thumbs-down-b').addClass('voted');
+                    $_this.text(dislike_count+1);
+                }
+            }).fail(function(jqXHR, textStatus){
+                console.log('ERROR : fail to vote,' + textStatus);
+            });
+        }
+    });
+
+
 
 </script>

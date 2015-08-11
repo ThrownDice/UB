@@ -58,6 +58,26 @@ class Term_md extends Model {
 		return $stmt->fetchAll();
 	}
 
+	function getRecentTermWithMemberVote($num = 10, $member_id){
+		try{
+			if(!empty($member_id)){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("select term.*, vote.* from term left join vote on term.id = vote.term_id and vote.member_id = :member_id order by `date` desc limit :num");
+				$num = (int)$num;
+				$stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
+				$stmt->bindParam(":num", $num, PDO::PARAM_INT);
+				$stmt->execute();
+				return $stmt->fetchAll();
+			}else{
+				//todo : invalid member_id
+				return false;
+			}
+		}catch(Exception $e){
+			throw new Exception("Can't get recent term. ".$e);
+		}
+	}
+
+
 	function getSuggestedTerm($num = null){
 		//todo : ?
 	}
@@ -144,6 +164,94 @@ class Term_md extends Model {
 			throw new Exception("Can't update term,".json_encode($term)." ".$e);
 		}
 	}
+
+	//todo : important!! method naming is very messy, must be refactored!
+
+	function likeTerm($term_id){
+		try{
+			if(!empty($term_id)){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("update term set `like`=`like`+1 where id=:term_id");
+
+				$stmt->bindParam(":term_id", $term_id);
+				$stmt->execute();
+				return true;
+			}else{
+				//todo : invalid parameter
+				return false;
+			}
+		}catch(Exception $e){
+			throw new Exception("Can't update term. ".$e);
+		}
+	}
+
+	function dislikeTerm($term_id){
+		try{
+			if(!empty($term_id)){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("update term set dislike=dislike+1 where id=:term_id");
+
+				$stmt->bindParam(":term_id", $term_id);
+				$stmt->execute();
+				return true;
+			}else{
+				//todo : invalid parameter
+				return false;
+			}
+		}catch(Exception $e){
+			throw new Exception("Can't update term. ".$e);
+		}
+	}
+
+	function decreaseLike($term_id){
+		try{
+			if(!empty($term_id)){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("update term set `like`=`like`-1 where id=:term_id");
+
+				$stmt->bindParam(":term_id", $term_id);
+				$stmt->execute();
+				return true;
+			}
+		}catch(Exception $e){
+			throw new Exception("Can't update term. ".$e);
+		}
+	}
+
+	function decreaseDislike($term_id){
+		try{
+			if(!empty($term_id)){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("update term set dislike=dislike-1 where id=:term_id");
+
+				$stmt->bindParam(":term_id", $term_id);
+				$stmt->execute();
+				return true;
+			}
+		}catch(Exception $e){
+			throw new Exception("Can't update term. ".$e);
+		}
+	}
+
+	function changeVoteTerm($term_id, $flag){
+		try{
+			if(!empty($term_id)){
+				$db = self::getDatabase();
+				if((int)$flag == 1){
+					$stmt = $db->prepare("update term set `like`=`like`+1, dislike=dislike-1 where id=:term_id;");
+				}else{
+					$stmt = $db->prepare("update term set `like`=`like`-1, dislike=dislike+1 where id=:term_id;");
+				}
+				$stmt->bindParam(":term_id", $term_id);
+				$stmt->execute();
+				return true;
+			}
+		}catch(Exception $e){
+			throw new Exception("Can't update term. ".$e);
+		}
+	}
+
+
 
 }
 ?>
