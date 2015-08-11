@@ -97,7 +97,7 @@
 
 $terms = $data['terms'];
 foreach($terms as $term){
-    echo '<div class="result term-', $term["id"], '">';
+    echo '<div class="result" term-id="', $term["id"], '">';
 
     echo '<div class="result_header">';
     echo '<ul>';
