@@ -73,7 +73,7 @@ class Term_md extends Model {
 				return false;
 			}
 		}catch(Exception $e){
-			throw new Excpetion("Can't get recent term. ".$e);
+			throw new Exception("Can't get recent term. ".$e);
 		}
 	}
 
