@@ -145,7 +145,11 @@ class Term extends Controller {
 					//self::$data = Core::getInstance("Term_md")->getRecentTerm($this->DEFAULT_TERM_COUNT);
 					//require_once APPPATH.'views'.DS.'templates'.DS.'template_term_list.php';
 
-					$data['terms'] = Core::getInstance("Term_md")->getRecentTerm($this->DEFAULT_TERM_COUNT);
+					if(isset($_SESSION["member"])){
+						$data['terms'] = Core::getInstance("Term_md")->getRecentTermWithMemberVote($this->DEFAULT_TERM_COUNT, $_SESSION["member"]["id"]);
+					}else{
+						$data['terms'] = Core::getInstance("Term_md")->getRecentTerm($this->DEFAULT_TERM_COUNT);
+					}
 
 					$this->view->render("template_term_list", $data);
 				}
