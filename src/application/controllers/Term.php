@@ -99,24 +99,36 @@ class Term extends Controller {
 							//todo : need to refactoring
 							$Vote_md = Core::getInstance("Vote_md");
 							$Term_md = Core::getInstance("Term_md");
-							if($Vote_md->deleteTermLog($term_id, $member_id)){
-								if($vote == 1){
+							switch($vote){
+								case "like":
 									$Vote_md->likeTerm($term_id, $member_id);
 									$Term_md->likeTerm($term_id);
 									$response["status"] = "success";
-								}else if($vote == -1){
+									break;
+								case "dislike":
 									$Vote_md->dislikeTerm($term_id, $member_id);
 									$Term_md->dislikeTerm($term_id);
 									$response["status"] = "success";
-								}else if($vote == 0) {
+									break;
+								case "change":
+									if(isset($_GET["flag"])){
+										$flag = $_GET["flag"];
+										$Vote_md->changeTermLog($term_id, $member_id);
+										$Term_md->changeVoteTerm($term_id, $flag);
+										$response["status"] = "success";
+									}else{
+										$response["status"] = "ERROR";
+										$response["text"] = "ERROR : invalid parameter";
+									}
+									break;
+								case "cancel":
+									$Vote_md->deleteTermLog($term_id, $member_id);
 									$response["status"] = "success";
-								}else{
-									$response["status"] = "error";
-									$response["text"] = "ERROR : Invalid parameter";
-								}
-							}else{
-								$response["status"] = "fail";
-								$response["text"] = "FAIL : fail to update vote";
+									break;
+								default:
+									//todo : invalid vote parameter
+									$response["status"] = "ERROR";
+									$response["text"] = "ERROR : invalid parameter";
 							}
 						}catch(Exception $e){
 							$response["status"] = "error";

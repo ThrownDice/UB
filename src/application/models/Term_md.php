@@ -205,7 +205,7 @@ class Term_md extends Model {
 		try{
 			if(!empty($term_id)){
 				$db = self::getDatabase();
-				if($flag == 1){
+				if((int)$flag == 1){
 					$stmt = $db->prepare("update term set `like`=`like`+1, dislike=dislike-1 where id=:term_id;");
 				}else{
 					$stmt = $db->prepare("update term set `like`=`like`-1, dislike=dislike+1 where id=:term_id;");
