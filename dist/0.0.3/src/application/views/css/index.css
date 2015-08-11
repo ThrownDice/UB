@@ -1,0 +1,71 @@
+@charset "utf-8";
+/*
+06.25.2015 begin
+Seunghyun, Jihyeon
+UB
+
+CSS
+###
+*/
+
+/* Layout */
+#wrap{padding: 0px 50px;}
+
+#header{}
+#gnb{margin: 0px auto;}
+
+#container{margin: 0px auto;}
+#entry_pane{width: 70%; display: inline-block;}
+
+#aside {width: 200px; float:right; display: inline-block; vertical-align: top;}
+
+/* Global */
+* {font-size: 12px;}
+
+h1{}
+h2{}
+h3{}
+h4{}
+
+div{border:1px solid gray;}
+form{display:inline;}
+
+ul{}
+ol{}
+li{display: inline-block; vertical-align: middle; border: 1px solid black;}
+
+a{}
+a:hover{}
+
+p{}
+img{}
+
+
+
+
+/* Style by Classes*/
+
+.ul_header_menu{ border:1px solid red;}
+
+.li_logo{}
+.img_logo{width:50px; height:50px;}
+.li_drop_menu{}
+.li_search_bar{}
+.li_add_term{position:absolute; top: 23px; right: 150px; }
+.li_login{position:absolute; top: 23px; right: 100px; }
+
+.li_search_bar{}
+.input_search_bar{width: 350px;}
+
+
+.entry{}
+.entry_header{}
+.entry_content {}
+.entry_content_menu {}
+
+
+.ad_aside {}
+.img_ad_aside {width: 100px;}
+
+.border {border:1px solid black;}
+
