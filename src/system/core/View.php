@@ -75,6 +75,7 @@ class View {
 	 * @param $div
 	 */
 	public function hasElem($elem) {
+
 		$result = false;
 		foreach($this->elems as $elemContained) {
 			if($elemContained == $elem) $result = true;
@@ -87,6 +88,7 @@ class View {
 	/**
 	 * Include the divs to be shown.
 	 * Divs that are class not id.
+	 * ## REMEMBER this "ARRAY" not just a string.
 	 * @param  $div Array of divs.
 	 */
 	function setElems($elems) {

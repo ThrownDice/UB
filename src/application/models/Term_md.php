@@ -233,6 +233,12 @@ class Term_md extends Model {
 		}
 	}
 
+	/**
+	 * @param $term_id
+	 * @param $flag
+	 * @return bool
+	 * @throws Exceptione
+	 */
 	function changeVoteTerm($term_id, $flag){
 		try{
 			if(!empty($term_id)){

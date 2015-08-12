@@ -20,7 +20,9 @@ class Root extends Controller {
 
 
 	function main($url = null) {
+		$this->doPost($url);
 		$this->doGet($url);
+
 	}
 
 
@@ -29,9 +31,6 @@ class Root extends Controller {
 	 */
 	function doGet($url) {
 		switch($url) {
-			// URL: Test.
-			case "test":
-				$this->svcTest();
 
 			// URL: context_root/
 			// No request ever, just a plain entry point call.
@@ -47,24 +46,19 @@ class Root extends Controller {
 	 */
 	function svcDefault() {
 		// Process Data I/O.
-		$data["entry"] = Core::getInstance("Term_md")->getRecentTerm(15);
+		$data["entry_pane"] = Core::getInstance("Term_md")->getRecentTerm(15);
 
 		// Rendering preset.
 		$this->view->title = "UB Root";
 
-		$this->view->setElems(array("entry_pane"));
+		// Set divs to show: entry_pane, navigation, campaign, ad_aside, sns, ad_top.
+		$this->view->setElems(array("entry_pane", "navigation", "campaign", "ad_aside", "sns", "ad_top"));
 
-		//$this->view->div("power");
 		$this->view->render("tmpl_kiwi", $data);
 
 	}
 
-	/**
-	 *
-	 */
-	function svcTest() {
-		echo "test";
-	}
+
 
 
 }
