@@ -120,6 +120,7 @@ class Vote_md extends Model
 
             $stmt->bindParam(":term_id",$term_id, PDO::PARAM_INT);
             $stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
+            $stmt->execute();
             return true;
         }catch(Exception $e){
             throw new Exception("Can't change term log. ".$e);
