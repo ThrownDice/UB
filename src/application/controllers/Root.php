@@ -20,9 +20,12 @@ class Root extends Controller {
 
 
 	function main($url = null) {
-		$this->doPost($url);
-		$this->doGet($url);
-
+		if(strtolower($_SERVER["REQUEST_METHOD"]) == "get") {
+			$this->doGet($url);
+		}
+		else if(strtolower($_SERVER["REQUEST_METHOD"]) == "post") {
+			$this->doPost($url);
+		}
 	}
 
 
@@ -51,10 +54,9 @@ class Root extends Controller {
 		// Rendering preset.
 		$this->view->title = "UB Root";
 
-		// Set divs to show: entry_pane, navigation, campaign, ad_aside, sns, ad_top.
-		$this->view->setElems(array("entry_pane", "navigation", "campaign", "ad_aside", "sns", "ad_top"));
 
-		$this->view->render("tmpl_kiwi", $data);
+		//
+		$this->view->render("tmpl_default", $data);
 
 	}
 

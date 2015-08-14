@@ -35,11 +35,11 @@ class Term extends Controller {
 	 * @param null $url
 	 */
 	function doGet($url = null) {
-		// Declare parameters and retrieve, if exists.
+		// Declare parameters and retrieve, if exist.
 		$do = null;
 		if(isset($_GET["do"])) $do = $_GET["do"];
 
-		// Decide which service to do,
+		// Decide which service to provide,
 		switch($do) {
 			case "add": {
 				$this->svcAddTerm($url);
@@ -71,33 +71,16 @@ class Term extends Controller {
 	function doPost($url = null) {
 		// Declare parameters and retrieve, if exists.
 		$do = null;
-
-		if(isset($_POST['do'])) $do = $_POST["do"];
+		if(isset($_GET['do'])) $do = $_GET["do"];
 
 		switch($do) {
 			case "add": {
-				$term = array();
-				if(isset($_POST["word"])) $term["word"] = $_POST["word"];
-				if(isset($_POST["def"])) $term["def"] = $_POST["def"];
-				$id = Core::getInstance("Term_md")->addTerm($term);
-				$this->redirect("/term/".$id);
+				$this->svcAdded($url);
 				break;
 			}
 
 			case "update": {
-				$term = array();
-				if(isset($_POST["word"])) $term["word"] = $_POST["word"];
-				if(isset($_POST["def"])) $term["def"] = $_POST["def"];
-				if(isset($_POST["id"])) $term["id"] = $_POST["id"];
-				$result = Core::getInstance("Term_md")->updateTerm($term);
-				var_dump($term);
-				var_dump($result);
-				if($result){
-					//todo : redirect term exact page
-					$this->redirect("/term/".$term["id"]);
-				}else{
-					//todo : redirect error page
-				}
+				$this->svcUpdated($url);
 				break;
 			}
 
@@ -108,14 +91,16 @@ class Term extends Controller {
 		}
 	}
 
+	/**
+	 * @param $url
+	 */
 	function svcDefault($url) {
 		if(isset($_SESSION["member"])) {
 			$data['entry_pane'] = Core::getInstance("Term_md")->getRecentTermWithMemberVote($this->DEFAULT_TERM_COUNT, $_SESSION["member"]["id"]);
 		} else {
 			$data['entry_pane'] = Core::getInstance("Term_md")->getRecentTerm($this->DEFAULT_TERM_COUNT);
 		}
-		$this->view->setElems(array("entry_pane"));
-		$this->view->render("tmpl_kiwi", $data);
+		$this->view->render("tmpl_term", $data);
 	}
 
 
@@ -127,7 +112,9 @@ class Term extends Controller {
 		$this->view->render("tmpl_kiwi", null);
 	}
 
-
+	/**
+	 * @param $url
+	 */
 	function svcModifyTerm($url) {
 		if(isset($_GET["id"])){
 			$id = $_GET["id"];
@@ -139,6 +126,10 @@ class Term extends Controller {
 		}
 	}
 
+
+	/**
+	 * @param $url
+	 */
 	function svcDeleteTerm($url) {
 		//todo : delete term data, confirm user session, auth etc
 		$response = array();
@@ -159,6 +150,10 @@ class Term extends Controller {
 		print json_encode($response);
 	}
 
+
+	/**
+	 * @param $url
+	 */
 	function svcVote($url) {
 		//todo : action of like, dislike term, (ajax action)
 		$response = array();
@@ -225,6 +220,33 @@ class Term extends Controller {
 			$response["text"] = "ERROR(013) : Need to login";
 		}
 		print json_encode($response);
+	}
+
+	/**
+	 *
+	 */
+	function svcAdded($url) {
+		$term = array();
+		if(isset($_POST["word"])) $term["word"] = $_POST["word"];
+		if(isset($_POST["def"])) $term["def"] = $_POST["def"];
+		$id = Core::getInstance("Term_md")->addTerm($term);
+		$this->redirect("/term/".$id);
+	}
+
+	function svcUpdated($url) {
+		$term = array();
+		if(isset($_POST["word"])) $term["word"] = $_POST["word"];
+		if(isset($_POST["def"])) $term["def"] = $_POST["def"];
+		if(isset($_POST["id"])) $term["id"] = $_POST["id"];
+		$result = Core::getInstance("Term_md")->updateTerm($term);
+		var_dump($term);
+		var_dump($result);
+		if($result){
+			//todo : redirect term exact page
+			$this->redirect("/term/".$term["id"]);
+		} else {
+			//todo : redirect error page
+		}
 	}
 
 

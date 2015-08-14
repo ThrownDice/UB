@@ -1,0 +1,67 @@
+/*
+Color set
+
+deep blue : 2D79B2
+light blue : 74C3FF
+
+deep orange : FFAD0B
+light orange : FFCA5E
+*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+
+
+/* global (maybe for debugging)
+---------------------------------------------------*/
+.border-black {border:1px solid black;}
+.border-blue {border:1px solid blue;}
+.border-red {border:1px solid red;}
+.border-gray {border:1px solid gainsboro;}
+
+body{
+    font-family: 'Nanum Gothic Coding', monospace;
+    background : url(../img/index.jpg) repeat;
+}
+
+
+/* header
+---------------------------------------------------*/
+#header {
+    width: 100%;
+    background:whitesmoke;
+
+}
+
+
+
+/* #main
+---------------------------------------------------*/
+#main {
+    width : 900px;
+    margin : 0px auto;
+    margin-top : 20px;
+    vertical-align: top;
+    overflow: auto;
+}
+
+#main li{
+    list-style: none;
+}
+
+
+
+/* #content
+---------------------------------------------------*/
+#content {
+    width: 690px;
+    display: block;
+    float: right;
+
+}
+
+/* #
+---------------------------------------------------*/
+#aside {
+    width: 200px;
+    display: inline-block;
+}

@@ -1,68 +1,94 @@
 
 <!-- gnb
     ======================================= -->
-<div class="gnb">
+<div class="gnb border-black">
     <style scoped>
+	    * {
+		    margin: 0px;
+		    padding: 0px;
+		    text-decoration: none;
+	    }
 
 	    .gnb {
-		    width : 100%;
-		    height : 60px;
+		    width : 900px;
+		    height: 60px;
+		    margin: 0px auto;
 		    -moz-box-shadow: 0px 9px 11px #DBDBDB;
 		    -webkit-box-shadow: 0px 9px 11px #DBDBDB;
 		    box-shadow: 0px 9px 11px #DBDBDB;
-		    line-height : 60px;
-		    background : white;
 	    }
 
 	    .logo {
-		    display: inline;
-		    color : #2D79B2;
-		    font-size : 30pt;
-		    margin : 0px 30px 0px 30px;
+		    height:60px;
+		    display: block;
+		    float: left;
+		    line-height: 60px;
 	    }
 
-	    #header li{
+	    ul {
+		    width: 700px;
+		    height: 60px;
+		    margin: 0;
+		    padding: 0px;
+		    display: block;
+		    float: right;
+		    vertical-align: middle;
+	    }
+
+	    li{
+		    display: block;
 		    list-style: none;
-		    float : left;
+			float: left;
+		    height: 60px;
+		    border:1px solid red;
+			line-height: 10px;
+
+
 	    }
 
-	    ul{
-		    padding : 100px;
-		    margin : 0px;
+	    li a {
+			display: block;
+		    margin-top: 0px;
+		    vertical-align: middle;
+		    height: 40px;
+		    line-height: 60px;
+		    border: 1px solid black;
+
 	    }
 
-	    #header .search_bar li{
-		    line-height : 60px;
-	    }
+	    .search_bar {
+			width: 400px;
+		    padding: 0px 5px;
+		    line-height: 40px;
+		    margin-top: 10px;
+			/*background: url(../img/index.jpg) no-repeat;*/
+		}
 
-	    #header .search_bar .search_input{
-		    border : 5px solid #2D79B2;
-		    width : 400px;
-		    height : 30px;
-	    }
-
-	    #header .search_bar{
-		    float : left;
-	    }
-
-	    #header .btn{
+	    .btn {
+		    vertical-align: middle;
+		    font-size: 1.0em;
+		    margin: 10px 5px 0px 5px;
+	        padding : 0px;
+		    width: 40px;
 		    height : 40px;
-		    background : #2D79B2;
-		    color : white;
+		    border:1px solid #2D79B2;
 		    line-height : 40px;
 		    text-align : center;
-		    margin : 10px;
-		    padding : 0px 10px 0px 10px;
 		    -webkit-border-radius : 5px;
 		    -moz-border-radius : 5px;
 		    border-radius : 5px;
-		    font-size : 11pt;
 		    cursor : pointer;
 	    }
 
-	    #header .btn:hover{
+	    .btn:hover{
 		    background : #74C3FF;
 	    }
+
+		.account {
+			margin-left: 120px;
+		}
+
+
 
     </style>
 
@@ -71,37 +97,18 @@
         else $member = null;
     ?>
 
-    <div class="logo showBorder" onclick="location.href='/'"> UB </div>
-    <ul class="search_bar">
-        <li><input type="text" class="search_input"> </li>
-        <li><div class="btn">검색</div> </li>
-        <li><div class="btn add-term"> 단어 추가 </div></li>
-    </ul>
-    <ul>
-        <li>
-            <?php
-            if($member){
-                echo '<div class="btn logout"> 로그아웃 </div> ';
-            }else{
-                echo '<div class="btn login">  로그인 </div> ';
-            }
-            ?>
-        </li>
-        <li>
-            <div class="btn sign-up"> 회원가입 </div>
-        </li>
-    </ul>
-    <ul class="member_info">
-	    <?php
-	    if($member){
-		    echo "<li>", $_SESSION["member"]["nickname"], " 환영한다.", "</li>";
-	    }
-	    ?>
-    </ul>
+    <a class="logo btn border-black">UB</a>
+	<ul class="border-black">
+		<li><input type="text" placeholder="검색어를 입력하세요." class="search_bar"></li>
+		<li><a href="#" class="btn add-term">+</a></li>
+		<li><a href="#" class="btn search-random">rnd</a></li>
+		<li><a href="#" class="btn account">acc</a></li>
+	</ul>
+
+
 </div>
 <!-- gnb
     ======================================= -->
-
 
 <script>
 	(function(window, document){
