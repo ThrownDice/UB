@@ -100,7 +100,7 @@ class Term extends Controller {
 		} else {
 			$data['entry_pane'] = Core::getInstance("Term_md")->getRecentTerm($this->DEFAULT_TERM_COUNT);
 		}
-		$this->view->render("tmpl_term", $data);
+		$this->view->render("tmpl_term_add", $data);
 	}
 
 

@@ -30,7 +30,7 @@
 	</style>
 
 	<ul>
-		<div class="title border-gray">Index</div>
+		<div class="title border-gray">Recently Added Terms</div>
 
 <?php
 	/**

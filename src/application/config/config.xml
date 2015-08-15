@@ -104,6 +104,14 @@ Element names starting with the capital letter is read by each of given Class ob
             <method> GET </method>
         </route>
 
+        <!-- Register Controller mapping-->
+        <route>
+            <url> ^(register$)?(register[?/]+[\s\S]*)?$ </url>
+            <controller name="Register">
+
+            </controller>
+            <method> GET </method>
+        </route>
     </Router>
 
     <Thema>

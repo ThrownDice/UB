@@ -9,13 +9,17 @@
  */
 	//ob_end_clean();
 
+/**
+ * Data preload
+ */
+	//$title = $data['title'];
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include_once APPPATH.'views'.DS.'fragment'.DS.'__head.php'; ?>
-    <title> <?=$this->title?> </title>
+    <?php include_once APPPATH.'views'.DS.'fragment'.DS.'__head_default.php'; ?>
+    <title><?php /*'$this->title*/?> -UB</title>
 </head>
 <body>
     <!-- header
@@ -29,11 +33,15 @@
     <!-- main
     ======================================= -->
     <div id="main" class="border-red">
+	    <!-- aside
+        ======================================= -->
 	    <div id="aside" class="border-red">
 		    <?php include_once APPPATH.'views'.DS.'fragment'.DS.'index_pane.php'; ?>
 		    <?php include_once APPPATH.'views'.DS.'fragment'.DS.'ad_aside.php'; ?>
 		    <?php include_once APPPATH.'views'.DS.'fragment'.DS.'sns.php'; ?>
 	    </div>
+	    <!-- //aside
+        ======================================= -->
 
 	    <!-- content
         ======================================= -->
