@@ -109,11 +109,11 @@
 		}
 
 		.entry .like{
-			background : url(/application/views/img/thumbs-up-icon-blue-hi_s_b.png) no-repeat;
+			background : url(/application/views/img/thumbs-up-icon-hi_s_b.png) no-repeat;
 		}
 
 		.entry .dislike{
-			background : url(/application/views/img/thumbs-down-icon-blue-hi_s_b.png) no-repeat;
+			background : url(/application/views/img/thumbs-down-icon-hi_s_b.png) no-repeat;
 		}
 
 
@@ -126,10 +126,10 @@
 	$i = 1;
 
 	foreach($entries as $entry) {
-		echo "<div class='entry term-{$entry['id']}'>
+		echo "<div class='entry term-{$entry['id']}' term-id='term-{$entry['id']}'>
 				<div class='header border-blue'>
 					<a href='#' class='rank border-gray'>{$i}</a>
-					<a href='#' class='word border-gray'>\$entry['word']</a>
+					<a href='#' class='word border-gray'> {$entry['word']} </a>
 					<a href='#' class='pronounce border-gray'>prn</a>
 					<div class='status border-blue'>
 						<i class='hot border-gray'>hot</i>
@@ -137,19 +137,19 @@
 					<div class='top_menu border-gray'>
 						<a href='#' class='btn favorite'>fav</a>
 						<a href='#' class='btn modify'>mod</a>
-						<a href='#' class='btn delete'>del</a>
+						<a href='#' class='btn delete' onclick='delTerm({$entry['id']})'>del</a>
 					</div>
 				</div>
 				<div class='content border-blue'>
-					<div class='def border-gray'>\$entry['def']</div>
-					<div class='img border-gray'>\$entry['img']</div>
+					<div class='def border-gray'>{$entry['def']}</div>
+					<div class='img border-gray'>\$entry['img']\</div>
 					<div class='usage border-gray'>\$entry['usage']</div>
-					<div class='sub_info'>\$entry['date'] by \$entry['author'] (last edit: \$entry['last_edit'])</div>
+					<div class='sub_info'>{$entry['date']} by \$entry['author'] (last edit: \$entry['last_edit'])</div>
 				</div>
 				<div class='footer border-blue'>
 					<div class='vote border-gray'>
-						<a href='#' class='like border-gray'><i class='up'>up</i>\$entry['like']</a>
-						<a href='#' class='dislike border-gray'><i class='down'>dn</i>\$entry['dislike']</a>
+						<a href='#' class='like border-gray'><i class='up'><!--up--></i>{$entry['like']}</a>
+						<a href='#' class='dislike border-gray'><i class='down'><!--dn--></i>{$entry['dislike']}</a>
 					</div>
 					<div class='sns border-gray'>
 						<a href='#' class='btn twitter'>twt</a>
@@ -161,6 +161,10 @@
 			</div>";
 		$i++;
 	}
+
+
+	//modal창을 위한 코드
+	echo "<div class='del-confirm-dialog' title='확인'> 단어를 정말 삭제하시겠습니까? </div> "
 
 
 //foreach($entries as $entry) {
@@ -195,29 +199,43 @@
     ======================================= -->
 
 <script>
-    $('.btn-delete').on('click', function(){
-        //todo : show message box of confirm deletion
-	    var id = $(this).attr('term-id');
-        $.ajax({
-            url : '/term?do=delete&id='+id,
-            type : 'DELETE',
-            success : function(result){}
-        }).done(function(data){
 
-            var result = JSON.parse(data);
-            if(result && result.status === 'success'){
-                //$('.term-'+id).hide('drop', {}, 500);
-                $('.term-'+id).hide(500);
-            }
-        }).fail(function(jqXHR, textStatus){
-            console.log('ERROR : fail to delete,' + textStatus);
-        });
-    });
+	//임시로 TAG에 바로 onclick 이벤트 핸들링을 했지만 나중에 global namespace 오염문제와
+	//html 코드와 javascript 코드 혼재를 줄이기 위해 다시 이벤트 핸들링 코드를 작성할 것
 
-    $('.btn-modify').on('click', function(){
-
-	    var id = $(this).attr('term-id');
-        location.href = '/term?do=modify&id='+id;
-    });
-
+	/**
+	 * delTerm
+	 * 단어의 id를 받아서 단어를 삭제함
+	 * @param {Number} id Term id 값
+	 */
+	function delTerm(id){
+		$( '.del-confirm-dialog' ).dialog({
+			resizable: false,
+			height: 140,
+			modal: true,
+			buttons: {
+				"삭제": function(){
+					var $this = $(this);
+					$.ajax({
+						url: '/delTerm?id='+id,
+						type: 'POST'
+					}).done(function(data){
+						//서버로부터 반환되는 결과 데이터는 JSON형식이므로 JSON.parse를 통해
+						//파싱을 먼저 한다.
+						var result = JSON.parse(data);
+						if(result && result.status == 'success') {
+							$this.dialog( 'close' );
+							$('.term-'+id).hide(500);
+						}
+					}).fail(function(data){
+						//실패했을 때
+						$this.dialog( 'close' );
+					});
+				},
+				"취소": function(){
+					$(this).dialog( 'close' );
+				}
+			}
+		});
+	}
 </script>
