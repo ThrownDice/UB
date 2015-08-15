@@ -48,20 +48,27 @@ Element names starting with the capital letter is read by each of given Class ob
         </route>
 
         <route>
-            <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
-            <controller name="Term">
+            <url> ^(addTerm$)?(addTerm[?/]+[\s\S]*)?$ </url>
+            <controller name="AddTerm">
+            </controller>
+            <method> GET </method>
+        </route>
 
+        <route>
+            <url> ^(addTerm$)?(addTerm[?/]+[\s\S]*)?$ </url>
+            <controller name="AddTerm">
             </controller>
             <method> POST </method>
         </route>
 
         <route>
-            <url> ^(term$)?(term[?/]+[\s\S]*)?$ </url>
-            <controller name="Term">
+            <url> ^(delTerm$)?(delTerm[?/]+[\s\S]*)?$ </url>
+            <controller name="DelTerm">
 
             </controller>
-            <method> DELETE </method>
+            <method> POST </method>
         </route>
+
 
         <!--Member Controller mapping-->
         <route>

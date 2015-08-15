@@ -88,7 +88,14 @@
 			margin-left: 120px;
 		}
 
-
+		.account_box{
+			width : 150px;
+			height : 150px;
+			border:1px solid #2D79B2;
+			border-radius : 5px;
+			display : none;
+			position : absolute;
+		}
 
     </style>
 
@@ -105,6 +112,10 @@
 		<li><a href="#" class="btn account">acc</a></li>
 	</ul>
 
+	<div class="account_box">
+		회원가입 or Login Blah Blah
+	</div>
+
 
 </div>
 <!-- gnb
@@ -113,17 +124,24 @@
 <script>
 	(function(window, document){
 		//Event Handling
-		$('.sign-up').on('click', function(){
+		$( '.sign-up' ).on( 'click' , function(){
 			location.href = '/member?action=create';
 		});
-		$('.login').on('click', function(){
+		$( '.login' ).on( 'click' , function(){
 			location.href = '/login';
 		});
-		$('.logout').on('click', function(){
+		$( '.logout' ).on( 'click' , function(){
 			location.href = '/logout';
 		});
-		$('.add-term').on('click', function(){
-			location.href="term?do=add"
+		$( '.add-term' ).on( 'click' , function(){
+			location.href='/addTerm';
+		});
+		$( '.account' ).on( 'click' , function(){
+			$('.account_box').show().position({
+				my : 'left top',
+				at : 'left bottom',
+				of : '.account'
+			});
 		});
 	})(window, document);
 

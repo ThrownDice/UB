@@ -36,6 +36,7 @@
 /**
  * Load the files.
  */
+
 	// Debugging preset.
 	require_once SYSPATH.'core'.DS.'debug.php';
 
