@@ -170,6 +170,7 @@ foreach($terms as $term){
                 url : '/term?action=vote&vote=cancel&flag=1&term_id='+term_id,
                 type : 'GET'
             }).done(function(data){
+                console.log(data);
                 var result = JSON.parse(data);
                 console.log(result);
                 if(result && result.status === 'success'){
