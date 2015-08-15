@@ -19,6 +19,7 @@
 <html lang="en">
 <head>
     <?php include_once APPPATH.'views'.DS.'fragment'.DS.'__head_default.php'; ?>
+	<?php include_once APPPATH.'views'.DS.'fragment'.DS.'__head_common.php'; ?>
     <title><?php /*'$this->title*/?> -UB</title>
 </head>
 <body>

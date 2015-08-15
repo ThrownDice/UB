@@ -73,7 +73,7 @@
 		<p class="subtitle"> UB의 모든 단어들은 사용자들과 함게 만들어갑니다. 당신의 손으로 단어를 추가해보세요.
 	</div>
 
-	<form action="<?php echo isset($term) ? "/update" : "/addTerm" ?> method="post" class="border-black">
+	<form action="<?php echo isset($term) ? "/editTerm" : "/addTerm" ?>" method="post" class="border-black">
         <div class="word_box">
 	        <label for="word" class="border-gray test">단어<i>*</i></label>
 	        <p class="word_description">단어란..</p>

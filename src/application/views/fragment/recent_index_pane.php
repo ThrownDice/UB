@@ -39,11 +39,11 @@
 	//$indices = $data['index_pane'];
 
 	## Testing
-	$indices = $data['entry_pane'];
+	$indices = $data['recent_index_pane'];
 
 	foreach($indices as $index) {
 		echo "<li>
-				<a href='' class='term term-{$index['id']} border-gray'>\$index['word']</a>
+				<a href='' class='term border-gray' term-id='term-{$index['id']}'>{$index['word']}</a>
 			</li>";
 	}
 

@@ -29,8 +29,11 @@ class AddTerm extends Controller
 
     function doGet($url = null) {
         //단어를 추가하는 페이지를 렌더링한다
+
+        $data["recent_index_pane"] = Core::getInstance("Term_md")->getRecentTerm();
+
         $this->view->setElems(array("term_edit"));
-        $this->view->render("tmpl_kiwi", null);
+        $this->view->render("tmpl_term_add", $data);
     }
 
     function doPost($url = null) {
