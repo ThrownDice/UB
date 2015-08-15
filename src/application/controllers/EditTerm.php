@@ -31,8 +31,9 @@ class EditTerm extends Controller
         if(isset($_GET["id"])) {
             $id = $_GET["id"];
             $data["toEdit"] = Core::getInstance("Term_md")->getTermExact($id);
+            $data["recent_index_pane"] = Core::getInstance("Term_md")->getRecentTerm();
             $this->view->setElems(array("term_edit"));
-            $this->view->render("tmpl_kiwi", $data);
+            $this->view->render("tmpl_term_add", $data);
         } else{
             //todo : invalid parameter error 페이지로 리다이렉트
         }
@@ -40,6 +41,7 @@ class EditTerm extends Controller
 
     function doPost($url = null){
         //word, def, id를 POST 데이터로 받아서 id에 해당하는 데이터를 업데이트 한다
+        var_dump($_POST);
         $term = array();
         if(isset($_POST["word"])) $term["word"] = $_POST["word"];
         if(isset($_POST["def"])) $term["def"] = $_POST["def"];

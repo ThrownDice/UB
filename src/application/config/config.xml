@@ -69,6 +69,21 @@ Element names starting with the capital letter is read by each of given Class ob
             <method> POST </method>
         </route>
 
+        <route>
+            <url> ^(editTerm$)?(editTerm[?/]+[\s\S]*)?$ </url>
+            <controller name="EditTerm">
+
+            </controller>
+            <method> GET </method>
+        </route>
+
+        <route>
+            <url> ^(editTerm$)?(editTerm[?/]+[\s\S]*)?$ </url>
+            <controller name="EditTerm">
+
+            </controller>
+            <method> POST </method>
+        </route>
 
         <!--Member Controller mapping-->
         <route>

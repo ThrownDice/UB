@@ -136,7 +136,7 @@
 					</div>
 					<div class='top_menu border-gray'>
 						<a href='#' class='btn favorite'>fav</a>
-						<a href='#' class='btn modify'>mod</a>
+						<a href='/editTerm?id={$entry['id']}' class='btn modify'>mod</a>
 						<a href='#' class='btn delete' onclick='delTerm({$entry['id']})'>del</a>
 					</div>
 				</div>

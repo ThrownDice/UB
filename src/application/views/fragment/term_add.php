@@ -66,6 +66,7 @@
 //	} else {
 //		echo '<form action="/addTerm" method="post" class="border-black">';
 //	}
+	$term = isset($data['toEdit'][0]) ? $data['toEdit'][0] : null;
 ?>
 
 	<div class="title">
@@ -74,6 +75,7 @@
 	</div>
 
 	<form action="<?php echo isset($term) ? "/editTerm" : "/addTerm" ?>" method="post" class="border-black">
+		<input type="hidden" name="id" value="<?php echo isset($term['id']) ? $term['id'] : null ?>">
         <div class="word_box">
 	        <label for="word" class="border-gray test">단어<i>*</i></label>
 	        <p class="word_description">단어란..</p>
@@ -102,7 +104,7 @@
         </div>
 
 		<div class="submit_box">
-			<input type="submit" value=<?php echo isset($term) ? "수정" : "추가"?> class="submit">
+			<input type="submit" value="<?php echo $term!=null ? "수정" : "추가"?>" class="submit">
 			<input type="submit" value="다시 쓰기" class="submit">
 		</div>
     </form>
@@ -114,6 +116,6 @@
 <script>
     $('.submit').on('click', function(){
         //todo : validate form data
-        $('.fm-add-term').submit();
+        //$('.fm-add-term').submit();
     });
 </script>
