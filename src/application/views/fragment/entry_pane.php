@@ -116,6 +116,9 @@
 			background : url(/application/views/img/thumbs-down-icon-hi_s_b.png) no-repeat;
 		}
 
+		.del-confirm-dialog{
+			display : none;
+		}
 
 	</style>
 <?php
