@@ -1,0 +1,19 @@
+﻿
+## 0812.
+## utf8 encoded
+
+1. Term.php 구조 수정
+: doGet(), doPost()로 요청 처리
+
+2. Term.php GET 인자 이름 변경
+: action -> do
+
+3. Term Delete의 ajax기능 수정
+: ajax를 사용하지 않음.
+
+4. 
+
+
+
+
+<EOT>

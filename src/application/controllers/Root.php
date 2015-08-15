@@ -20,7 +20,12 @@ class Root extends Controller {
 
 
 	function main($url = null) {
-		$this->doGet($url);
+		if(strtolower($_SERVER["REQUEST_METHOD"]) == "get") {
+			$this->doGet($url);
+		}
+		else if(strtolower($_SERVER["REQUEST_METHOD"]) == "post") {
+			$this->doPost($url);
+		}
 	}
 
 
@@ -29,9 +34,6 @@ class Root extends Controller {
 	 */
 	function doGet($url) {
 		switch($url) {
-			// URL: Test.
-			case "test":
-				$this->svcTest();
 
 			// URL: context_root/
 			// No request ever, just a plain entry point call.
@@ -47,24 +49,18 @@ class Root extends Controller {
 	 */
 	function svcDefault() {
 		// Process Data I/O.
-		$data["entry"] = Core::getInstance("Term_md")->getRecentTerm(15);
+		$data["entry_pane"] = Core::getInstance("Term_md")->getRecentTerm(15);
 
 		// Rendering preset.
 		$this->view->title = "UB Root";
 
-		$this->view->setDiv(array("entry_pane"));
 
-		//$this->view->div("power");
-		$this->view->render("tmpl_kiwi", $data);
+		//
+		$this->view->render("tmpl_default", $data);
 
 	}
 
-	/**
-	 *
-	 */
-	function svcTest() {
-		echo "test";
-	}
+
 
 
 }

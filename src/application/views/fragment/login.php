@@ -1,7 +1,9 @@
-<div class="dv_login">
+<!-- login
+   ======================================= -->
+<div class="login">
     <style scoped>
 
-        .dv_login{
+        .login{
             width : 400px;
             margin : 0px auto;
             margin-top : 50px;
@@ -77,14 +79,18 @@
     </div>
     </form>
 
-    <script>
-        (function(window, document){
-            $('.sign-up').on('click', function(){
-                location.href = "member?action=create";
-            });
-            $('.login').on('click', function(){
-                $('.fm_login').submit();
-            })
-        })(window, document);
-    </script>
 </div>
+<!-- //login
+   ======================================= -->
+
+
+<script>
+	(function(window, document){
+		$('.sign-up').on('click', function(){
+			location.href = "member?action=create";
+		});
+		$('.login').on('click', function(){
+			$('.fm_login').submit();
+		})
+	})(window, document);
+</script>
