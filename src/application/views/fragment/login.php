@@ -110,11 +110,10 @@
 				<div class="submit_box border-gray">
 					<input type="submit" value="login">
 				</div>
-				<div class="register_box border-black">
-					<a href="" class="register">create an account</a>
-				</div>
-
 			</form>
+			<div class="register_box border-black">
+				<a href="" class="register">create an account</a>
+			</div>
 		</div>
 	</div>
 	<!-- //content -->
