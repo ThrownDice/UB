@@ -15,7 +15,8 @@ class Login extends Controller {
 	}
 
 	function main($url = null) {
-		if(strtolower($_SERVER["REQUEST_METHOD"]) == "get") {
+		$method = strtolower($_SERVER["REQUEST_METHOD"]);
+		if( $method == "get") {
 			$this->doGet($url);
 		}
 		else if(strtolower($_SERVER["REQUEST_METHOD"]) == "post") {
@@ -65,9 +66,10 @@ class Login extends Controller {
 		}
 	}
 
-	function render($file_template){
+	function doPost($url = null){
 
 	}
+
 
 }
 ?>
