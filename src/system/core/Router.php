@@ -50,13 +50,12 @@ class Router{
 
 		try{
 			// URL string after context_root is assigned to $url, except when is empty.
-			if(isset($_GET['url'])) {
-				$url = explode("/", $_GET["url"]);
-			}
+			if(isset($_GET['url'])) $url = $_GET["url"];
 
 			foreach ($this->_routes as $_route) {
 				if ($this->match($_route, $url, $_SERVER["REQUEST_METHOD"])) {
-					return Core::getInstance($_route["controller"])->main($url);
+					$urlExploded = explode("/", $url);
+					return Core::getInstance($_route["controller"])->main($urlExploded);
 
 				}
 			}
