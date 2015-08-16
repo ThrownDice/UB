@@ -41,7 +41,7 @@
 
 		.form_pane {
 			margin: 30px auto;
-			width: 30%;
+			width: 35%;
 
 		}
 
@@ -50,7 +50,7 @@
 		}
 
 		.form_pane input {
-			width: 90%;
+			width: 95%;
 			height: 20px;
 			padding: 2px;
 		}
@@ -64,6 +64,9 @@
 			float: right;
 		}
 
+		.register_box {
+			text-align: center;
+		}
 		.footer {
 			margin: 10px 0px;
 			height: 50px;
@@ -104,9 +107,11 @@
 					<a href="" class="find_password">find password</a>
 					<input type="password" name="password"  class="password">
 				</div>
-				<div class="submit_box border-black">
+				<div class="submit_box border-gray">
 					<input type="submit" value="login">
-					<input type="submit" value="register">
+				</div>
+				<div class="register_box border-black">
+					<a href="" class="register">create an account</a>
 				</div>
 
 			</form>
