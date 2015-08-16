@@ -32,8 +32,9 @@ class Term extends Controller {
 	function doGet($url = null) {
 		// Showe Term Exact.
 		if(isset($url[2])) {
-
 			$this->svcTermExact($url);
+		} else if (isset($url[1])) {
+
 		} else {
 			$this->svcDefault($url);
 		}
@@ -51,10 +52,9 @@ class Term extends Controller {
 		$this->view->render("tmpl_term", $data);
 	}
 
-
 	function svcTermExact($url) {
 		if(isset($_SESSION["member"])) {
-			$data['todo'] = Core::getInstance("Term_md")->getRecentTermWithMemberVote($this->DEFAULT_TERM_COUNT, $_SESSION["member"]["id"]);
+			$data['todo'] = Core::getInstance("Term_md")->getTermExactWithMemberVote($url[2], $_SESSION["member"]["id"]);
 		} else {
 			echo 2;
 			echo $url[2];
