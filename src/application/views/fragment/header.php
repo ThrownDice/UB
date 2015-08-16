@@ -113,7 +113,7 @@
 	</ul>
 
 	<div class="account_box">
-		회원가입 or Login Blah Blah
+		p.
 	</div>
 
 
@@ -138,8 +138,8 @@
 		});
 		$( '.account' ).on( 'click' , function(){
 			$('.account_box').show().position({
-				my : 'left top',
-				at : 'left bottom',
+				my : 'right top',
+				at : 'right bottom',
 				of : '.account'
 			});
 		});
