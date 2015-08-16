@@ -58,8 +58,8 @@ class Login extends Controller {
 
 		switch($do) {
 			default: {
-				$this->view->setElems(array("login"));
-				$this->view->render("tmpl_kiwi", null);
+				$data["name_controller"] = "login";
+				$this->view->render("tmpl_account", $data);
 				break;
 			}
 		}

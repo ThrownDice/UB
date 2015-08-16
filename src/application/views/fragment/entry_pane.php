@@ -170,31 +170,6 @@
 	echo "<div class='del-confirm-dialog' title='확인'> 단어를 정말 삭제하시겠습니까? </div> "
 
 
-//foreach($entries as $entry) {
-//
-//    echo '<div class="entry term-', $entry["id"], '">';
-//
-//    echo '<div class="entry_header">';
-//    echo '<ul>';
-//    echo '<li>';
-//    echo '<span class="date">', $entry["date"], '</span>';
-//    echo '<span class="btn-delete ui-icon ui-icon-close" term-id="', $entry["id"], '"></span>';
-//    echo '<span class="btn-modify ui-icon ui-icon-pencil" term-id="', $entry["id"], '"></span>';
-//    echo '</li>';
-//    echo '</div>';
-//
-//    echo '<div class="entry_content">';
-//    echo '<div class="word">', $entry["word"], '</div>';
-//    echo '<div class="def">', $entry["def"], '</div>';
-//    echo '</div>';
-//
-//    echo '<div class="entry_content_menu">';
-//    echo '<span class="dislike">', $entry["dislike"], '</span>';
-//    echo '<span class="like">', $entry["like"], '</span>';
-//    echo '</div>';
-//
-//    echo '</div>';
-//}
 //?>
 
 </div>

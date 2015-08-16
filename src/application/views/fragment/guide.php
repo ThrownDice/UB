@@ -89,41 +89,15 @@
 	<!-- content -->
 	<div class="content border-black">
 		<div class="title border-blue">
-			<h2>Login to UB</h2>
+			<h2><?php echo $data['name_controller'];?></h2>
 		</div>
 
-		<div class="form_pane border-blue">
-			<form action="/member?action=create" method="post" enctype="multipart/form-data">
-				<div class="email_box">
-					<label for="email" class="border-gray">Email</label>
-					<a href="" class="find_password">find email</a>
-					<input type="text" name="email" class="email">
-				</div>
-				<div class="password_box">
-					<label for="password" class="border-gray">Password</label>
-					<a href="" class="find_password">find password</a>
-					<input type="password" name="password"  class="password">
-				</div>
-				<div class="submit_box border-black">
-					<input type="submit" value="login">
-					<input type="submit" value="register">
-				</div>
-
-			</form>
+		<div>
+			fe
 		</div>
 	</div>
 	<!-- //content -->
-	<!-- footer -->
-	<div class="footer border-blue">
-		<ul class="border-black">
-			<li class="border-red"><a href="" class="border-gray">about</a></li>
-			<li class="border-red"><a href="" class="border-gray">rules</a></li>
-			<li class="border-red"><a href="" class="border-gray">terms of service</a></li>
-			<li class="border-red"><a href="" class="border-gray">privacy</a></li>
-			<li class="border-red"><a href="" class="border-gray">feedback</a></li>
-		</ul>
-	</div>
-	<!-- //footer -->
+
 
 </div>
 <!-- //login

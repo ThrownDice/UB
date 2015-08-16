@@ -13,6 +13,7 @@
  * Data preload
  */
 	//$title = $data['title'];
+
 ?>
 
 <!DOCTYPE html>
@@ -41,11 +42,10 @@
 				Divs in content go here. Every page using this template has to have
 				#content so you can add "content" divs in here.
 			-->
-		    <?php include_once APPPATH.'views'.DS.'fragment'.DS.'register.php'; ?>
+		    <?php include_once APPPATH.'views'.DS.'fragment'.DS.$data['name_controller'].'.php'; ?>
 	    </div>
 	    <!-- //content
         ======================================= -->
-
 
 	</div>
     <!-- //main

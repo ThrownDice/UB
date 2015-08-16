@@ -1,6 +1,6 @@
 <?php
 /**
- * temp_term file.
+ * tmpl_doc file.
  */
 
 
@@ -37,7 +37,6 @@
         ======================================= -->
 	    <div id="aside" class="border-red">
 		    <?php include_once APPPATH.'views'.DS.'fragment'.DS.'navigation.php'; ?>
-		    <?php include_once APPPATH.'views'.DS.'fragment'.DS.'campaign.php'; ?>
 		    <?php include_once APPPATH.'views'.DS.'fragment'.DS.'ad_aside.php'; ?>
 		    <?php include_once APPPATH.'views'.DS.'fragment'.DS.'sns.php'; ?>
 	    </div>
@@ -51,8 +50,7 @@
 				Divs in content go here. Every page using this template has to have
 				#content so you can add "content" divs in here.
 			-->
-		    <?php include_once APPPATH.'views'.DS.'fragment'.DS.'ad_top.php'; ?>
-		    <?php include_once APPPATH.'views'.DS.'fragment'.DS.'entry_pane.php'; ?>
+		    <?php include_once APPPATH.'views'.DS.'fragment'.DS.$data['name_controller'].'.php'; ?>
 	    </div>
 	    <!-- //content
         ======================================= -->

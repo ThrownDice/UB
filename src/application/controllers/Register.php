@@ -10,7 +10,8 @@ class Register extends Controller
     }
 
     public function main($url = null){
-		$this->view->render("tmpl_account", null);
+	    $data['name_controller'] = "register";
+		$this->view->render("tmpl_account", $data);
     }
 
 }

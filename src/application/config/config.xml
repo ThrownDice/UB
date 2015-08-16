@@ -134,7 +134,20 @@ Element names starting with the capital letter is read by each of given Class ob
             </controller>
             <method> GET </method>
         </route>
+
+        <!--
+            Doc Controllers
+        -->
+        <!-- About Controller -->
+        <route>
+            <url> ^(about$)?(about[?/]+[\s\S]*)?$ </url>
+            <controller name="About">
+            </controller>
+            <method> GET </method>
+        </route>
     </Router>
+
+
 
     <Thema>
         /application/views/test/thema/thema-default.css
