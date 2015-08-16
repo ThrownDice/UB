@@ -129,48 +129,49 @@
 	$i = 1;
 
 	foreach($entries as $entry) {
-		echo "<div class='entry' term-id='term-{$entry['id']}'>
-				<div class='header border-blue'>
-					<a href='#' class='rank border-gray'>{$i}</a>
-					<a href='/term/{$entry['word']}/{$entry['id']}' class='word border-gray'> {$entry['word']} </a>
-					<a href='#' class='pronounce border-gray'>prn</a>
-					<div class='status border-blue'>
-						<i class='hot border-gray'>hot</i>
-					</div>
-					<div class='top_menu border-gray'>
-						<a href='#' class='btn favorite'>fav</a>
-						<a href='/editTerm?id={$entry['id']}' class='btn modify'>mod</a>
-						<a href='#' class='btn delete' onclick='delTerm({$entry['id']})'>del</a>
-					</div>
+?>
+		<div class='entry' term-id='term-<?=$entry['id'] ?>'>
+			<div class='header border-blue'>
+				<a href='#' class='rank border-gray'><?=$i?></a>
+				<a href='/term/<?=$entry['word']."/".$entry['id']?>' class='word border-gray'> <?=$entry['word']?> </a>
+				<a href='#' class='pronounce border-gray'>prn</a>
+				<div class='status border-blue'>
+					<i class='hot border-gray'>hot</i>
 				</div>
-				<div class='content border-blue'>
-					<div class='def border-gray'>{$entry['def']}</div>
-					<div class='img border-gray'>\$entry['img']\</div>
-					<div class='usage border-gray'>\$entry['usage']</div>
-					<div class='sub_info'>{$entry['date']} by \$entry['author'] (last edit: \$entry['last_edit'])</div>
+				<div class='top_menu border-gray'>
+					<a href='#' class='btn favorite'>fav</a>
+					<a href='/editTerm?id=<?=$entry['id']?>' class='btn modify'>mod</a>
+					<a href='#' class='btn delete' onclick='delTerm(<?=$entry['id']?>)'>del</a>
 				</div>
-				<div class='footer border-blue'>
-					<div class='vote border-gray'>
-						<a href='#' class='like border-gray'><i class='up'><!--up--></i>{$entry['like']}</a>
-						<a href='#' class='dislike border-gray'><i class='down'><!--dn--></i>{$entry['dislike']}</a>
-					</div>
-					<div class='sns border-gray'>
-						<a href='#' class='btn twitter'>twt</a>
-						<a href='#' class='btn instagram'>ist</a>
-						<a href='#' class='btn facebook'>fcb</a>
-						<a href='#' class='btn naver'>nvr</a>
-					</div>
+			</div>
+			<div class='content border-blue'>
+				<div class='def border-gray'><?=$entry['def']?></div>
+				<div class='img border-gray'><?="entry['img']"?></div>
+				<div class='usage border-gray'><?="entry['usage']"?></div>
+				<div class='sub_info'><?="entry['date']"?> by \<?="entry['author']"?> (last edit: <?="entry['last_edit']"?>)</div>
+			</div>
+			<div class='footer border-blue'>
+				<div class='vote border-gray'>
+					<a href='#' class='like border-gray'><i class='up'><!--up--></i><?=$entry['like']?></a>
+					<a href='#' class='dislike border-gray'><i class='down'><!--dn--></i><?=$entry['dislike']?></a>
 				</div>
-			</div>";
-		$i++;
+				<div class='sns border-gray'>
+					<a href='#' class='btn twitter'>twt</a>
+					<a href='#' class='btn instagram'>ist</a>
+					<a href='#' class='btn facebook'>fcb</a>
+					<a href='#' class='btn naver'>nvr</a>
+				</div>
+			</div>
+		</div>
+
+<?php
+	$i++;
 	}
 
+?>
 
 	//modal창을 위한 코드
-	echo "<div class='del-confirm-dialog' title='확인'> 단어를 정말 삭제하시겠습니까? </div> "
-
-
-//?>
+	<div class='del-confirm-dialog' title='확인'> 단어를 정말 삭제하시겠습니까? </div>
 
 </div>
 <!-- //entry_pane

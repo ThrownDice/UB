@@ -56,8 +56,6 @@ class Term extends Controller {
 		if(isset($_SESSION["member"])) {
 			$data["entry_exact"] = Core::getInstance("Term_md")->getTermExactWithMemberVote($url[2], $_SESSION["member"]["id"]);
 		} else {
-			echo 2;
-			echo $url[2];
 			$data["entry_exact"] = Core::getInstance("Term_md")->getTermExact($url[2]);
 		}
 		$data["entry_pane"] = Core::getInstance("Term_md")->getIndexWordByWord($url[1]);
