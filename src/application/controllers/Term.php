@@ -30,8 +30,13 @@ class Term extends Controller {
 	 * @param null $url
 	 */
 	function doGet($url = null) {
-		// Declare parameters and retrieve, if exist.
-		$this->svcDefault($url);
+		// Showe Term Exact.
+		if(isset($url[2])) {
+
+			$this->svcTermExact($url);
+		} else {
+			$this->svcDefault($url);
+		}
 	}
 
 	/**
@@ -46,6 +51,17 @@ class Term extends Controller {
 		$this->view->render("tmpl_term", $data);
 	}
 
+
+	function svcTermExact($url) {
+		if(isset($_SESSION["member"])) {
+			$data['todo'] = Core::getInstance("Term_md")->getRecentTermWithMemberVote($this->DEFAULT_TERM_COUNT, $_SESSION["member"]["id"]);
+		} else {
+			echo 2;
+			echo $url[2];
+			$data['entry_exact'] = Core::getInstance("Term_md")->getTermExact($url[2]);
+		}
+		$this->view->render("tmpl_term_exact", $data);
+	}
 }
 
 ?>

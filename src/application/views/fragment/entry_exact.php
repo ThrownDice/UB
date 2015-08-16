@@ -121,14 +121,13 @@
 		}
 
 	</style>
+
 <?php
 /**
  * Load data processed in Controller.
  */
-	$entries = $data['entry_pane'];
-	$i = 1;
+	$entries = $data['entry_exact'];
 
-	foreach($entries as $entry) {
 		echo "<div class='entry' term-id='term-{$entry['id']}'>
 				<div class='header border-blue'>
 					<a href='#' class='rank border-gray'>{$i}</a>
@@ -162,8 +161,6 @@
 					</div>
 				</div>
 			</div>";
-		$i++;
-	}
 
 
 	//modal창을 위한 코드
