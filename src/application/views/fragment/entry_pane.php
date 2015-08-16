@@ -132,7 +132,7 @@
 		echo "<div class='entry' term-id='term-{$entry['id']}'>
 				<div class='header border-blue'>
 					<a href='#' class='rank border-gray'>{$i}</a>
-					<a href='#' class='word border-gray'> {$entry['word']} </a>
+					<a href='/term/{$entry['word']}/{$entry['id']}' class='word border-gray'> {$entry['word']} </a>
 					<a href='#' class='pronounce border-gray'>prn</a>
 					<div class='status border-blue'>
 						<i class='hot border-gray'>hot</i>
