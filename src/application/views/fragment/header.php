@@ -104,6 +104,11 @@
         else $member = null;
     ?>
 
+	<?php
+		//test
+		if(!empty($member)) echo $member['nickname'], " logined";
+	?>
+
     <a class="logo btn border-black">UB</a>
 	<ul class="border-black">
 		<li><input type="text" placeholder="검색어를 입력하세요." class="search_bar"></li>

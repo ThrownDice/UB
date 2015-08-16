@@ -87,6 +87,30 @@ class Vote_md extends Model
         }
     }
 
+    /**
+     * getTermLog
+     *
+     * 단어 ID와 멤버 ID값을 받아서 해당 단어에 대한 vote 기록 데이터를 리턴한다
+     *
+     * @param {Number} $term_id
+     * @param {Number} $member_id
+     * @return mixed
+     * @throws Exception
+     */
+    function getTermLog($term_id, $member_id){
+        try {
+            $db = self::getDatabase();
+            $stmt = $db->prepare("select * from vote where term_id = :term_id and member_id = :member_id");
+
+            $stmt->bindParam(":term_id", $term_id);
+            $stmt->bindParam(":member_id", $member_id);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch(Exception $e) {
+            throw new Exception("Can't get term log. ".$e);
+        }
+    }
+
     function getTermLogByMemberId($member_id){
         try{
             $db = self::getDatabase();
