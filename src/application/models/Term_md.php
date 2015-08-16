@@ -23,9 +23,9 @@ class Term_md extends Model {
 	 * @return mixed (is there is no term, then return null)
 	 * @throws Exception
 	 */
-	function getTermExact($id) {
+	function getTermExact($term_id) {
 		try{
-			if($id) {
+			if($term_id) {
 
 				$db = self::getDatabase();
 
@@ -33,16 +33,71 @@ class Term_md extends Model {
 				$stmt = $db->prepare("select * from term where id = :id");
 				//$STMT = $this->db->prepare("select * from term where id = :id");
 
-				$stmt->bindParam(":id", $id, PDO::PARAM_INT);
+				$stmt->bindParam(":id", $term_id, PDO::PARAM_INT);
 				$stmt->execute();
-				return $stmt->fetchAll();
+				return $stmt->fetchAll()[0];
 			}else{
 				return null;
 			}
 		}catch(Exception $e){
+			throw new Exception("Can't get term id='$term_id'. ".$e);
+		}
+	}
+
+	function getTermExactWithMemberVote($term_id, $member_id){
+		try {
+			if($term_id && $member_id){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("select term.*, vote.* from term left join vote on term.id = vote.term_id and vote.member_id = :member_id where term.id = :term_id");
+
+
+				$stmt->bindParam(":term_id", $term_id, PDO::PARAM_INT);
+				$stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
+				$stmt->execute();
+				return $stmt->fetchAll()[0];
+			}else{
+				return false;
+			}
+		} catch(Exception $e) {
 			throw new Exception("Can't get term id='$id'. ".$e);
 		}
 	}
+
+	function getTermByWord($word){
+		try {
+			if($word){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("select * from term where word = :word");
+
+				$stmt->bindParam(":word", $word, PDO::PARAM_STR);
+				$stmt->execute();
+				return $stmt->fetchAll();
+			}else{
+				return false;
+			}
+		} catch(Exception $e) {
+			throw new Exception("Can't get term word='$word'. ".$e);
+		}
+	}
+
+	function getTermByWordWithMemberVote($word, $member_id){
+		try {
+			if($word){
+				$db = self::getDatabase();
+				$stmt = $db->prepare("select term.*, vote.* from term left join vote on term.id = vote.term_id and vote.member_id = :member_id where word = :word");
+
+				$stmt->bindParam(":word", $word, PDO::PARAM_STR);
+				$stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
+				$stmt->execute();
+				return $stmt->fetchAll();
+			}else{
+				return false;
+			}
+		} catch(Exception $e) {
+			throw new Exception("Can't get term word='$word'. ".$e);
+		}
+	}
+
 
 	/**
 	 * get recently added term

@@ -96,7 +96,7 @@
 		</div>
 
 		<div class="form_pane border-blue">
-			<form action="/member?action=create" method="post" enctype="multipart/form-data">
+			<form action="/login" method="post" enctype="multipart/form-data" class="form_login">
 				<div class="email_box">
 					<label for="email" class="border-gray">Email</label>
 					<a href="" class="find_password">find email</a>
@@ -108,7 +108,7 @@
 					<input type="password" name="password"  class="password">
 				</div>
 				<div class="submit_box border-gray">
-					<input type="submit" value="login">
+					<input type="submit" value="login" class="btn-login">
 				</div>
 			</form>
 			<div class="register_box border-black">
@@ -135,10 +135,11 @@
 
 
 <script>
-	$('.photo').on('change', function(){
-		var data = $(this).val();
-		$('.preview').attr('src', data);
-	});
+	(function(window, document){
+		$('.btn-login').on('click', function(){
+			$('.form_login').submit();
+		});
+	})(window, document);
 </script>
 
 

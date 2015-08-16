@@ -39,14 +39,15 @@
 	//$indices = $data['index_pane'];
 
 	## Testing
-	$indices = $data['entry_pane'];
+	$indices = isset($data['entry_pane']) ? $data['entry_pane'] : null;
 
-	foreach($indices as $index) {
-		echo "<li>
+	if($indices){
+		foreach($indices as $index) {
+			echo "<li>
 				<a href='' class='term term-{$index['id']} border-gray'>\$index['word']</a>
 			</li>";
+		}
 	}
-
 ?>
 
 	</ul>

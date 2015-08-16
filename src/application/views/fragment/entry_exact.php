@@ -126,11 +126,11 @@
 /**
  * Load data processed in Controller.
  */
-	$entries = $data['entry_exact'];
-
+	$entry = isset($data['entry_exact']) ? $data['entry_exact'] : null;
+	if(!empty($entry)) {
 		echo "<div class='entry' term-id='term-{$entry['id']}'>
 				<div class='header border-blue'>
-					<a href='#' class='rank border-gray'>{$i}</a>
+					<a href='#' class='rank border-gray'></a>
 					<a href='#' class='word border-gray'> {$entry['word']} </a>
 					<a href='#' class='pronounce border-gray'>prn</a>
 					<div class='status border-blue'>
@@ -161,12 +161,9 @@
 					</div>
 				</div>
 			</div>";
-
-
+	}
 	//modal창을 위한 코드
 	echo "<div class='del-confirm-dialog' title='확인'> 단어를 정말 삭제하시겠습니까? </div> "
-
-
 //?>
 
 </div>

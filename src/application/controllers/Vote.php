@@ -35,14 +35,26 @@ class Vote
                     $Term_md = Core::getInstance("Term_md");
                     switch($vote) {
                         case "like":
-                            $Vote_md->likeTerm($term_id, $member_id);
-                            $Term_md->likeTerm($term_id);
-                            $response["status"] = "success";
+                            if(empty($Vote_md->getTermLog($term_id, $member_id))) {
+                                $Vote_md->likeTerm($term_id, $member_id);
+                                $Term_md->likeTerm($term_id);
+                                $response["status"] = "success";
+                            } else {
+                                //todo : already voted
+                                $response["status"] = "ERROR";
+                                $response["text"] = "ERROR(008) : already voted";
+                            }
                             break;
                         case "dislike":
-                            $Vote_md->dislikeTerm($term_id, $member_id);
-                            $Term_md->dislikeTerm($term_id);
-                            $response["status"] = "success";
+                            if(empty($Vote_md->getTermLog($term_id, $member_id))) {
+                                $Vote_md->dislikeTerm($term_id, $member_id);
+                                $Term_md->dislikeTerm($term_id);
+                                $response["status"] = "success";
+                            } else {
+                                //todo : already voted
+                                $response["status"] = "ERROR";
+                                $response["text"] = "ERROR(008) : already voted";
+                            }
                             break;
                         case "change":
                             if(isset($_GET["flag"])) {
@@ -57,11 +69,17 @@ class Vote
                             break;
                         case "cancel":
                             if(isset($_GET["flag"])) {
-                                $flag = (int)$_GET["flag"];
-                                if($flag==1) $Term_md->decreaseLike($term_id);
-                                else $Term_md->decreaseDislike($term_id);
-                                $Vote_md->deleteTermLog($term_id, $member_id);
-                                $response["status"] = "success";
+                                if(!empty($Vote_md->getTermLog($term_id, $member_id))) {
+                                    $flag = (int)$_GET["flag"];
+                                    if($flag==1) $Term_md->decreaseLike($term_id);
+                                    else $Term_md->decreaseDislike($term_id);
+                                    $Vote_md->deleteTermLog($term_id, $member_id);
+                                    $response["status"] = "success";
+                                } else {
+                                    //이미 취소 되었거나 vote 기록이 없는 경우
+                                    $response["status"] = "ERROR";
+                                    $response["text"] = "ERROR(007) : no vote record";
+                                }
                             } else{
                                 $response["status"] = "ERROR";
                                 $response["text"] = "ERROR(004) : invalid parameter";
