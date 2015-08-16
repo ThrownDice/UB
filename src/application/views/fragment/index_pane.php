@@ -44,7 +44,7 @@
 	if($indices){
 		foreach($indices as $index) {
 			echo "<li>
-				<a href='' class='term term-{$index['id']} border-gray'>\$index['word']</a>
+				<a href='' class='term term-{$index['id']} border-gray'>{$index['word']}</a>
 			</li>";
 		}
 	}

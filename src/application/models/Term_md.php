@@ -18,6 +18,30 @@ class Term_md extends Model {
 	function getTerm() {}
 
 	/**
+	 * getRelatedTerm
+	 *
+	 * word 파라미터를 받아서 해당 word를 포함하고 있는 데이터를 검색해서 리턴한다
+	 *
+	 * @param $word
+	 * @return mixed
+	 * @throws Exception
+	 */
+	function getRelatedTerm($word){
+		try {
+			if(!empty($word)) {
+				$db = self::getDatabase();
+
+				$stmt = $db->prepare("select * from term where word like %:word%");
+				$stmt->bindParam(":word", $word, PDO::PARAM_STR);
+				$stmt->execute();
+				return $stmt->fetchAll();
+			}
+		} catch(Exception $e){
+			throw new Exception("Can't get related term. ".$e);
+		}
+	}
+
+	/**
 	 * get term which id is parameter $id
 	 * @param	int	$id term id
 	 * @return mixed (is there is no term, then return null)
@@ -48,7 +72,7 @@ class Term_md extends Model {
 		try {
 			if($term_id && $member_id){
 				$db = self::getDatabase();
-				$stmt = $db->prepare("select term.*, vote.* from term left join vote on term.id = vote.term_id and vote.member_id = :member_id where term.id = :term_id");
+				$stmt = $db->prepare("select term.*, vote.flag, vote.member_id, vote.term_id from term left join vote on term.id = vote.term_id and vote.member_id = :member_id where term.id = :term_id");
 
 
 				$stmt->bindParam(":term_id", $term_id, PDO::PARAM_INT);
@@ -59,7 +83,7 @@ class Term_md extends Model {
 				return false;
 			}
 		} catch(Exception $e) {
-			throw new Exception("Can't get term id='$id'. ".$e);
+			throw new Exception("Can't get term id='$term_id'. ".$e);
 		}
 	}
 
@@ -117,7 +141,7 @@ class Term_md extends Model {
 		try{
 			if(!empty($member_id)){
 				$db = self::getDatabase();
-				$stmt = $db->prepare("select term.*, vote.* from term left join vote on term.id = vote.term_id and vote.member_id = :member_id order by `date` desc limit :num");
+				$stmt = $db->prepare("select term.*, vote.flag, vote.member_id, vote.term_id  from term left join vote on term.id = vote.term_id and vote.member_id = :member_id order by `date` desc limit :num");
 				$num = (int)$num;
 				$stmt->bindParam(":member_id", $member_id, PDO::PARAM_INT);
 				$stmt->bindParam(":num", $num, PDO::PARAM_INT);
@@ -312,7 +336,50 @@ class Term_md extends Model {
 		}
 	}
 
+	function getIndexWordByWord($word, $count = 20){
+		try {
+			if(!empty($word)) {
+				$db = self::getDatabase();
 
+				//본래 아래와 같이 union으로 앞, 뒤 데이터 10개씩 끌어오는 형태로 진행하려고 했는데
+				//그럴 경우 앞쪽에 위치한 word의 경우 앞 부분에서 10개를 가져올 수 없을 수도 있다.
+				//따라서 앞부분 데이터를 가져오는 쿼리를 먼저 날려서 해당 데이터가 충분하면
+				//뒤쪽 데이터를 정상적으로 가져오고, 그렇지 않으면 뒤쪽 데이터를 더 가져오는 로직을 사용하기로 함.
+				//뒤쪽 인덱스에 위치한 word도 마찬가지
+				/*(select * from term where word < '그켬' limit 10)
+									union
+				(select * from term where word > '그켬' limit 10)
+									union
+				(select * from term where word = '그켬') order by word asc;*/
+
+				//formal
+				/*$stmt = $db->prepare("select * from term where word < :word limit :limit");
+
+				$stmt->bindParam(":word", $word);
+				$stmt->bindParam(":limit", (int)$count/2);
+				$stmt->execute();*/
+
+				//todo : TBD
+				$stmt = $db->prepare("(select * from term where word < :word limit :limit)
+									union
+				(select * from term where word > :word limit :limit)
+									union
+				(select * from term where word = :word) order by word asc");
+
+				$limit = (int)($count/2);
+
+				$stmt->bindParam(":word", $word, PDO::PARAM_STR);
+				$stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+				$stmt->execute();
+				return $stmt->fetchAll();
+			} else{
+				//todo : invalide parameter
+				return false;
+			}
+		} catch(Exception $e) {
+			throw new Exception("Can't get index word. ".$e);
+		}
+	}
 
 }
 ?>
