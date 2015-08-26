@@ -70,7 +70,14 @@
 ?>
 
 	<div class="title">
-		<h2 class=""> 단어 추가 </h2>
+		<h2 class="">
+			<?php
+				if (!empty($term))
+					echo "단어 수정";
+				else
+					echo "단어 추가";
+			?>
+		</h2>
 		<p class="subtitle"> UB의 모든 단어들은 사용자들과 함게 만들어갑니다. 당신의 손으로 단어를 추가해보세요.
 	</div>
 
@@ -95,7 +102,7 @@
 		<div class="def_box">
 			<label for="" class="border-gray">의미<i>*</i></label>
 			<p class="word_description">여기는 의미를 이렇게 써주세요.</p>
-			<input type="text" name="def" class="def" value="<?php echo isset($term['word']) ? $term['word'] : null ?>">
+			<input type="text" name="def" class="def" value="<?php echo isset($term['def']) ? $term['def'] : null ?>">
 		</div>
         <div class="usage_box">
 	        <label for="" class="border-gray">용례</label>
