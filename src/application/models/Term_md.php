@@ -59,7 +59,7 @@ class Term_md extends Model {
 
 				$stmt->bindParam(":id", $term_id, PDO::PARAM_INT);
 				$stmt->execute();
-				return $stmt->fetchAll()[0];
+				return $stmt->fetchAll();
 			}else{
 				return null;
 			}
