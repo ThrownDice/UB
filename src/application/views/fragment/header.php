@@ -111,7 +111,11 @@
 
     <a class="logo btn border-black">UB</a>
 	<ul class="border-black">
-		<li><input type="text" placeholder="검색어를 입력하세요." class="search_bar"></li>
+		<li>
+			<input type="text" placeholder="검색어를 입력하세요." list="auto-complete" class="search_bar">
+			<datalist id="auto-complete">
+			</datalist>
+		</li>
 		<li><a href="#" class="btn add-term">+</a></li>
 		<li><a href="#" class="btn search-random">rnd</a></li>
 		<li><a href="#" class="btn account">acc</a></li>
@@ -147,6 +151,31 @@
 				at : 'right bottom',
 				of : '.account'
 			});
+		});
+		$( '.search_bar').keydown(function() {
+			var keyword = $(this).val();
+			//todo : FF와 Opera의 경우에는 한글 keydown, keyup에 대한 이벤트 핸들링 이슈가 있음
+			$.ajax({
+				url: '/autoCompleteTerm?keyword=' + encodeURIComponent(keyword),
+				type: 'GET'
+			}).done(function(data) {
+				console.log(data);
+				var result = JSON.parse(data);
+				console.log(result);
+				var terms = result.data;
+				var len = terms.length;
+				var html = '';
+
+				for (var i=0; i<len; i++) {
+					html = html + "<option value='" + terms[i].word + "'>";
+				}
+
+				$('#auto-complete').html(html);
+				//alert(result.keyword);
+			}).fail(function(jqXHR, textStatus) {
+				console.log('ERROR : fail to auto-complete, ' + textStatus);
+			});
+
 		});
 	})(window, document);
 

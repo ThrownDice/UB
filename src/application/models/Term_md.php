@@ -381,5 +381,27 @@ class Term_md extends Model {
 		}
 	}
 
+
+	function getTermsBySyllable($chars) {
+		try {
+			if (!empty($chars)) {
+				$db = self::getDatabase();
+				$chars = $chars."%";
+
+				//todo : 가져올 단어 개수 및 영문, 숫자, 한글 각각의 검색을 지원해야 함. (한글의 경우 초성 검색이 가능해야 함)
+				$stmt = $db->prepare("select word from term where word like :chars order by word asc");
+
+				$stmt->bindParam(":chars", $chars);
+				$stmt->execute();
+				return $stmt->fetchAll();
+			} else {
+				return false;
+			}
+
+		} catch (Exception $e) {
+			throw new Exception("Can't get terms by syllable. ".$e);
+		}
+	}
+
 }
 ?>

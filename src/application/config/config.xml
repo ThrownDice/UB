@@ -145,6 +145,15 @@ Element names starting with the capital letter is read by each of given Class ob
             </controller>
             <method> GET </method>
         </route>
+
+        <!-- Auto Complete Controller -->
+        <route>
+            <url> ^(autoCompleteTerm)?(autoCompleteTerm[?/]+[\s\S]*)?$ </url>
+            <controller name="AutoCompleteTerm">
+            </controller>
+            <method> GET </method>
+        </route>
+
     </Router>
 
 
