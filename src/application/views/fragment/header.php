@@ -133,6 +133,9 @@
 <script>
 	(function(window, document){
 		//Event Handling
+		$( '.logo' ).on( 'click' , function() {
+			location.href = '/';
+		});
 		$( '.sign-up' ).on( 'click' , function(){
 			location.href = '/member?action=create';
 		});
@@ -152,31 +155,38 @@
 				of : '.account'
 			});
 		});
-		$( '.search_bar').keydown(function() {
+
+		$( '.search_bar' ).keydown(function( event ) {
 			var keyword = $(this).val();
-			//todo : FF와 Opera의 경우에는 한글 keydown, keyup에 대한 이벤트 핸들링 이슈가 있음
-			$.ajax({
-				url: '/autoCompleteTerm?keyword=' + encodeURIComponent(keyword),
-				type: 'GET'
-			}).done(function(data) {
-				console.log(data);
-				var result = JSON.parse(data);
-				console.log(result);
-				var terms = result.data;
-				var len = terms.length;
-				var html = '';
+			if (event.which == 13) {
+				//enter key pressed
+				location.href = '/term/' + encodeURIComponent( keyword );
+			} else {
 
-				for (var i=0; i<len; i++) {
-					html = html + "<option value='" + terms[i].word + "'>";
-				}
-
-				$('#auto-complete').html(html);
-				//alert(result.keyword);
-			}).fail(function(jqXHR, textStatus) {
-				console.log('ERROR : fail to auto-complete, ' + textStatus);
-			});
-
+				//todo : FF와 Opera의 경우에는 한글 keydown, keyup에 대한 이벤트 핸들링 이슈가 있음
+				$.ajax({
+					url: '/autoCompleteTerm?keyword=' + encodeURIComponent( keyword ),
+					type: 'GET'
+				}).done(function(data) {
+					var result = JSON.parse(data);
+					var terms = result.data;
+					var len = terms.length;
+					var html = '';
+					for (var i=0; i<len; i++) {
+						html = html + "<option value='" + terms[i].word + "'>";
+					}
+					$('#auto-complete').html(html);
+					//alert(result.keyword);
+				}).fail(function(jqXHR, textStatus) {
+					console.log('ERROR : fail to auto-complete, ' + textStatus);
+				});
+			}
 		});
+
+
+
+
+
 	})(window, document);
 
 </script>
