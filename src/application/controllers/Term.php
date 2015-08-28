@@ -34,7 +34,7 @@ class Term extends Controller {
 		if(isset($url[2])) {
 			$this->svcTermExact($url);
 		} else if (isset($url[1])) {
-
+			$this->svcTerm($url);
 		} else {
 			$this->svcDefault($url);
 		}
@@ -60,6 +60,16 @@ class Term extends Controller {
 		}
 		$data["entry_pane"] = Core::getInstance("Term_md")->getIndexWordByWord($url[1]);
 		$this->view->render("tmpl_term_exact", $data);
+	}
+
+
+	function svcTerm($url) {
+		if(isset($_SESSION["member"])) {
+			$data['entry_pane'] = Core::getInstance("Term_md")->getTermByWordWithMemberVote($url[1], $_SESSION["member"]["id"]);
+		} else {
+			$data['entry_pane'] = Core::getInstance("Term_md")->getTermByWord($url[1]);
+		}
+		$this->view->render("tmpl_term", $data);
 	}
 
 }

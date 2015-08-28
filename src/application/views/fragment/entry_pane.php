@@ -170,7 +170,7 @@
 
 ?>
 
-	//modal창을 위한 코드
+	<!--modal창을 위한 코드-->
 	<div class='del-confirm-dialog' title='확인'> 단어를 정말 삭제하시겠습니까? </div>
 
 </div>
