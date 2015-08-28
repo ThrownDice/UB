@@ -58,7 +58,7 @@ class Term extends Controller {
 		} else {
 			$data["entry_exact"] = Core::getInstance("Term_md")->getTermExact($url[2]);
 		}
-		$data["entry_pane"] = Core::getInstance("Term_md")->getIndexWordByWord($url[1]);
+		$data["index_pane"] = Core::getInstance("Term_md")->getIndexWordByWord($url[1]);
 		$this->view->render("tmpl_term_exact", $data);
 	}
 
@@ -69,6 +69,7 @@ class Term extends Controller {
 		} else {
 			$data['entry_pane'] = Core::getInstance("Term_md")->getTermByWord($url[1]);
 		}
+		$data["index_pane"] = Core::getInstance("Term_md")->getIndexWordByWord($url[1]);
 		$this->view->render("tmpl_term", $data);
 	}
 

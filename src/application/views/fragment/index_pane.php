@@ -39,12 +39,13 @@
 	//$indices = $data['index_pane'];
 
 	## Testing
-	$indices = isset($data['entry_pane']) ? $data['entry_pane'] : null;
+	$indices = isset($data['index_pane']) ? $data['index_pane'] : null;
 
 	if($indices){
 		foreach($indices as $index) {
+			//todo : class 에 왜 index id를 썻지? (여러 단어가 존재 할 수 있으므로 id 값은 의미가 없음)
 			echo "<li>
-				<a href='' class='term term-{$index['id']} border-gray'>{$index['word']}</a>
+				<a href='/term/{$index['word']}' class='term term-{$index['id']} border-gray'>{$index['word']}</a>
 			</li>";
 		}
 	}
