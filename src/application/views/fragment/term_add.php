@@ -66,7 +66,7 @@
 //	} else {
 //		echo '<form action="/addTerm" method="post" class="border-black">';
 //	}
-	$term = isset($data['toEdit'][0]) ? $data['toEdit'][0] : null;
+	$term = isset($data['toEdit']) ? $data['toEdit'] : null;
 ?>
 
 	<div class="title">

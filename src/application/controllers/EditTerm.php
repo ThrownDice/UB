@@ -41,7 +41,6 @@ class EditTerm extends Controller
 
     function doPost($url = null){
         //word, def, id를 POST 데이터로 받아서 id에 해당하는 데이터를 업데이트 한다
-        var_dump($_POST);
         $term = array();
         if(isset($_POST["word"])) $term["word"] = $_POST["word"];
         if(isset($_POST["def"])) $term["def"] = $_POST["def"];
