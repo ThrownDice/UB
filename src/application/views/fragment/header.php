@@ -104,11 +104,6 @@
         else $member = null;
     ?>
 
-	<?php
-		//test
-		if(!empty($member)) echo $member['nickname'], " logined";
-	?>
-
     <a class="logo btn border-black">UB</a>
 	<ul class="border-black">
 		<li>
@@ -122,10 +117,16 @@
 	</ul>
 
 	<div class="account_box">
-		p.
+		<?php
+		if (!empty( $member )) {
+			echo $member["nickname"], '<br>';
+			echo '<a href="/logout"> 로그아웃 </a>';
+		} else {
+			echo '<a href="/login"> 로그인 </a>';
+			echo '<a href="/register"> 회원가입 </a>';
+		}
+		?>
 	</div>
-
-
 </div>
 <!-- gnb
     ======================================= -->
@@ -182,10 +183,6 @@
 				});
 			}
 		});
-
-
-
-
 
 	})(window, document);
 

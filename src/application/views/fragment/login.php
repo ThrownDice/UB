@@ -108,7 +108,8 @@
 					<input type="password" name="password"  class="password">
 				</div>
 				<div class="submit_box border-gray">
-					<input type="submit" value="login" class="btn-login">
+					<a href="#" class="btn-login"> register </a>
+					<!--<input type="submit" value="login" class="btn-login">-->
 				</div>
 			</form>
 			<div class="register_box border-black">
@@ -136,9 +137,38 @@
 
 <script>
 	(function(window, document){
-		$('.btn-login').on('click', function(){
-			$('.form_login').submit();
+
+		$('.btn-login').on('click', function() {
+			//$('.form_login').submit();
+			var formData = new FormData();
+			formData.append('email', $( "input[name='email']").val());
+			formData.append('password', $( "input[name='password']").val());
+
+			$.ajax({
+				url: '/login',
+				type: 'POST',
+				data: formData,
+				processData: false,
+				contentType: false
+			}).done(function(data) {
+				console.log(data);
+				var response = JSON.parse(data);
+				if (response.result === "success") {
+					location.href = '/';
+				} else {
+					alert("잘못된 정보");
+				}
+				//location.href = '/';
+			}).fail(function(jqXHR, textStatus) {
+				alert("잘못된 정보");
+				console.log('ERROR : fail to login, ' + textStatus);
+			});
+
 		});
+
+
+
+
 	})(window, document);
 </script>
 

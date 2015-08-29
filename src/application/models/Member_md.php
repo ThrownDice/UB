@@ -47,7 +47,7 @@ class Member_md extends Model {
 			$stmt->bindParam(":email", $email);
 			$stmt->bindParam(":password", $password);
 			$stmt->execute();
-			return $stmt->fetchAll();
+			return $stmt->fetch();
 		}catch(Exception $e){
 			throw new Exception("Exception thrown in getMember function. ".$e);
 		}
